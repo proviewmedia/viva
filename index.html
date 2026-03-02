@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Viva Adventures</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300..700&family=Fraunces:opsz,wght@9..144,600..800&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --bg:#f2f0eb;--surface:#fff;--alt:#eae8e3;--dark:#1c1b1f;
+      --accent:#e84b2b;--accent-s:#fef0ed;
+      --like:#1db76a;--like-s:#eafbf2;--nope:#d94058;--nope-s:#fceef1;
+      --t1:#1c1b1f;--t2:#6b6a6f;--t3:#9d9ca0;
+      --brd:rgba(0,0,0,.06);
+      --r:20px;--rs:14px;--rx:10px;
+      --fd:'Fraunces',Georgia,serif;--fb:'DM Sans',system-ui,sans-serif;
+      --spring:cubic-bezier(.175,.885,.32,1.275);--ease:cubic-bezier(.25,.46,.45,.94)
+    }
+    html{font-size:16px}
+    body{font-family:var(--fb);background:var(--bg);color:var(--t1);min-height:100dvh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    .screen{max-width:480px;margin:0 auto;padding:12px;display:flex;flex-direction:column;gap:10px;min-height:100dvh}
+    .screen.hidden{display:none}
+    .bento{background:var(--surface);border-radius:var(--r);overflow:hidden}
+    .ibtn{position:relative;width:40px;height:40px;border:none;background:var(--alt);border-radius:var(--rx);color:var(--t2);cursor:pointer;display:grid;place-items:center;transition:all .2s ease}
+    .ibtn:hover{background:var(--dark);color:#fff}
+    .ibtn svg{width:18px;height:18px}
+    .ibtn .badge{position:absolute;top:-3px;right:-3px;min-width:17px;height:17px;background:var(--accent);color:#fff;border-radius:99px;font-size:.6rem;font-weight:700;display:grid;place-items:center;padding:0 4px;opacity:0;transform:scale(0);transition:all .3s var(--spring);border:2px solid var(--surface)}
+    .ibtn .badge.show{opacity:1;transform:scale(1)}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+    .an{animation:fadeIn .5s var(--ease) both}
+    .d1{animation-delay:.06s}.d2{animation-delay:.12s}.d3{animation-delay:.18s}
+
+    /* WELCOME */
+    .hero{padding:36px 24px 28px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:12px}
+    .hlogo{display:flex;align-items:center;gap:10px;user-select:none}
+    .hmark{width:44px;height:44px;background:var(--accent);border-radius:12px;display:grid;place-items:center;color:#fff;font-size:1.4rem;font-weight:800;font-family:var(--fd);line-height:1}
+    .htxt{font-family:var(--fd);font-size:1.6rem;font-weight:800;letter-spacing:-.02em}
+    .htxt span{color:var(--accent)}
+    .hsub{font-size:.88rem;color:var(--t2);line-height:1.5;max-width:300px}
+    .abento{padding:20px;display:flex;flex-direction:column;gap:12px}
+    .alabel{font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--t3)}
+    .agrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+    .aopt{position:relative;padding:12px 14px;background:var(--alt);border:2px solid transparent;border-radius:var(--rs);cursor:pointer;transition:all .2s ease;display:flex;align-items:center;gap:10px}
+    .aopt:hover{border-color:var(--dark)}
+    .aopt.sel{border-color:var(--accent);background:var(--accent-s)}
+    .aopt input{position:absolute;opacity:0;width:0;height:0}
+    .aoji{font-size:1.2rem;flex-shrink:0;width:28px;text-align:center}
+    .aoh4{font-size:.78rem;font-weight:600}
+    .aop{font-size:.65rem;color:var(--t3);margin-top:1px}
+    .afull{grid-column:1/-1}
+    .gobento{background:transparent;overflow:visible}
+    .gobtn{width:100%;padding:16px;border:none;border-radius:var(--r);background:var(--dark);color:#fff;font-family:var(--fb);font-size:.9rem;font-weight:600;cursor:pointer;transition:all .2s var(--spring);display:flex;align-items:center;justify-content:center;gap:8px}
+    .gobtn:hover{transform:scale(1.02)}
+    .gobtn:disabled{opacity:.35;cursor:not-allowed;transform:none}
+    .brow{display:flex;gap:10px}
+    .mbento{flex:1;padding:16px 14px;display:flex;flex-direction:column;gap:6px;cursor:pointer;transition:all .15s ease}
+    .mbento:hover{background:var(--alt)}
+    .mico{width:34px;height:34px;border-radius:var(--rx);display:grid;place-items:center;font-size:.9rem}
+    .mico.b1{background:#e4ecfd}.mico.b2{background:#eae8e3}
+    .mbento h4{font-size:.78rem;font-weight:600}
+    .mbento p{font-size:.68rem;color:var(--t3);line-height:1.4}
+    .marr{font-size:.68rem;color:var(--t3);margin-top:auto;transition:transform .15s ease}
+    .mbento:hover .marr{transform:translateX(3px);color:var(--t1)}
+
+    /* SWIPE */
+    .hdr{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+    .logo{display:flex;align-items:center;gap:10px;user-select:none}
+    .lmark{width:36px;height:36px;background:var(--accent);border-radius:var(--rx);display:grid;place-items:center;color:#fff;font-size:1.2rem;font-weight:800;font-family:var(--fd);line-height:1}
+    .ltxt{font-family:var(--fd);font-size:1.2rem;font-weight:700;letter-spacing:-.02em}
+    .ltxt span{color:var(--accent)}
+    .hacts{display:flex;gap:6px}
+    .aind{display:flex;align-items:center;gap:6px;padding:4px 10px 4px 6px;background:var(--alt);border-radius:8px;font-size:.68rem;font-weight:500;color:var(--t2);cursor:pointer;border:none;font-family:var(--fb);transition:all .15s ease}
+    .aind:hover{background:#dddbd6}
+    .aind .dot{width:6px;height:6px;background:var(--like);border-radius:50%}
+    .pbar{padding:12px 20px;display:flex;align-items:center;gap:12px}
+    .ptrack{flex:1;height:4px;background:var(--alt);border-radius:99px;overflow:hidden}
+    .pfill{height:100%;background:var(--accent);border-radius:99px;transition:width .4s var(--ease)}
+    .plbl{font-size:.7rem;font-weight:600;color:var(--t3);white-space:nowrap}
+    .cbento{position:relative;padding:14px;flex:1;display:flex;flex-direction:column;background:var(--bg);border:1.5px solid var(--brd)}
+    .cstack{position:relative;flex:1;min-height:400px}
+    .card{position:absolute;inset:0;border-radius:var(--r);overflow:hidden;background:var(--surface);box-shadow:0 2px 12px rgba(0,0,0,.06),0 0 0 1px rgba(0,0,0,.04);touch-action:none;user-select:none;will-change:transform;cursor:grab;transition:transform .35s var(--spring)}
+    .card:active{cursor:grabbing}
+    .card.dragging{transition:none}
+    .card[data-s="1"]{transform:scale(.95) translateY(8px);filter:brightness(.97);z-index:8}
+    .card[data-s="2"]{transform:scale(.90) translateY(16px);filter:brightness(.94);z-index:7}
+    .card[data-s="top"]{z-index:10}
+    .cvis{width:100%;height:52%;position:relative;overflow:hidden}
+    .cemoji{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:3.2rem}
+    .cemoji[data-c="Culture"]{background:linear-gradient(160deg,#fde8e4,#f9d0c8)}
+    .cemoji[data-c="Outdoors"]{background:linear-gradient(160deg,#dff0e8,#c8e6d5)}
+    .cemoji[data-c="Experience"]{background:linear-gradient(160deg,#e8e4fd,#d5cef9)}
+    .cemoji[data-c="Nightlife"]{background:linear-gradient(160deg,#e4ecfd,#ced8f9)}
+    .cemoji[data-c="Views"]{background:linear-gradient(160deg,#fef3e2,#fde4c0)}
+    .cemoji[data-c="Nature"]{background:linear-gradient(160deg,#e0f5ec,#c5e8d5)}
+    .ccont{padding:18px;display:flex;flex-direction:column;gap:5px;height:48%;background:var(--surface)}
+    .ctag{display:inline-flex;align-items:center;gap:4px;font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);background:var(--accent-s);padding:3px 9px;border-radius:6px;width:fit-content}
+    .card h3{font-family:var(--fd);font-size:1.3rem;font-weight:700;line-height:1.2;letter-spacing:-.01em}
+    .cdesc{font-size:.8rem;line-height:1.5;color:var(--t2);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .cpills{margin-top:auto;display:flex;gap:5px;flex-wrap:wrap}
+    .pill{padding:4px 9px;background:var(--alt);border-radius:8px;font-size:.68rem;font-weight:500;color:var(--t2);border:1px solid var(--brd)}
+    .stamp{position:absolute;top:18px;padding:7px 16px;border-radius:var(--rx);font-weight:700;font-size:.95rem;letter-spacing:.04em;text-transform:uppercase;opacity:0;pointer-events:none;z-index:20}
+    .stamp.like{left:18px;background:var(--like-s);color:var(--like);border:2px solid var(--like);transform:rotate(-8deg)}
+    .stamp.nope{right:18px;background:var(--nope-s);color:var(--nope);border:2px solid var(--nope);transform:rotate(8deg)}
+    .acts{display:flex;gap:8px}
+    .abtn{flex:1;height:52px;border:none;border-radius:var(--r);font-family:var(--fb);font-size:.8rem;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:all .2s var(--spring)}
+    .abtn:disabled{opacity:.3;cursor:not-allowed;transform:none!important}
+    .abtn.bk{background:var(--surface);color:var(--t2);flex:.55}
+    .abtn.bk:hover:not(:disabled){background:var(--alt)}
+    .abtn.np{background:var(--surface);color:var(--nope)}
+    .abtn.np:hover:not(:disabled){background:var(--nope);color:#fff;transform:scale(1.02)}
+    .abtn.lk{background:var(--like);color:#fff}
+    .abtn.lk:hover:not(:disabled){background:#17a35d;transform:scale(1.02)}
+    .abtn.fw{background:var(--surface);color:var(--t2);flex:.55}
+    .abtn.fw:hover:not(:disabled){background:var(--alt)}
+    .aico{font-size:1rem}
+    .empty{display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px;padding:3rem 2rem;flex:1}
+    .empty.show{display:flex}
+    .empty .ej{font-size:2.6rem}
+    .empty h2{font-family:var(--fd);font-size:1.4rem;font-weight:700}
+    .empty p{color:var(--t2);font-size:.83rem;line-height:1.5;max-width:260px}
+    .rbtn{margin-top:6px;padding:11px 26px;border-radius:var(--r);border:none;background:var(--dark);color:#fff;font-family:var(--fb);font-size:.83rem;font-weight:600;cursor:pointer;transition:transform .2s var(--spring)}
+    .rbtn:hover{transform:scale(1.04)}
+
+    /* FAVORITES */
+    .fpan{position:fixed;inset:0;z-index:100;pointer-events:none;visibility:hidden}
+    .fpan.open{pointer-events:auto;visibility:visible}
+    .fov{position:absolute;inset:0;background:rgba(28,27,31,.4);opacity:0;transition:opacity .3s ease}
+    .fpan.open .fov{opacity:1}
+    .fsh{position:absolute;bottom:0;left:0;right:0;max-height:85dvh;background:var(--surface);border-radius:var(--r) var(--r) 0 0;transform:translateY(100%);transition:transform .4s var(--spring);display:flex;flex-direction:column;overflow:hidden}
+    .fpan.open .fsh{transform:translateY(0)}
+    .fhandle{padding:12px 0 4px;display:flex;justify-content:center}
+    .fhandle div{width:36px;height:4px;background:var(--alt);border-radius:99px}
+    .ftop{display:flex;align-items:center;justify-content:space-between;padding:12px 20px 14px}
+    .ftop h2{font-family:var(--fd);font-size:1.2rem;font-weight:700}
+    .fbody{flex:1;overflow-y:auto;padding:0 16px 24px;display:flex;flex-direction:column;gap:8px}
+    .fempt{display:flex;flex-direction:column;align-items:center;gap:8px;padding:3rem 1rem;text-align:center;color:var(--t3);font-size:.83rem}
+    .fempt .ej{font-size:1.8rem}
+    .fcard{display:flex;align-items:center;gap:12px;padding:12px;background:var(--alt);border-radius:var(--rs);animation:sUp .3s var(--ease) both;cursor:pointer;transition:background .15s ease}
+    .fcard:hover{background:#e2e0db}
+    @keyframes sUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+    .fico{width:46px;height:46px;border-radius:var(--rx);display:grid;place-items:center;font-size:1.3rem;flex-shrink:0}
+    .ftx{flex:1;min-width:0}
+    .ftx h4{font-size:.82rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .ftx p{font-size:.7rem;color:var(--t3);margin-top:2px}
+    .fdel{width:30px;height:30px;border:none;background:var(--surface);color:var(--t3);border-radius:8px;cursor:pointer;display:grid;place-items:center;flex-shrink:0;transition:all .15s ease}
+    .fdel:hover{background:var(--nope-s);color:var(--nope)}
+    .fdel svg{width:14px;height:14px}
+
+    /* DETAIL */
+    .dmod{position:fixed;inset:0;z-index:200;display:flex;align-items:flex-end;justify-content:center;pointer-events:none;visibility:hidden;padding:12px}
+    .dmod.open{pointer-events:auto;visibility:visible}
+    .dbg{position:absolute;inset:0;background:rgba(28,27,31,.45);opacity:0;transition:opacity .3s ease}
+    .dmod.open .dbg{opacity:1}
+    .dsheet{position:relative;width:100%;max-width:460px;max-height:88dvh;background:var(--surface);border-radius:var(--r);overflow-y:auto;transform:translateY(40px);opacity:0;transition:transform .4s var(--spring),opacity .3s ease}
+    .dmod.open .dsheet{transform:translateY(0);opacity:1}
+    .dvis{width:100%;height:190px;position:relative}
+    .demoji{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:3.8rem}
+    .dx{position:absolute;top:12px;right:12px;width:34px;height:34px;border:none;background:var(--surface);color:var(--t1);border-radius:50%;cursor:pointer;display:grid;place-items:center;z-index:5;transition:transform .15s ease}
+    .dx:hover{transform:scale(1.1)}
+    .dx svg{width:16px;height:16px}
+    .dbody{padding:22px 20px;display:flex;flex-direction:column;gap:10px}
+    .dbody h2{font-family:var(--fd);font-size:1.5rem;font-weight:700;line-height:1.2}
+    .dbody .dd{font-size:.86rem;line-height:1.6;color:var(--t2)}
+    .dchips{display:flex;flex-wrap:wrap;gap:5px;margin-top:2px}
+    .dchips span{padding:5px 11px;background:var(--alt);border-radius:8px;font-size:.7rem;font-weight:500;color:var(--t2)}
+    .dacts{display:flex;gap:8px;margin-top:6px}
+    .dbtn{flex:1;padding:13px;border-radius:var(--rs);border:none;font-family:var(--fb);font-size:.85rem;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;transition:transform .2s var(--spring);text-decoration:none}
+    .dbtn:hover{transform:scale(1.02)}
+    .dbtn.sv{background:var(--dark);color:#fff}
+    .dbtn.sv.saved{background:var(--like)}
+    .dbtn.dr{background:var(--alt);color:var(--t1)}
+
+    /* MODALS */
+    .mov{position:fixed;inset:0;z-index:300;display:flex;align-items:flex-end;justify-content:center;pointer-events:none;visibility:hidden;padding:12px}
+    .mov.open{pointer-events:auto;visibility:visible}
+    .mbg{position:absolute;inset:0;background:rgba(28,27,31,.45);opacity:0;transition:opacity .3s ease}
+    .mov.open .mbg{opacity:1}
+    .msh{position:relative;width:100%;max-width:460px;max-height:90dvh;background:var(--surface);border-radius:var(--r);overflow-y:auto;transform:translateY(40px);opacity:0;transition:transform .4s var(--spring),opacity .3s ease}
+    .mov.open .msh{transform:translateY(0);opacity:1}
+    .mtop{display:flex;align-items:center;justify-content:space-between;padding:20px 20px 0}
+    .mtop h2{font-family:var(--fd);font-size:1.25rem;font-weight:700}
+    .mbod{padding:16px 20px 24px;display:flex;flex-direction:column;gap:14px}
+    .mbod p,.pbod p{font-size:.82rem;line-height:1.6;color:var(--t2)}
+    .pbod{padding:16px 20px 28px;display:flex;flex-direction:column;gap:14px}
+    .pbod h3{font-size:.88rem;font-weight:700;color:var(--t1);margin-bottom:-6px}
+    .fg{display:flex;flex-direction:column;gap:5px}
+    .fg label{font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--t3)}
+    .fg input,.fg textarea{width:100%;padding:11px 13px;border:1.5px solid var(--alt);border-radius:var(--rx);background:var(--surface);font-family:var(--fb);font-size:.83rem;color:var(--t1);transition:border-color .2s ease;outline:none;resize:vertical}
+    .fg input:focus,.fg textarea:focus{border-color:var(--accent)}
+    .fg input::placeholder,.fg textarea::placeholder{color:var(--t3)}
+    .fsub{padding:13px;border-radius:var(--rs);border:none;background:var(--accent);color:#fff;font-family:var(--fb);font-size:.85rem;font-weight:600;cursor:pointer;transition:transform .2s var(--spring)}
+    .fsub:hover{transform:scale(1.02)}
+    .fsucc{display:none;flex-direction:column;align-items:center;text-align:center;gap:8px;padding:2rem 1rem}
+    .fsucc.show{display:flex}
+    .fsucc .ej{font-size:2rem}
+    .fsucc h3{font-family:var(--fd);font-size:1.15rem;font-weight:700}
+    .fsucc p{font-size:.8rem;color:var(--t2);line-height:1.5}
+
+    @media(max-width:400px){.screen{padding:8px;gap:8px}.card h3{font-size:1.15rem}.cstack{min-height:350px}.agrid{gap:6px}}
+  </style>
+</head>
+<body>
+
+  <!-- WELCOME SCREEN -->
+  <div class="screen" id="ws">
+    <div class="bento hero an">
+      <div class="hlogo"><div class="hmark">V</div><div class="htxt">Viva<span>.</span></div></div>
+      <p class="hsub">Free things to see and do across the Vegas valley. Curated by locals, for everyone.</p>
+    </div>
+    <div class="bento abento an d1">
+      <span class="alabel">Pick your area</span>
+      <div class="agrid" id="areaGrid">
+        <label class="aopt" data-area="the-strip"><input type="radio" name="area" value="the-strip"><span class="aoji">&#127920;</span><div><div class="aoh4">The Strip</div><div class="aop">Iconic landmarks</div></div></label>
+        <label class="aopt" data-area="downtown"><input type="radio" name="area" value="downtown"><span class="aoji">&#127747;</span><div><div class="aoh4">Downtown</div><div class="aop">Fremont, arts</div></div></label>
+        <label class="aopt" data-area="summerlin"><input type="radio" name="area" value="summerlin"><span class="aoji">&#9968;&#65039;</span><div><div class="aoh4">Summerlin</div><div class="aop">Red Rock, trails</div></div></label>
+        <label class="aopt" data-area="henderson"><input type="radio" name="area" value="henderson"><span class="aoji">&#127749;</span><div><div class="aoh4">Henderson</div><div class="aop">Parks, nature</div></div></label>
+        <label class="aopt" data-area="north-lv"><input type="radio" name="area" value="north-lv"><span class="aoji">&#127797;</span><div><div class="aoh4">North Las Vegas</div><div class="aop">Desert, history</div></div></label>
+        <label class="aopt" data-area="centennial"><input type="radio" name="area" value="centennial"><span class="aoji">&#127956;&#65039;</span><div><div class="aoh4">Centennial Hills</div><div class="aop">Parks, views</div></div></label>
+        <label class="aopt afull" data-area="enterprise"><input type="radio" name="area" value="enterprise"><span class="aoji">&#127964;&#65039;</span><div><div class="aoh4">Enterprise / South</div><div class="aop">Mountains, open desert</div></div></label>
+      </div>
+    </div>
+    <div class="gobento an d2"><button class="gobtn" id="goBtn" disabled>Explore Adventures <span>&#8594;</span></button></div>
+    <div class="brow an d3">
+      <div class="bento mbento" id="bizBtn"><div class="mico b1">&#128233;</div><h4>List Your Business</h4><p>Want to be featured?</p><span class="marr">&#8594;</span></div>
+      <div class="bento mbento" id="privBtn"><div class="mico b2">&#128274;</div><h4>Privacy</h4><p>How we handle info.</p><span class="marr">&#8594;</span></div>
+    </div>
+  </div>
+
+  <!-- SWIPE SCREEN -->
+  <div class="screen hidden" id="ss">
+    <div class="bento hdr an">
+      <div class="logo"><div class="lmark">V</div><div class="ltxt">Viva<span>.</span></div></div>
+      <div class="hacts">
+        <button class="aind" id="areaBack"><span class="dot"></span><span id="areaName">The Strip</span></button>
+        <button class="ibtn" id="favToggle" aria-label="Favorites"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><span class="badge" id="favBadge">0</span></button>
+      </div>
+    </div>
+    <div class="bento pbar an d1"><div class="ptrack"><div class="pfill" id="pFill"></div></div><span class="plbl" id="pLbl">1 / 20</span></div>
+    <div class="bento cbento an d2">
+      <div class="cstack" id="cStack"></div>
+      <div class="empty" id="emptyS"><div class="ej">&#127797;</div><h2>All explored!</h2><p>Check your favorites or shuffle for a new round.</p><button class="rbtn" id="resetBtn">Shuffle Again</button></div>
+    </div>
+    <div class="acts an d3" id="actsRow">
+      <button class="abtn bk" id="backBtn" disabled><span class="aico">&#8592;</span></button>
+      <button class="abtn np" id="nopeBtn"><span class="aico">&#10005;</span> Skip</button>
+      <button class="abtn lk" id="likeBtn"><span class="aico">&#9829;</span> Save</button>
+      <button class="abtn fw" id="fwdBtn" disabled><span class="aico">&#8594;</span></button>
+    </div>
+  </div>
+
+  <!-- BIZ MODAL -->
+  <div class="mov" id="bizMod"><div class="mbg" id="bizBg"></div><div class="msh"><div class="mtop"><h2>List Your Business</h2><button class="ibtn" id="bizX"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div><div class="mbod" id="bizForm"><p>Want your business featured? Drop us a note.</p><div class="fg"><label>Business Name</label><input type="text" id="bizName" placeholder="e.g. Desert Sun Tours"></div><div class="fg"><label>Contact Email</label><input type="email" id="bizEmail" placeholder="you@business.com"></div><div class="fg"><label>Tell us about it</label><textarea id="bizNote" rows="3" placeholder="What makes it unique?"></textarea></div><button class="fsub" id="bizSub">Send Inquiry</button></div><div class="fsucc" id="bizOk"><div class="ej">&#127881;</div><h3>Sent!</h3><p>We will review and get back to you soon.</p></div></div></div>
+
+  <!-- PRIV MODAL -->
+  <div class="mov" id="privMod"><div class="mbg" id="privBg"></div><div class="msh"><div class="mtop"><h2>Privacy Policy</h2><button class="ibtn" id="privX"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div><div class="pbod"><p>Your privacy matters. Here is how Viva Adventures handles your information.</p><h3>What We Collect</h3><p>Favorites are stored locally on your device. We do not create accounts or require logins.</p><h3>Business Inquiries</h3><p>If you submit a listing request, we collect only what you provide and never share it.</p><h3>Third Parties</h3><p>We do not sell, rent, or share your information with anyone.</p><h3>Contact</h3><p>Questions? Reach out at hello@vivaadventures.com.</p></div></div></div>
+
+  <!-- FAVS PANEL -->
+  <div class="fpan" id="favPan"><div class="fov" id="favOv"></div><div class="fsh"><div class="fhandle"><div></div></div><div class="ftop"><h2>Saved Adventures</h2><button class="ibtn" id="favX"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div><div class="fbody" id="favBody"><div class="fempt" id="favE"><div class="ej">&#129782;</div><p>Swipe right on things you love and they will show here.</p></div></div></div></div>
+
+  <!-- DETAIL -->
+  <div class="dmod" id="dMod"><div class="dbg" id="dBg"></div><div class="dsheet" id="dSheet"></div></div>
+
+<script>
+const D=[
+// THE STRIP (20)
+{id:1,a:"the-strip",c:"Experience",t:"Bellagio Fountain Show",e:"\u26F2",d:"Over 1,200 nozzles shoot water up to 460 feet, choreographed to music from opera to pop. Runs every 15\u201330 min. Best at night from the sidewalk.",g:"Bellagio Hotel Las Vegas",tg:["Iconic","Romantic","Night"]},
+{id:2,a:"the-strip",c:"Culture",t:"Bellagio Conservatory",e:"\uD83C\uDF3A",d:"A massive indoor botanical garden that transforms each season with intricate floral sculptures and living walls. Always free, always stunning.",g:"Bellagio Conservatory Las Vegas",tg:["Seasonal","Photography"]},
+{id:3,a:"the-strip",c:"Culture",t:"AREA15 Free Art Walk",e:"\uD83C\uDFAD",d:"The free Level 0 pass unlocks Art Island Gallery, Origin Quest scavenger hunt, and a digital art tour through the largest gallery in Vegas.",g:"AREA15 Las Vegas",tg:["Art","Immersive"]},
+{id:4,a:"the-strip",c:"Experience",t:"Flamingo Wildlife Habitat",e:"\uD83E\uDDA9",d:"Chilean flamingos, pelicans, koi ponds, and waterfalls in a tropical oasis. A peaceful escape right in the middle of the Strip.",g:"Flamingo Wildlife Habitat Las Vegas",tg:["Family","Nature"]},
+{id:5,a:"the-strip",c:"Experience",t:"Welcome to Las Vegas Sign",e:"\uD83D\uDCF8",d:"The quintessential Vegas photo op at the south end of the Strip. Go early or at sunset to avoid the line. Free parking across the street.",g:"Welcome to Fabulous Las Vegas sign",tg:["Iconic","Photo Op"]},
+{id:6,a:"the-strip",c:"Experience",t:"Wynn Lake of Dreams",e:"\uD83C\uDF0A",d:"A 40-foot waterfall with giant puppets, floating video orbs, and 5,500 LEDs over a 3-acre lake. Every 30 minutes after dusk. Free to watch.",g:"Wynn Las Vegas",tg:["Show","Night"]},
+{id:7,a:"the-strip",c:"Culture",t:"Fontainebleau Art Walk",e:"\uD83D\uDDBC\uFE0F",d:"The newest Strip resort has art installations scattered everywhere. Take a self-guided stroll through luxury architecture and contemporary pieces.",g:"Fontainebleau Las Vegas",tg:["Art","Architecture"]},
+{id:8,a:"the-strip",c:"Experience",t:"Miracle Mile Rainstorm",e:"\uD83C\uDF27\uFE0F",d:"Indoor thunder, lightning, fog, and rain inside Miracle Mile Shops at Planet Hollywood. Runs hourly. Surprisingly immersive and totally free.",g:"Miracle Mile Shops Las Vegas",tg:["Unique","Family"]},
+{id:9,a:"the-strip",c:"Culture",t:"Atlantis Show at Caesars",e:"\uD83C\uDFDB\uFE0F",d:"Nine-foot animatronic statues battle with fire and water for the throne of Atlantis inside the Forum Shops. Free aquarium nearby too.",g:"Forum Shops Caesars Palace Las Vegas",tg:["Show","Family"]},
+{id:10,a:"the-strip",c:"Experience",t:"Pinball Hall of Fame",e:"\uD83D\uDD79\uFE0F",d:"Over 200 vintage pinball machines from the 1950s to today. Free admission. Bring quarters to play. All proceeds go to charity.",g:"Pinball Hall of Fame Las Vegas",tg:["Retro","Fun"]},
+{id:11,a:"the-strip",c:"Experience",t:"Circus Acts at Circus Circus",e:"\uD83C\uDFAA",d:"Free world-class circus performances daily. Trapeze, juggling, acrobats on the Midway stage. Old-school Vegas entertainment that still delivers.",g:"Circus Circus Las Vegas",tg:["Family","Classic"]},
+{id:12,a:"the-strip",c:"Culture",t:"Shelby Heritage Center",e:"\uD83C\uDFCE\uFE0F",d:"The Shelby Cobra collection and racing memorabilia at Carroll Shelby HQ. Free guided tours available. A must for car enthusiasts.",g:"Shelby Heritage Center Las Vegas",tg:["Cars","History"]},
+{id:13,a:"the-strip",c:"Experience",t:"Venetian Grand Canal",e:"\uD83D\uDEF6",d:"Walk along the indoor replica of Venice with painted sky ceilings, Italian architecture, and live performers. Gondola rides cost extra, walking is free.",g:"Venetian Resort Las Vegas",tg:["Romantic","Architecture"]},
+{id:14,a:"the-strip",c:"Experience",t:"Seven Magic Mountains",e:"\uD83E\uDEA8",d:"Towering neon-painted boulder totems by Swiss artist Ugo Rondinone set against raw desert 20 min south. One of the best photo spots in Nevada.",g:"Seven Magic Mountains",tg:["Art","Photography"]},
+{id:15,a:"the-strip",c:"Experience",t:"Walk the Strip at Night",e:"\uD83C\uDF03",d:"Four miles of sensory overload. Casino hop from Mandalay Bay to the Wynn, soak in the lights, people, and energy. The best free show in Vegas.",g:"Las Vegas Boulevard",tg:["Iconic","Nightlife"]},
+{id:16,a:"the-strip",c:"Experience",t:"The Park Las Vegas",e:"\uD83C\uDF34",d:"Open-air district between NYNY and Park MGM with shade trees, public art, and the 40-foot Bliss Dance sculpture. Free to explore anytime.",g:"The Park Las Vegas",tg:["Art","Outdoor"]},
+{id:17,a:"the-strip",c:"Experience",t:"BLVD Overlook",e:"\uD83C\uDFD9\uFE0F",d:"Free observation deck at the BLVD mall north of MGM Grand with seating and views overlooking the south end of the Strip.",g:"The BLVD Las Vegas",tg:["Views","Chill"]},
+{id:18,a:"the-strip",c:"Culture",t:"Wynn Floral Lobby",e:"\uD83C\uDF37",d:"Thousands of fresh flowers arranged into seasonal sculptures in the Wynn lobby. Changes regularly, always gorgeous, always free to walk through.",g:"Wynn Las Vegas lobby",tg:["Photography","Seasonal"]},
+{id:19,a:"the-strip",c:"Experience",t:"Cosmopolitan Art Walk",e:"\uD83D\uDDBC\uFE0F",d:"The Cosmo features a rotating collection of contemporary art installations throughout the resort. Grab a map at the front desk for the self-guided tour.",g:"Cosmopolitan Las Vegas",tg:["Art","Indoor"]},
+{id:20,a:"the-strip",c:"Views",t:"Bellagio Bridge Sunset",e:"\uD83C\uDF05",d:"The pedestrian bridge between Bellagio and Caesars offers one of the best free vantage points for watching sunset paint the Strip gold.",g:"Bellagio Las Vegas pedestrian bridge",tg:["Sunset","Views"]},
+
+// DOWNTOWN (20)
+{id:101,a:"downtown",c:"Experience",t:"Fremont Viva Vision",e:"\u2728",d:"The world's largest LED canopy with 16.4 million pixels. Light shows run nightly on the hour from 6pm. Recently upgraded for $32 million.",g:"Fremont Street Experience Las Vegas",tg:["Iconic","Night"]},
+{id:102,a:"downtown",c:"Nightlife",t:"Fremont Live Music",e:"\uD83C\uDFB8",d:"Three stages of free live music every night starting at 6pm. Local bands, touring acts, and the Downtown Rocks concert series.",g:"Fremont Street Experience stages",tg:["Music","Nightlife"]},
+{id:103,a:"downtown",c:"Culture",t:"Arts District First Friday",e:"\uD83C\uDFA8",d:"A massive free monthly festival in the 18b Arts District. Galleries, street artists, food trucks, and live music on Main Street. First Friday of every month.",g:"18b Arts District Las Vegas",tg:["Art","Community"]},
+{id:104,a:"downtown",c:"Experience",t:"Container Park",e:"\uD83D\uDCE6",d:"Open-air center built from recycled shipping containers. Boutiques, restaurants, treehouse playground, live music, and a fire-breathing Mantis at sundown.",g:"Downtown Container Park Las Vegas",tg:["Shopping","Unique"]},
+{id:105,a:"downtown",c:"Culture",t:"Street Art Murals",e:"\uD83D\uDD8C\uFE0F",d:"Over 30 murals by internationally known artists. Look for the solar-powered mural on 7th Street and the retro Greetings from Las Vegas mural on Main.",g:"18b Arts District murals Las Vegas",tg:["Photography","Art"]},
+{id:106,a:"downtown",c:"Culture",t:"The Arts Factory",e:"\uD83C\uDFED",d:"A multi-studio gallery complex functioning like a free contemporary art museum. Individual artists, galleries, and shops all under one roof.",g:"The Arts Factory Las Vegas",tg:["Art","Local"]},
+{id:107,a:"downtown",c:"Experience",t:"Golden Nugget Hand of Faith",e:"\uD83E\uDE99",d:"One of the largest gold nuggets in the world at 61 pounds, displayed in the Golden Nugget lobby. Free to see, incredible to stand next to.",g:"Golden Nugget Las Vegas",tg:["History","Quick"]},
+{id:108,a:"downtown",c:"Experience",t:"Binion's Million Dollar Photo",e:"\uD83D\uDCB5",d:"Stand behind a pyramid of one million real dollars and snap a free photo. A Binion's tradition since 1954. Open 24/7 for guests 21+.",g:"Binions Gambling Hall Las Vegas",tg:["Iconic","Photo Op"]},
+{id:109,a:"downtown",c:"Experience",t:"The Mantis Fire Show",e:"\uD83D\uDD25",d:"At sundown a drum circle awakens the giant metal praying mantis at Container Park, which erupts in a mesmerizing fire-breathing display.",g:"Downtown Container Park Las Vegas mantis",tg:["Spectacle","Night"]},
+{id:110,a:"downtown",c:"Culture",t:"Recycled Propaganda",e:"\uD83C\uDFAD",d:"A unique art studio in the Arts District known for satirical street art. The artist often debuts new works during First Friday events.",g:"Recycled Propaganda Las Vegas",tg:["Art","Provocative"]},
+{id:111,a:"downtown",c:"Experience",t:"Circa Lobby and Sportsbook",e:"\uD83C\uDFDF\uFE0F",d:"Walk through Circa's lobby to see the world's largest sportsbook with a 78-million-pixel LED wall. The architecture alone is worth the visit.",g:"Circa Resort Las Vegas",tg:["Architecture","Sports"]},
+{id:112,a:"downtown",c:"Culture",t:"Golden Gate Casino History",e:"\uD83C\uDFB0",d:"Opened in 1906, the oldest casino in Vegas. Vintage gaming ledgers, historic chip racks, and artifacts from the earliest days of Sin City.",g:"Golden Gate Hotel Casino Las Vegas",tg:["History","Classic"]},
+{id:113,a:"downtown",c:"Experience",t:"Berlin Wall at Main Street Station",e:"\uD83E\uDDF1",d:"A genuine section of the Berlin Wall is on display inside Main Street Station. One of the weirdest and most unexpected hidden gems in Vegas.",g:"Main Street Station Las Vegas",tg:["History","Weird"]},
+{id:114,a:"downtown",c:"Experience",t:"Free Downtown Loop Shuttle",e:"\uD83D\uDE8C",d:"A free shuttle connecting Fremont Street, the Arts District, and the Strat. The easiest way to hop between downtown neighborhoods with no car.",g:"Downtown Loop Las Vegas",tg:["Transportation","Convenient"]},
+{id:115,a:"downtown",c:"Nightlife",t:"Dueling Pianos Show",e:"\uD83C\uDFB9",d:"An energetic crowd-driven piano show with two pianists battling over audience requests. Free to watch, hilarious, and a legitimately great time.",g:"New York New York Las Vegas dueling pianos",tg:["Live Music","Fun"]},
+{id:116,a:"downtown",c:"Culture",t:"Art Square Complex",e:"\uD83C\uDFD8\uFE0F",d:"A cluster of galleries, shops, and a theater in the Arts District. Becomes a buzzing hub every First Friday. Great for finding new local talent.",g:"Art Square Las Vegas",tg:["Art","Local"]},
+{id:117,a:"downtown",c:"Experience",t:"Neon Museum Photo Walk",e:"\uD83D\uDCA1",d:"Even without a ticket, the exterior Neon signs along Las Vegas Blvd near the museum are free to photograph. The outdoor North Gallery is visible 24/7.",g:"Neon Museum Las Vegas",tg:["Photography","History"]},
+{id:118,a:"downtown",c:"Experience",t:"Fremont East People Watching",e:"\uD83D\uDC40",d:"Grab a seat at Whiskey Licker Up at Binion's overlooking Fremont and watch the parade of humanity. The best free entertainment in downtown.",g:"Binions Whiskey Licker Up Las Vegas",tg:["Nightlife","Chill"]},
+{id:119,a:"downtown",c:"Experience",t:"El Cortez Historic Tour",e:"\uD83C\uDFE8",d:"Walk through El Cortez, listed on the National Register of Historic Places. Original Bugsy Siegel-era architecture still visible. Free to explore.",g:"El Cortez Las Vegas",tg:["History","Architecture"]},
+{id:120,a:"downtown",c:"Culture",t:"Vegas Test Site History Walk",e:"\u2622\uFE0F",d:"Downtown casinos once marketed poolside views of nuclear tests 60 miles away. Informational plaques and exhibits at several Fremont properties are free.",g:"Fremont Street atomic history Las Vegas",tg:["History","Unique"]},
+
+// SUMMERLIN (20)
+{id:201,a:"summerlin",c:"Outdoors",t:"Red Rock Scenic Drive",e:"\uD83C\uDFDC\uFE0F",d:"A 13-mile one-way loop through towering red sandstone. Dozens of pullouts, trails, and photo spots. Best at sunrise or golden hour.",g:"Red Rock Canyon Scenic Drive Las Vegas",tg:["Nature","Photography"]},
+{id:202,a:"summerlin",c:"Outdoors",t:"Calico Tanks Trail",e:"\uD83E\uDD7E",d:"A 2.5-mile trail ending with panoramic views of the Strip from deep in the desert. Scramble over rocks to reach the tank overlook. Moderate difficulty.",g:"Calico Tanks Trail Red Rock Canyon",tg:["Hiking","Views"]},
+{id:203,a:"summerlin",c:"Outdoors",t:"Ice Box Canyon Hike",e:"\uD83E\uDDCA",d:"A shaded canyon at Red Rock that stays cool even in summer. The 2.6-mile out-and-back ends at a seasonal waterfall between towering walls.",g:"Ice Box Canyon Red Rock",tg:["Hiking","Hidden Gem"]},
+{id:204,a:"summerlin",c:"Outdoors",t:"Keystone Thrust Trail",e:"\uD83E\uDEA8",d:"A 2.2-mile trail where you can see two tectonic plates collide. Gray limestone over red sandstone, 65 million years in the making.",g:"Keystone Thrust Trail Red Rock Canyon",tg:["Geology","Unique"]},
+{id:205,a:"summerlin",c:"Outdoors",t:"Turtlehead Peak",e:"\uD83D\uDC22",d:"The most challenging hike at Red Rock. Steep 5-mile round trip to 6,323 feet with 360-degree valley views. Bring lots of water.",g:"Turtlehead Peak Red Rock Canyon",tg:["Challenge","Views"]},
+{id:206,a:"summerlin",c:"Outdoors",t:"First Creek Canyon",e:"\uD83C\uDF3F",d:"An easy 3-mile round trip following a desert wash to a seasonal waterfall surrounded by cottonwood trees. Great for beginners and families.",g:"First Creek Canyon Red Rock",tg:["Easy","Nature"]},
+{id:207,a:"summerlin",c:"Outdoors",t:"Kraft Mountain Loop",e:"\u26F0\uFE0F",d:"A 3.5-mile loop on the edge of Summerlin with sweeping views of Red Rock and the valley. Moderate difficulty. Amazing for sunset hikes.",g:"Kraft Mountain Trail Summerlin",tg:["Sunset","Free"]},
+{id:208,a:"summerlin",c:"Outdoors",t:"Red Rock Bike Loop",e:"\uD83D\uDEB4",d:"Cycle the 13-mile scenic loop on bike-friendly roads with desert views the entire way. Rent bikes nearby or bring your own.",g:"Red Rock Canyon bike loop",tg:["Cycling","Active"]},
+{id:209,a:"summerlin",c:"Outdoors",t:"Cottonwood Valley Trails",e:"\uD83C\uDF35",d:"A network of trails on Summerlin's southern edge connecting to Red Rock. Mountain biking, horseback riding, and running through open desert.",g:"Cottonwood Valley trailhead Las Vegas",tg:["Biking","Free"]},
+{id:210,a:"summerlin",c:"Experience",t:"Summerlin Farmers Market",e:"\uD83E\uDD6C",d:"Every Saturday 9am\u20132pm at the Pavilion. Farm-fresh produce, baked goods, handcrafted items, and local vendors. Free to browse, year-round.",g:"Downtown Summerlin Farmers Market",tg:["Food","Community"]},
+{id:211,a:"summerlin",c:"Experience",t:"Summerlin Sounds Concerts",e:"\uD83C\uDFB5",d:"Free live music on The Lawn at Downtown Summerlin on Wednesday evenings. Bring a blanket for sunset tunes backed by Red Rock Canyon views.",g:"Downtown Summerlin The Lawn",tg:["Music","Outdoor"]},
+{id:212,a:"summerlin",c:"Experience",t:"Free Yoga on The Lawn",e:"\uD83E\uDDD8",d:"Free fitness classes at Downtown Summerlin on Tuesday evenings. Yoga, barre, and HIIT with views of Red Rock at sunset. All levels.",g:"Downtown Summerlin fitness lawn",tg:["Fitness","Outdoor"]},
+{id:213,a:"summerlin",c:"Experience",t:"Movies Under the Stars",e:"\uD83C\uDFAC",d:"Free outdoor movies at The Trails Park on Saturday evenings in summer. Bring blankets, lawn chairs, and snacks for a neighborhood hangout.",g:"Trails Park Summerlin",tg:["Family","Seasonal"]},
+{id:214,a:"summerlin",c:"Culture",t:"Summerlin Library Arts Center",e:"\uD83D\uDCDA",d:"Hosts ballet, musicals, art shows, and concerts. More performing arts center than library. A cultural gem for the west side of the valley.",g:"Summerlin Library Performing Arts Center",tg:["Culture","Family"]},
+{id:215,a:"summerlin",c:"Views",t:"Red Rock Overlook",e:"\uD83C\uDF04",d:"The first major pullout on the scenic drive has a large observation area with 180-degree views of the canyon and city. Free with park entry.",g:"Red Rock Canyon overlook",tg:["Views","Photography"]},
+{id:216,a:"summerlin",c:"Experience",t:"Browse Downtown Summerlin",e:"\uD83D\uDECD\uFE0F",d:"An upscale open-air center with 125+ stores and 30+ restaurants. Great people watching, window shopping, and outdoor dining year-round.",g:"Downtown Summerlin",tg:["Shopping","Food"]},
+{id:217,a:"summerlin",c:"Outdoors",t:"Late Night Trailhead Stargazing",e:"\u2B50",d:"Red Rock pullouts after dark offer some of the best stargazing near the city. Low light pollution and wide desert sky. Bring a blanket.",g:"Red Rock Canyon night sky",tg:["Night","Nature"]},
+{id:218,a:"summerlin",c:"Outdoors",t:"Sandstone Quarry Loop",e:"\uD83E\uDEA8",d:"A flat, easy 2-mile loop through old sandstone quarries with unique rock formations and desert flora. Great for kids and casual walkers.",g:"Sandstone Quarry Red Rock Canyon",tg:["Easy","Family"]},
+{id:219,a:"summerlin",c:"Nature",t:"Desert Tortoise Habitat",e:"\uD83D\uDC22",d:"Spring is the best time to spot desert tortoises along Red Rock trails. They emerge from burrows in April and May. Keep your distance.",g:"Red Rock Canyon desert tortoise",tg:["Wildlife","Seasonal"]},
+{id:220,a:"summerlin",c:"Views",t:"Calico Hills Scramble",e:"\uD83E\uDDD7",d:"Scramble up the red Calico Hills for close-up views of layered sandstone and panoramic city vistas. No official trail, just explore the rocks.",g:"Calico Hills Red Rock Canyon",tg:["Adventure","Views"]},
+
+// HENDERSON (20)
+{id:301,a:"henderson",c:"Outdoors",t:"Valley of Fire Day Trip",e:"\uD83D\uDD25",d:"Ancient red sandstone formations create an alien landscape one hour away. Fire Wave trail is the crown jewel. Petroglyphs, arches, and endless photo ops.",g:"Valley of Fire State Park Nevada",tg:["Road Trip","Photography"]},
+{id:302,a:"henderson",c:"Nature",t:"Ethel M Cactus Garden",e:"\uD83C\uDF35",d:"A stunning botanical cactus garden with over 300 species. Free self-guided tour of the chocolate factory too. Free chocolate samples at the end.",g:"Ethel M Chocolates Henderson",tg:["Family","Gardens"]},
+{id:303,a:"henderson",c:"Nature",t:"Henderson Bird Preserve",e:"\uD83E\uDD86",d:"140 acres with nine ponds and over 270 bird species. Paved paths, peaceful vibes, and the third largest body of water in Southern Nevada.",g:"Henderson Bird Viewing Preserve",tg:["Birdwatching","Free"]},
+{id:304,a:"henderson",c:"Outdoors",t:"River Mountains Loop Trail",e:"\uD83D\uDEB4",d:"A 34-mile paved trail connecting Henderson to Lake Mead, Hoover Dam, and Boulder City. Bike or walk sections with stunning desert and lake views.",g:"River Mountains Loop Trail Henderson",tg:["Biking","Scenic"]},
+{id:305,a:"henderson",c:"Outdoors",t:"Sloan Canyon Petroglyphs",e:"\uD83E\uDEA8",d:"Over 300 rock art panels, some 10,000+ years old, in a dramatic canyon. Challenging hike but incredibly rewarding. A walk through deep history.",g:"Sloan Canyon petroglyphs Henderson",tg:["History","Hiking"]},
+{id:306,a:"henderson",c:"Experience",t:"Lake Las Vegas Village",e:"\uD83C\uDFD6\uFE0F",d:"Italian-style village on the shores of a man-made lake. Free to stroll with waterfront restaurants, shops, and seasonal events like yoga and concerts.",g:"Lake Las Vegas Henderson",tg:["Scenic","Relaxing"]},
+{id:307,a:"henderson",c:"Nature",t:"Cornerstone Park",e:"\uD83C\uDFDE\uFE0F",d:"A 31-acre lake in a former gravel mine turned gorgeous park. Trails, picnic areas, courts, wildlife, and stunning mountain views.",g:"Cornerstone Park Henderson",tg:["Park","Family"]},
+{id:308,a:"henderson",c:"Outdoors",t:"Black Mountain Summit",e:"\u26F0\uFE0F",d:"Hike to panoramic views of the entire Las Vegas Valley from the mountaintop. Challenging but worth every step of elevation.",g:"Black Mountain trailhead Henderson",tg:["Hiking","Views"]},
+{id:309,a:"henderson",c:"Nature",t:"Whitney Mesa Preserve",e:"\uD83C\uDF04",d:"A one-mile trail along a stream to a mesa with breathtaking sunrise and sunset views. Picnic areas and restrooms. Peaceful and uncrowded.",g:"Whitney Mesa Nature Preserve Henderson",tg:["Sunset","Nature"]},
+{id:310,a:"henderson",c:"Experience",t:"Hoover Dam Walk",e:"\uD83C\uDFD7\uFE0F",d:"Drive across the dam for free and walk along the top with views of Lake Mead and the Colorado River. Visitor center is extra but the dam is free.",g:"Hoover Dam Nevada",tg:["Iconic","History"]},
+{id:311,a:"henderson",c:"Outdoors",t:"Lake Mead Trails",e:"\uD83D\uDEF6",d:"Explore trails, hidden coves, and desert scenery around the largest reservoir in the US. Just 30 minutes from Henderson.",g:"Lake Mead National Recreation Area",tg:["Nature","Adventure"]},
+{id:312,a:"henderson",c:"Outdoors",t:"Amargosa Trail",e:"\uD83D\uDEE4\uFE0F",d:"A paved 10-mile multi-use trail through Henderson with interpretive signs, shade structures, and connections to parks. Walk, run, or bike.",g:"Amargosa Trail Henderson",tg:["Trail","Easy"]},
+{id:313,a:"henderson",c:"Nature",t:"Wetlands Park",e:"\uD83C\uDF3E",d:"Over 200 acres of trails through wetland habitats along the Las Vegas Wash. Boardwalks, wildlife platforms, and a nature center.",g:"Clark County Wetlands Park Las Vegas",tg:["Nature","Walking"]},
+{id:314,a:"henderson",c:"Experience",t:"Shan-Gri-La Prehistoric Park",e:"\uD83E\uDD95",d:"Life-sized dinosaur sculptures in a small park in the Cadence community. Kids love climbing on them. Quirky, totally free, and fun.",g:"Shan-Gri-La Prehistoric Park Henderson",tg:["Family","Quirky"]},
+{id:315,a:"henderson",c:"Nature",t:"Acacia Demonstration Gardens",e:"\uD83C\uDF38",d:"A beautifully maintained garden showcasing water-wise plants and desert landscaping. Peaceful walking paths through native desert species.",g:"Acacia Demonstration Gardens Henderson",tg:["Gardens","Relaxing"]},
+{id:316,a:"henderson",c:"Experience",t:"District at Green Valley Ranch",e:"\uD83D\uDECD\uFE0F",d:"Outdoor shopping and dining hub with seasonal events, live music, and a relaxed neighborhood vibe. Free to stroll and great for people watching.",g:"The District Green Valley Ranch Henderson",tg:["Shopping","Dining"]},
+{id:317,a:"henderson",c:"Views",t:"McCullough Hills Trail",e:"\uD83E\uDDED",d:"Family-friendly trails through Henderson foothills with interpretive signs, bike paths, and wide desert views. Easy to moderate difficulty.",g:"McCullough Hills trailhead Henderson",tg:["Hiking","Family"]},
+{id:318,a:"henderson",c:"Nature",t:"Hidden Falls Park",e:"\uD83D\uDCA7",d:"A neighborhood park with a small waterfall feature, walking paths, playground, and green space. A locals-only find in a quiet neighborhood.",g:"Hidden Falls Park Henderson",tg:["Park","Hidden Gem"]},
+{id:319,a:"henderson",c:"Views",t:"Lake Las Vegas Sunset Walk",e:"\uD83C\uDF05",d:"Walk the lakefront path at golden hour for desert-meets-water views. The Italian village and Reflection Bay provide a surprisingly European backdrop.",g:"Lake Las Vegas walking path Henderson",tg:["Sunset","Scenic"]},
+{id:320,a:"henderson",c:"Outdoors",t:"Bootleg Canyon Trails",e:"\uD83D\uDEB5",d:"A world-class mountain biking and hiking trail system in Boulder City, just south of Henderson. Free access, stunning views, and flowy singletrack.",g:"Bootleg Canyon Boulder City",tg:["Biking","Adventure"]},
+
+// NORTH LAS VEGAS (15)
+{id:401,a:"north-lv",c:"Outdoors",t:"Floyd Lamb Park at Tule Springs",e:"\uD83C\uDF33",d:"A 680-acre park with ponds, mature trees, peacocks, and walking trails. One of the most peaceful green spaces in the valley. Free to walk in.",g:"Floyd Lamb Park Tule Springs Las Vegas",tg:["Park","Nature"]},
+{id:402,a:"north-lv",c:"Outdoors",t:"Tule Springs Fossil Beds",e:"\uD83E\uDD9B",d:"A national monument preserving Ice Age fossils. Walk the desert landscape where mammoths and giant sloths once roamed. Free, no entrance fee.",g:"Tule Springs Fossil Beds National Monument",tg:["History","Nature"]},
+{id:403,a:"north-lv",c:"Outdoors",t:"Upper Las Vegas Wash Trail",e:"\uD83D\uDEE4\uFE0F",d:"A paved multi-use path along the historic wash with interpretive signs about the Mojave ecosystem. Easy walking and biking. Free access.",g:"Upper Las Vegas Wash Trail",tg:["Trail","Easy"]},
+{id:404,a:"north-lv",c:"Nature",t:"Craig Ranch Regional Park",e:"\uD83C\uDFDE\uFE0F",d:"A massive regional park with a skate park, splash pad, sports fields, walking trails, and a 4-acre dog park. Free and family-friendly.",g:"Craig Ranch Regional Park North Las Vegas",tg:["Park","Family"]},
+{id:405,a:"north-lv",c:"Experience",t:"Aliante Nature Discovery Park",e:"\uD83E\uDD86",d:"A nature-themed park in Aliante with desert gardens, interpretive trails, a pond, and bird watching areas. Peaceful escape from city streets.",g:"Aliante Nature Discovery Park North Las Vegas",tg:["Nature","Free"]},
+{id:406,a:"north-lv",c:"Outdoors",t:"North Las Vegas Desert Trails",e:"\uD83C\uDFDC\uFE0F",d:"Open desert BLM land north of the city offers miles of unofficial trails for hiking and mountain biking with unobstructed mountain views.",g:"North Las Vegas desert trails BLM",tg:["Hiking","Desert"]},
+{id:407,a:"north-lv",c:"Views",t:"Sunrise from Nellis Dunes Overlook",e:"\uD83C\uDF05",d:"Drive to the edge of Nellis Dunes at dawn for unobstructed sunrise views over the desert. The sand dunes glow orange in morning light.",g:"Nellis Sand Dunes Las Vegas",tg:["Sunrise","Photography"]},
+{id:408,a:"north-lv",c:"Nature",t:"Eglington Preserve Walk",e:"\uD83C\uDF3F",d:"A small but serene green space with walking paths, native plants, and a chance to spot local wildlife. Free entry, rarely crowded.",g:"Eglington Preserve North Las Vegas",tg:["Nature","Quiet"]},
+{id:409,a:"north-lv",c:"Experience",t:"Veterans Memorial Park",e:"\uD83C\uDF96\uFE0F",d:"A well-maintained community park honoring veterans with memorials, walking paths, green lawns, and picnic areas. A reflective and peaceful spot.",g:"Veterans Memorial Park North Las Vegas",tg:["Memorial","Park"]},
+{id:410,a:"north-lv",c:"Outdoors",t:"Apex Trail Area",e:"\uD83E\uDDED",d:"Rugged desert terrain northeast of the city with unofficial trails through volcanic rock formations. Great for exploring off the beaten path.",g:"Apex Nevada trails",tg:["Adventure","Desert"]},
+{id:411,a:"north-lv",c:"Views",t:"Sheep Range Viewpoint",e:"\uD83D\uDC11",d:"Drive north toward the Sheep Range for stunning views of the Desert National Wildlife Refuge. The road itself is the attraction. Free.",g:"Desert National Wildlife Refuge Las Vegas",tg:["Scenic Drive","Wildlife"]},
+{id:412,a:"north-lv",c:"Nature",t:"Kiel Ranch Historic Park",e:"\uD83C\uDFE1",d:"A small historic park preserving some of the oldest structures in the valley. Walking paths through ranch remnants and cottonwood trees.",g:"Kiel Ranch Historic Park North Las Vegas",tg:["History","Park"]},
+{id:413,a:"north-lv",c:"Experience",t:"Aliante Casino Waterfall",e:"\uD83D\uDCA7",d:"The Aliante Casino lobby features an impressive indoor waterfall and desert art collection. Free to walk through and admire.",g:"Aliante Casino Hotel North Las Vegas",tg:["Indoor","Free"]},
+{id:414,a:"north-lv",c:"Outdoors",t:"Corn Creek Visitor Station",e:"\uD83C\uDF3E",d:"A desert oasis at the entrance to the Desert National Wildlife Refuge. Short trails through mesquite trees and natural springs. Free admission.",g:"Corn Creek Visitor Station Las Vegas",tg:["Nature","Wildlife"]},
+{id:415,a:"north-lv",c:"Views",t:"Centennial Overlook Point",e:"\uD83C\uDFD9\uFE0F",d:"High points along the northern valley edge offer expansive views stretching from the Strip to the Spring Mountains. Best at sunset.",g:"North Las Vegas valley overlook",tg:["Views","Sunset"]},
+
+// CENTENNIAL HILLS (15)
+{id:501,a:"centennial",c:"Outdoors",t:"Centennial Hills Park Trails",e:"\uD83D\uDEB6",d:"A large community park with paved walking and jogging trails, sports courts, playgrounds, and open grass. Great morning or evening spot.",g:"Centennial Hills Park Las Vegas",tg:["Park","Walking"]},
+{id:502,a:"centennial",c:"Nature",t:"Lone Mountain Hike",e:"\u26F0\uFE0F",d:"A standalone desert peak with a short, steep trail to summit views of the entire northwest valley. Under 2 miles round trip but rewarding.",g:"Lone Mountain Las Vegas",tg:["Hiking","Views"]},
+{id:503,a:"centennial",c:"Outdoors",t:"Horse Drive Trail",e:"\uD83D\uDC0E",d:"A paved multi-use trail on the northern edge of the city. Popular with joggers, cyclists, and families. Desert mountain backdrop the whole way.",g:"Horse Drive Trail North Las Vegas",tg:["Trail","Easy"]},
+{id:504,a:"centennial",c:"Nature",t:"Desert Breeze Park",e:"\uD83C\uDF43",d:"Though in Spring Valley, this beloved park has a train museum, duck pond, and walking paths. Worth the short drive from Centennial Hills.",g:"Desert Breeze Park Las Vegas",tg:["Park","Family"]},
+{id:505,a:"centennial",c:"Views",t:"Ann Road Desert Overlook",e:"\uD83C\uDF05",d:"The end of Ann Road heading west offers unobstructed views of the Spring Mountains. A favorite locals-only sunset spot with no crowds.",g:"Ann Road Centennial Hills Las Vegas",tg:["Sunset","Quiet"]},
+{id:506,a:"centennial",c:"Outdoors",t:"Skye Canyon Park Trails",e:"\uD83C\uDFDE\uFE0F",d:"New community on the far northwest edge with paved trails winding through desert landscaping and mountain views. Very well maintained.",g:"Skye Canyon Park Las Vegas",tg:["Walking","New"]},
+{id:507,a:"centennial",c:"Nature",t:"Gilcrease Nature Sanctuary",e:"\uD83E\uDD9C",d:"A small sanctuary in the northwest valley with horses, birds, and desert gardens. Donation-based entry. A quiet, unexpected gem.",g:"Gilcrease Nature Sanctuary Las Vegas",tg:["Wildlife","Hidden Gem"]},
+{id:508,a:"centennial",c:"Experience",t:"Centennial Hills Library",e:"\uD83D\uDCDA",d:"One of the nicest library branches in the system with community events, kids programs, and a peaceful reading garden. Always free.",g:"Centennial Hills Library Las Vegas",tg:["Culture","Free"]},
+{id:509,a:"centennial",c:"Outdoors",t:"Aliante Trail System",e:"\uD83D\uDEB5",d:"Connected walking and biking trails throughout the Aliante master-planned community. Desert landscaping, public art, and mountain views.",g:"Aliante trails North Las Vegas",tg:["Biking","Community"]},
+{id:510,a:"centennial",c:"Views",t:"US 95 Overlook at Sunset",e:"\uD83C\uDF07",d:"Pull off at the northern end of US 95 heading toward Indian Springs for jaw-dropping sunset panoramas over the valley. Free roadside views.",g:"US 95 Las Vegas overlook north",tg:["Sunset","Views"]},
+{id:511,a:"centennial",c:"Nature",t:"Tropical Breeze Park",e:"\uD83C\uDF34",d:"A neighborhood park with walking paths, palm trees, playground, and covered picnic areas. A nice morning walk spot for Centennial residents.",g:"Tropical Breeze Park Las Vegas",tg:["Park","Free"]},
+{id:512,a:"centennial",c:"Outdoors",t:"Northwest Desert Edge Walk",e:"\uD83C\uDFDC\uFE0F",d:"Where Centennial Hills meets open desert you can walk into raw Mojave landscape. Unofficial trails lead to small washes and rock outcrops.",g:"Centennial Hills desert edge Las Vegas",tg:["Desert","Explore"]},
+{id:513,a:"centennial",c:"Experience",t:"Tivoli Village Window Walk",e:"\uD83C\uDFDB\uFE0F",d:"A Mediterranean-themed outdoor shopping village with fountains, architecture, and restaurants. Free to wander and enjoy the European-style ambiance.",g:"Tivoli Village Las Vegas",tg:["Architecture","Dining"]},
+{id:514,a:"centennial",c:"Outdoors",t:"Lee Canyon Road Drive",e:"\uD83D\uDE97",d:"Drive up Kyle Canyon Road toward Mt. Charleston for dramatic elevation changes and cooler temps. Free scenic drive with pullouts for photos.",g:"Lee Canyon Road Mount Charleston",tg:["Scenic Drive","Mountains"]},
+{id:515,a:"centennial",c:"Nature",t:"Spring Mountain Ranch Grounds",e:"\uD83C\uDFE1",d:"Just west in the Spring Mountains, this state park has free picnic areas and open lawns with red rock backdrops. Small vehicle entry fee.",g:"Spring Mountain Ranch State Park",tg:["Nature","Scenic"]},
+
+// ENTERPRISE / SOUTH (15)
+{id:601,a:"enterprise",c:"Outdoors",t:"Sloan Canyon South Trailhead",e:"\uD83E\uDDED",d:"Access Sloan Canyon from the south for fewer crowds and raw desert hiking. Petroglyphs, desert tortoise habitat, and wide open views.",g:"Sloan Canyon National Conservation Area",tg:["Hiking","Desert"]},
+{id:602,a:"enterprise",c:"Experience",t:"Town Square Park",e:"\uD83C\uDF33",d:"An outdoor shopping and dining center with a central park, playground, splash pad, and frequent free events. Family-friendly and well shaded.",g:"Town Square Las Vegas",tg:["Family","Free"]},
+{id:603,a:"enterprise",c:"Views",t:"South Point Area Desert Views",e:"\uD83C\uDF05",d:"Drive south on Las Vegas Blvd past South Point for unobstructed desert and mountain views. Park at turnoffs for sunset photography.",g:"South Las Vegas Boulevard desert",tg:["Sunset","Photography"]},
+{id:604,a:"enterprise",c:"Outdoors",t:"McCullough Range Trails",e:"\u26F0\uFE0F",d:"Rugged desert trails in the mountains south of Henderson and Enterprise. Rocky terrain, solitude, and expansive views. For experienced hikers.",g:"McCullough Range trails Las Vegas",tg:["Hiking","Adventure"]},
+{id:605,a:"enterprise",c:"Nature",t:"Mountain Edge Wilderness Park",e:"\uD83C\uDF3F",d:"A large community park at the southern edge of the city with walking trails, exercise stations, and mountain views. Free and uncrowded.",g:"Mountain Edge Wilderness Park Las Vegas",tg:["Park","Walking"]},
+{id:606,a:"enterprise",c:"Experience",t:"Seven Magic Mountains",e:"\uD83E\uDEA8",d:"Towering neon-painted boulder totems by Swiss artist Ugo Rondinone in the open desert south of town. One of Nevada's most Instagrammed spots.",g:"Seven Magic Mountains Las Vegas",tg:["Art","Photography"]},
+{id:607,a:"enterprise",c:"Views",t:"Jean Dry Lake Viewpoint",e:"\uD83C\uDFDC\uFE0F",d:"A vast dry lakebed south of Vegas used for photography and events. The flat white surface against desert mountains is surreal and free.",g:"Jean Dry Lake Las Vegas",tg:["Photography","Unique"]},
+{id:608,a:"enterprise",c:"Outdoors",t:"Anthem East Trail",e:"\uD83D\uDEB6",d:"Connected desert trails on the southeast edge of Enterprise near Anthem. Views of the McCullough Range and Black Mountain.",g:"Anthem East Trail Henderson",tg:["Hiking","Views"]},
+{id:609,a:"enterprise",c:"Nature",t:"Exploration Peak Park",e:"\uD83C\uDFDE\uFE0F",d:"A hilltop park in Mountain's Edge with walking trails, climbing structures, and 360-degree views from the summit. Free and family-friendly.",g:"Exploration Peak Park Las Vegas",tg:["Family","Views"]},
+{id:610,a:"enterprise",c:"Outdoors",t:"Primm Valley Drive",e:"\uD83D\uDE97",d:"The I-15 south toward Primm passes through dramatic desert passes and wide-open basin views. Stop at the state line for photos.",g:"Primm Valley Nevada",tg:["Scenic Drive","Desert"]},
+{id:611,a:"enterprise",c:"Nature",t:"Silverado Ranch Park",e:"\uD83C\uDF33",d:"A well-maintained neighborhood park with a large pond, walking paths, sports courts, and green space. A quiet escape in the south valley.",g:"Silverado Ranch Park Las Vegas",tg:["Park","Quiet"]},
+{id:612,a:"enterprise",c:"Views",t:"Enterprise Desert Sunset",e:"\uD83C\uDF07",d:"The wide-open desert at the southern edge of Enterprise offers some of the most vivid, unobstructed sunsets in the valley. Just drive and park.",g:"Enterprise Las Vegas sunset viewpoint",tg:["Sunset","Nature"]},
+{id:613,a:"enterprise",c:"Outdoors",t:"Duck Creek Trail",e:"\uD83D\uDEB4",d:"A paved multi-use trail running through residential Enterprise connecting parks and schools. Easy flat route for walking, jogging, or biking.",g:"Duck Creek Trail Las Vegas",tg:["Trail","Easy"]},
+{id:614,a:"enterprise",c:"Experience",t:"M Resort Overlook",e:"\uD83C\uDFE8",d:"The M Resort lobby has floor-to-ceiling windows with sweeping south valley and mountain views. Free to walk in and enjoy the vista.",g:"M Resort Henderson",tg:["Views","Architecture"]},
+{id:615,a:"enterprise",c:"Outdoors",t:"Goodsprings Ghost Town Visit",e:"\uD83C\uDFDA\uFE0F",d:"A genuine Nevada ghost town 35 min south. The Pioneer Saloon (1913) still operates. Walk the streets, see abandoned mines, all free to explore.",g:"Goodsprings Nevada ghost town",tg:["History","Adventure"]}
+];
+const AN={
+  "the-strip":"The Strip","downtown":"Downtown","summerlin":"Summerlin",
+  "henderson":"Henderson","north-lv":"North Las Vegas","centennial":"Centennial Hills","enterprise":"Enterprise"
+};
+const CC={Culture:"#fde8e4",Outdoors:"#dff0e8",Experience:"#e8e4fd",Nightlife:"#e4ecfd",Views:"#fef3e2",Nature:"#e0f5ec"};
+
+let selArea=null, deck=[], ci=0, hist=[], favs=JSON.parse(localStorage.getItem("viva_f")||"[]");
+const $=id=>document.getElementById(id);
+
+// WELCOME
+document.querySelectorAll(".aopt").forEach(o=>{
+  o.addEventListener("click",()=>{
+    document.querySelectorAll(".aopt").forEach(x=>x.classList.remove("sel"));
+    o.classList.add("sel");
+    selArea=o.dataset.area;
+    $("goBtn").disabled=false;
+  });
+});
+
+$("goBtn").addEventListener("click",()=>{
+  if(!selArea)return;
+  deck=D.filter(x=>x.a===selArea);
+  for(let i=deck.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[deck[i],deck[j]]=[deck[j],deck[i]];}
+  ci=0; hist=[];
+  $("areaName").textContent=AN[selArea];
+  $("ws").classList.add("hidden");
+  $("ss").classList.remove("hidden");
+  render(); updateBadge();
+});
+$("areaBack").addEventListener("click",()=>{$("ss").classList.add("hidden");$("ws").classList.remove("hidden");});
+
+// BIZ
+$("bizBtn").addEventListener("click",()=>$("bizMod").classList.add("open"));
+$("bizX").addEventListener("click",closeBiz);$("bizBg").addEventListener("click",closeBiz);
+function closeBiz(){$("bizMod").classList.remove("open");setTimeout(()=>{$("bizForm").style.display="";$("bizOk").classList.remove("show");},300);}
+$("bizSub").addEventListener("click",()=>{
+  const n=$("bizName").value.trim(),e=$("bizEmail").value.trim();if(!n||!e)return;
+  const note=$("bizNote").value.trim();
+  window.open("mailto:hello@vivaadventures.com?subject="+encodeURIComponent("Viva Listing: "+n)+"&body="+encodeURIComponent("Business: "+n+"\nEmail: "+e+"\n\n"+note),"_blank");
+  $("bizForm").style.display="none";$("bizOk").classList.add("show");
+});
+
+// PRIV
+$("privBtn").addEventListener("click",()=>$("privMod").classList.add("open"));
+$("privX").addEventListener("click",()=>$("privMod").classList.remove("open"));
+$("privBg").addEventListener("click",()=>$("privMod").classList.remove("open"));
+
+// RENDER
+function render(){
+  const st=$("cStack"),em=$("emptyS"),ar=$("actsRow");
+  st.innerHTML="";
+  if(ci>=deck.length){st.style.display="none";ar.style.display="none";em.classList.add("show");updProg();updNav();return;}
+  st.style.display="";ar.style.display="";em.classList.remove("show");
+  const vis=deck.slice(ci,ci+3).reverse();
+  vis.forEach((act,i)=>{const d=vis.length-1-i;st.appendChild(mkCard(act,d));});
+  const top=st.lastElementChild;if(top)swipe(top);
+  updProg();updNav();
+}
+
+function mkCard(act,si){
+  const el=document.createElement("div");el.className="card";el.dataset.id=act.id;el.dataset.s=si===0?"top":String(si);
+  el.innerHTML=`<span class="stamp like">Like</span><span class="stamp nope">Nope</span>
+    <div class="cvis"><div class="cemoji" data-c="${act.c}">${act.e}</div></div>
+    <div class="ccont"><span class="ctag">${act.e} ${act.c}</span><h3>${act.t}</h3><p class="cdesc">${act.d}</p>
+    <div class="cpills">${act.tg.map(t=>'<span class="pill">'+t+'</span>').join("")}</div></div>`;
+  return el;
+}
+
+// SWIPE
+function swipe(card){
+  let sx=0,dx=0,drag=false;
+  function start(ev){drag=true;card.classList.add("dragging");sx=(ev.touches?ev.touches[0]:ev).clientX;dx=0;}
+  function move(ev){if(!drag)return;dx=(ev.touches?ev.touches[0]:ev).clientX-sx;
+    card.style.transform=`translate(${dx}px,0) rotate(${dx*.06}deg)`;
+    card.querySelector(".stamp.like").style.opacity=Math.min(Math.max(dx/60,0),1);
+    card.querySelector(".stamp.nope").style.opacity=Math.min(Math.max(-dx/60,0),1);}
+  function end(){if(!drag)return;drag=false;card.classList.remove("dragging");
+    if(dx>100)fly(card,"right");else if(dx<-100)fly(card,"left");
+    else{card.style.transform="";card.querySelector(".stamp.like").style.opacity=0;card.querySelector(".stamp.nope").style.opacity=0;}dx=0;}
+  card.addEventListener("mousedown",start);card.addEventListener("touchstart",start,{passive:true});
+  window.addEventListener("mousemove",move);window.addEventListener("touchmove",move,{passive:true});
+  window.addEventListener("mouseup",end);window.addEventListener("touchend",end);
+  let lt=0;
+  card.addEventListener("click",()=>{if(Math.abs(dx)>5)return;const n=Date.now();if(n-lt<350)openDetail(deck[ci]);lt=n;});
+}
+
+function fly(card,dir){
+  const act=deck[ci];const x=dir==="right"?window.innerWidth*1.5:-window.innerWidth*1.5;
+  card.style.transition="transform .4s ease";card.style.transform=`translate(${x}px,0) rotate(${dir==="right"?25:-25}deg)`;
+  if(dir==="right")addFav(act);
+  hist.push({idx:ci,dir:dir});
+  setTimeout(()=>{ci++;render();},280);
+}
+
+// NAV
+function updNav(){
+  $("backBtn").disabled=hist.length===0;
+  $("fwdBtn").disabled=ci>=deck.length;
+}
+
+$("nopeBtn").addEventListener("click",()=>{const t=$("cStack").lastElementChild;if(t)fly(t,"left");});
+$("likeBtn").addEventListener("click",()=>{const t=$("cStack").lastElementChild;if(t)fly(t,"right");});
+
+$("backBtn").addEventListener("click",()=>{
+  if(hist.length===0)return;
+  const prev=hist.pop();ci=prev.idx;render();
+});
+
+$("fwdBtn").addEventListener("click",()=>{
+  if(ci>=deck.length)return;
+  hist.push({idx:ci,dir:"skip"});ci++;render();
+});
+
+$("resetBtn").addEventListener("click",()=>{
+  for(let i=deck.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[deck[i],deck[j]]=[deck[j],deck[i]];}
+  ci=0;hist=[];render();
+});
+
+// PROGRESS
+function updProg(){
+  const tot=deck.length,done=Math.min(ci,tot);
+  $("pFill").style.width=(done/tot*100)+"%";
+  $("pLbl").textContent=done<tot?(done+1)+" / "+tot:tot+" / "+tot;
+}
+
+// FAVS
+function addFav(act){if(favs.find(f=>f.id===act.id))return;favs.push(act);saveFavs();updateBadge();}
+function rmFav(id){favs=favs.filter(f=>f.id!==id);saveFavs();updateBadge();renderFavs();}
+function saveFavs(){localStorage.setItem("viva_f",JSON.stringify(favs));}
+function updateBadge(){$("favBadge").textContent=favs.length;$("favBadge").classList.toggle("show",favs.length>0);}
+
+function renderFavs(){
+  const b=$("favBody");b.querySelectorAll(".fcard").forEach(e=>e.remove());
+  $("favE").style.display=favs.length===0?"flex":"none";
+  favs.forEach((f,i)=>{
+    const el=document.createElement("div");el.className="fcard";el.style.animationDelay=i*.04+"s";
+    const bg=CC[f.c]||"#eae8e3";
+    el.innerHTML=`<div class="fico" style="background:${bg}">${f.e}</div>
+      <div class="ftx" data-did="${f.id}"><h4>${f.t}</h4><p>${f.c}</p></div>
+      <button class="fdel" data-rid="${f.id}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>`;
+    b.appendChild(el);
+  });
+  b.querySelectorAll("[data-rid]").forEach(btn=>btn.addEventListener("click",ev=>{ev.stopPropagation();rmFav(Number(btn.dataset.rid));}));
+  b.querySelectorAll("[data-did]").forEach(el=>el.addEventListener("click",()=>{
+    closeFavs();const act=D.find(a=>a.id===Number(el.dataset.did));if(act)setTimeout(()=>openDetail(act),300);
+  }));
+}
+
+$("favToggle").addEventListener("click",()=>{$("favPan").classList.add("open");renderFavs();});
+$("favX").addEventListener("click",closeFavs);$("favOv").addEventListener("click",closeFavs);
+function closeFavs(){$("favPan").classList.remove("open");}
+
+// DETAIL with directions
+function openDetail(act){
+  const bg=CC[act.c]||"#eae8e3";
+  const isSaved=favs.some(f=>f.id===act.id);
+  const mapsQ=encodeURIComponent(act.g);
+  const isIOS=/iPad|iPhone|iPod/.test(navigator.userAgent);
+  const mapsUrl=isIOS?"https://maps.apple.com/?q="+mapsQ:"https://www.google.com/maps/search/?api=1&query="+mapsQ;
+
+  $("dSheet").innerHTML=`
+    <button class="dx" id="dX"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <div class="dvis"><div class="demoji" style="background:${bg}">${act.e}</div></div>
+    <div class="dbody">
+      <span class="ctag">${act.e} ${act.c}</span>
+      <h2>${act.t}</h2>
+      <p class="dd">${act.d}</p>
+      <div class="dchips">${act.tg.map(t=>'<span>'+t+'</span>').join("")}</div>
+      <div class="dacts">
+        <button class="dbtn sv${isSaved?" saved":""}" id="dSave">${isSaved?"\u2713 Saved":"\u2665 Save"}</button>
+        <a class="dbtn dr" href="${mapsUrl}" target="_blank" rel="noopener">\uD83D\uDDFA\uFE0F Directions</a>
+      </div>
+    </div>`;
+
+  $("dMod").classList.add("open");
+  $("dX").addEventListener("click",closeDetail);
+  $("dSave").addEventListener("click",()=>{addFav(act);const b=$("dSave");b.textContent="\u2713 Saved";b.classList.add("saved");});
+}
+function closeDetail(){$("dMod").classList.remove("open");}
+$("dBg").addEventListener("click",closeDetail);
+
+// KEYBOARD
+document.addEventListener("keydown",e=>{
+  if($("dMod").classList.contains("open")){if(e.key==="Escape")closeDetail();return;}
+  if($("favPan").classList.contains("open")){if(e.key==="Escape")closeFavs();return;}
+  if($("bizMod").classList.contains("open")){if(e.key==="Escape")closeBiz();return;}
+  if($("privMod").classList.contains("open")){if(e.key==="Escape")$("privMod").classList.remove("open");return;}
+  if(!$("ss").classList.contains("hidden")){
+    if(e.key==="ArrowLeft")$("nopeBtn").click();
+    if(e.key==="ArrowRight")$("likeBtn").click();
+  }
+});
+
+updateBadge();
+</script>
+</body>
+</html>
