@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta property="og:title" content="SEVN.">
+  <meta property="og:description" content="Discover 290+ things to see and do across the Vegas valley. The Strip, Downtown, Summerlin, Red Rock, Mt. Charleston, and more. Curated by locals, for everyone.">
+  <meta property="og:image" content="https://www.sevnapp.com/og-image.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.sevnapp.com/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SEVN.">
+  <meta name="twitter:description" content="Discover 290+ things to see and do across the Vegas valley. The Strip, Downtown, Summerlin, Red Rock, Mt. Charleston, and more. Curated by locals, for everyone.">
+  <meta name="twitter:image" content="https://www.sevnapp.com/og-image.png">
+  <meta name="description" content="Things to see and do across the Vegas valley. Curated by locals, for everyone. Discover 290+ activities across the Strip, Downtown, Summerlin, Henderson, North Las Vegas, Centennial Hills, Enterprise, and Mt. Charleston. From Red Rock Canyon and Lake Mead to Fremont Street and the Sphere. Local tips, seasonal events, and hidden gems in Southern Nevada.">
+  <meta name="keywords" content="Las Vegas things to do, Vegas activities, Las Vegas attractions, the Strip, Downtown Las Vegas, Fremont Street, Summerlin, Red Rock Canyon, Henderson, North Las Vegas, Centennial Hills, Enterprise, Mt. Charleston, Lake Mead, Hoover Dam, Nevada, Las Vegas events, Vegas sports, Golden Knights, Las Vegas shows, Vegas local guide, things to do near me Las Vegas, free things to do Las Vegas, Las Vegas hidden gems, Vegas valley, Southern Nevada, Las Vegas restaurants, Las Vegas hiking, Las Vegas nightlife, Las Vegas family activities, Las Vegas outdoor activities, Spring Mountains, Lee Canyon, Kyle Canyon, Las Vegas arts district, Las Vegas pools, Las Vegas concerts, Vegas weekend">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="SEVN">
+  <link rel="canonical" href="https://www.sevnapp.com/">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SEVN</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300..700&family=Fraunces:opsz,wght@9..144,600..800&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --bg:#f2f0eb;--surface:#fff;--alt:#eae8e3;--dark:#1c1b1f;
+      --accent:#e84b2b;--accent-s:#fef0ed;
+      --like:#1db76a;--like-s:#eafbf2;--nope:#d94058;--nope-s:#fceef1;
+      --t1:#1c1b1f;--t2:#6b6a6f;--t3:#9d9ca0;
+      --brd:rgba(0,0,0,.06);
+      --r:20px;--rs:14px;--rx:10px;
+      --fd:'Fraunces',Georgia,serif;--fb:'DM Sans',system-ui,sans-serif;
+      --spring:cubic-bezier(.175,.885,.32,1.275);--ease:cubic-bezier(.25,.46,.45,.94)
+    }
+    html{font-size:16px}
+    body{font-family:var(--fb);background:var(--bg);color:var(--t1);min-height:100dvh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    .screen{max-width:480px;margin:0 auto;padding:12px;display:flex;flex-direction:column;gap:10px;min-height:100dvh}
+    .screen.hidden{display:none}
+    .screen.swipe{height:100dvh;min-height:0;overflow:hidden}
+    .bento{background:var(--surface);border-radius:var(--r);overflow:hidden}
+    .ibtn{position:relative;width:40px;height:40px;border:none;background:var(--alt);border-radius:var(--rx);color:var(--t2);cursor:pointer;display:grid;place-items:center;transition:all .2s ease}
+    .ibtn:hover{background:var(--dark);color:#fff}
+    .ibtn svg{width:18px;height:18px}
+    .ibtn .badge{position:absolute;top:-3px;right:-3px;min-width:17px;height:17px;background:var(--accent);color:#fff;border-radius:99px;font-size:.6rem;font-weight:700;display:grid;place-items:center;padding:0 4px;opacity:0;transform:scale(0);transition:all .3s var(--spring);border:2px solid var(--surface)}
+    .ibtn .badge.show{opacity:1;transform:scale(1)}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+    .an{animation:fadeIn .5s var(--ease) both}
+    .d1{animation-delay:.06s}.d2{animation-delay:.12s}.d3{animation-delay:.18s}
+
+    /* WELCOME */
+    .hero{padding:36px 24px 28px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:12px}
+    .hlogo{display:flex;align-items:center;gap:10px;user-select:none}
+    .hmark{width:44px;height:44px;background:var(--accent);border-radius:12px;display:grid;place-items:center;color:#fff;font-size:1.4rem;font-weight:800;font-family:var(--fd);line-height:1}
+    .htxt{font-family:var(--fd);font-size:1.6rem;font-weight:800;letter-spacing:-.02em}
+    .htxt span{color:var(--accent)}
+    .hsub{font-size:.88rem;color:var(--t2);line-height:1.5;max-width:300px}
+    .abento{padding:20px;display:flex;flex-direction:column;gap:12px}
+    .alabel{font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--t3)}
+    .agrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+    .aopt{position:relative;padding:12px 14px;background:var(--alt);border:2px solid transparent;border-radius:var(--rs);cursor:pointer;transition:all .2s ease;display:flex;align-items:center;gap:10px}
+    .aopt:hover{border-color:var(--dark)}
+    .aopt.sel{border-color:var(--accent);background:var(--accent-s)}
+    .aopt input{position:absolute;opacity:0;width:0;height:0}
+    .aoji{font-size:1.2rem;flex-shrink:0;width:28px;text-align:center}
+    .aoh4{font-size:.78rem;font-weight:600}
+    .aop{font-size:.65rem;color:var(--t3);margin-top:1px}
+    .afull{grid-column:1/-1}
+    .gobento{background:transparent;overflow:visible}
+    .gobtn{width:100%;padding:16px;border-radius:var(--rs);border:none;background:var(--accent);color:#fff;font-family:var(--fb);font-size:.9rem;font-weight:600;cursor:pointer;transition:all .2s var(--spring);display:flex;align-items:center;justify-content:center;gap:8px}
+    .gobtn:hover{transform:scale(1.02)}
+    .gobtn:disabled{opacity:.35;cursor:not-allowed;transform:none}
+    .brow{display:flex;gap:10px}
+    .mbento{flex:1;padding:16px 14px;display:flex;flex-direction:column;gap:6px;cursor:pointer;transition:all .15s ease}
+    .mbento:hover{background:var(--alt)}
+    .mico{width:34px;height:34px;border-radius:var(--rx);display:grid;place-items:center;font-size:.9rem}
+    .mico.b1{background:#e4ecfd}.mico.b2{background:#eae8e3}
+    .mbento h4{font-size:.78rem;font-weight:600}
+    .mbento p{font-size:.68rem;color:var(--t3);line-height:1.4}
+    .marr{font-size:.68rem;color:var(--t3);margin-top:auto;transition:transform .15s ease}
+    .mbento:hover .marr{transform:translateX(3px);color:var(--t1)}
+
+    /* SWIPE */
+    .hdr{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+    .logo{display:flex;align-items:center;gap:10px;user-select:none}
+    .lmark{width:36px;height:36px;background:var(--accent);border-radius:var(--rx);display:grid;place-items:center;color:#fff;font-size:1.2rem;font-weight:800;font-family:var(--fd);line-height:1}
+    .ltxt{font-family:var(--fd);font-size:1.2rem;font-weight:700;letter-spacing:-.02em}
+    .ltxt span{color:var(--accent)}
+    .hacts{display:flex;gap:6px}
+    .aind{display:flex;align-items:center;gap:6px;padding:4px 10px 4px 6px;background:var(--alt);border-radius:8px;font-size:.68rem;font-weight:500;color:var(--t2);cursor:pointer;border:none;font-family:var(--fb);transition:all .15s ease}
+    .aind:hover{background:#dddbd6}
+    .aind .dot{width:6px;height:6px;background:var(--like);border-radius:50%}
+    .pbar{padding:12px 20px;display:flex;align-items:center;gap:12px}
+    .ptrack{flex:1;height:4px;background:var(--alt);border-radius:99px;overflow:hidden}
+    .pfill{height:100%;background:var(--accent);border-radius:99px;transition:width .4s var(--ease)}
+    .plbl{font-size:.7rem;font-weight:600;color:var(--t3);white-space:nowrap}
+    .cbento{position:relative;padding:0;flex:1;display:flex;flex-direction:column;background:var(--bg);border:none}
+    .cstack{position:relative;flex:1}
+    .card{position:absolute;inset:0;border-radius:var(--r);overflow:hidden;background:var(--surface);box-shadow:0 2px 12px rgba(0,0,0,.06);touch-action:none;user-select:none;will-change:transform;cursor:grab;transition:transform .35s var(--spring);display:flex;flex-direction:column}
+    .card:active{cursor:grabbing}
+    .card.dragging{transition:none}
+    .card[data-s="1"]{transform:scale(.95) translateY(8px);filter:brightness(.97);z-index:8}
+    .card[data-s="2"]{transform:scale(.90) translateY(16px);filter:brightness(.94);z-index:7}
+    .card[data-s="top"]{z-index:10}
+    .cvis{width:100%;height:28%;position:relative;overflow:hidden;flex-shrink:0}
+    .cemoji{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:3.2rem}
+    .cemoji[data-c="Culture"]{background:linear-gradient(160deg,#fde8e4,#f9d0c8)}
+    .cemoji[data-c="Outdoors"]{background:linear-gradient(160deg,#dff0e8,#c8e6d5)}
+    .cemoji[data-c="Experience"]{background:linear-gradient(160deg,#e8e4fd,#d5cef9)}
+    .cemoji[data-c="Nightlife"]{background:linear-gradient(160deg,#e4ecfd,#ced8f9)}
+    .cemoji[data-c="Views"]{background:linear-gradient(160deg,#fef3e2,#fde4c0)}
+    .cemoji[data-c="Nature"]{background:linear-gradient(160deg,#e0f5ec,#c5e8d5)}
+    .cemoji[data-c="Food & Drink"]{background:linear-gradient(160deg,#fef3e2,#fde4c0)}
+    .ccont{padding:14px 16px;display:flex;flex-direction:column;gap:5px;flex:1;background:var(--surface);overflow:hidden}
+    .ctag{display:inline-flex;align-items:center;gap:4px;font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);background:var(--accent-s);padding:3px 9px;border-radius:6px;width:fit-content}
+    .card h3{font-family:var(--fd);font-size:1.3rem;font-weight:700;line-height:1.2;letter-spacing:-.01em}
+    .ctop{display:flex;align-items:center;gap:6px}
+    .ptag{font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:3px 7px;border-radius:5px}
+    .ptag.free{background:#eafbf2;color:#1db76a}
+    .ptag.low{background:#e8f4fd;color:#3b82f6}
+    .ptag.mid{background:#fef3e2;color:#d97706}
+    .ptag.high{background:#fceef1;color:#d94058}
+    .cdesc{font-size:.78rem;line-height:1.5;color:var(--t2);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+    .cpills{margin-top:8px;display:flex;gap:5px;flex-wrap:wrap}
+    .ctips{margin-top:8px;padding:10px 12px;background:var(--alt);border-radius:var(--rx);display:flex;flex-direction:column;gap:4px}
+    .ctips .tl{font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--accent)}
+    .ctips p{font-size:.72rem;line-height:1.4;color:var(--t1);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .stag{display:inline-block;font-size:.6rem;font-weight:600;padding:2px 8px;border-radius:12px;background:var(--alt);color:var(--accent);margin-bottom:4px;letter-spacing:.02em}
+    .pill{padding:4px 9px;background:var(--alt);border-radius:8px;font-size:.68rem;font-weight:500;color:var(--t2);border:1px solid var(--brd)}
+    .stamp{position:absolute;top:18px;padding:7px 16px;border-radius:var(--rx);font-weight:700;font-size:.95rem;letter-spacing:.04em;text-transform:uppercase;opacity:0;pointer-events:none;z-index:20}
+    .stamp.like{left:18px;background:var(--like-s);color:var(--like);border:2px solid var(--like);transform:rotate(-8deg)}
+    .stamp.nope{right:18px;background:var(--nope-s);color:var(--nope);border:2px solid var(--nope);transform:rotate(8deg)}
+    .acts{display:flex;gap:8px}
+    .abtn{flex:1;height:52px;border:none;border-radius:var(--r);font-family:var(--fb);font-size:.8rem;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:all .2s var(--spring)}
+    .abtn:disabled{opacity:.3;cursor:not-allowed;transform:none!important}
+    .abtn.bk{background:var(--surface);color:var(--t2);flex:.55}
+    .abtn.bk:hover:not(:disabled){background:var(--alt)}
+    .abtn.np{background:var(--surface);color:var(--nope)}
+    .abtn.np:hover:not(:disabled){background:var(--nope);color:#fff;transform:scale(1.02)}
+    .abtn.lk{background:var(--like);color:#fff}
+    .abtn.lk:hover:not(:disabled){background:#17a35d;transform:scale(1.02)}
+    .abtn.fw{background:var(--surface);color:var(--t2);flex:.55}
+    .abtn.fw:hover:not(:disabled){background:var(--alt)}
+    .aico{font-size:1rem}
+    .empty{display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px;padding:3rem 2rem;flex:1}
+    .empty.show{display:flex}
+    .empty .ej{font-size:2.6rem}
+    .empty h2{font-family:var(--fd);font-size:1.4rem;font-weight:700}
+    .empty p{color:var(--t2);font-size:.83rem;line-height:1.5;max-width:260px}
+    .rbtn{margin-top:6px;padding:11px 26px;border-radius:var(--r);border:none;background:var(--dark);color:#fff;font-family:var(--fb);font-size:.83rem;font-weight:600;cursor:pointer;transition:transform .2s var(--spring)}
+    .rbtn:hover{transform:scale(1.04)}
+
+    /* FAVORITES */
+    .fpan{position:fixed;inset:0;z-index:100;pointer-events:none;visibility:hidden}
+    .fpan.open{pointer-events:auto;visibility:visible}
+    .fov{position:absolute;inset:0;background:rgba(28,27,31,.4);opacity:0;transition:opacity .3s ease}
+    .fpan.open .fov{opacity:1}
+    .fsh{position:absolute;bottom:0;left:0;right:0;max-height:85dvh;background:var(--surface);border-radius:var(--r) var(--r) 0 0;transform:translateY(100%);transition:transform .4s var(--spring);display:flex;flex-direction:column;overflow:hidden}
+    .fpan.open .fsh{transform:translateY(0)}
+    .fhandle{padding:12px 0 4px;display:flex;justify-content:center}
+    .fhandle div{width:36px;height:4px;background:var(--alt);border-radius:99px}
+    .ftop{display:flex;align-items:center;justify-content:space-between;padding:12px 20px 14px}
+    .ftop h2{font-family:var(--fd);font-size:1.2rem;font-weight:700}
+    .fbody{flex:1;overflow-y:auto;padding:0 16px 24px;display:flex;flex-direction:column;gap:8px}
+    .fempt{display:flex;flex-direction:column;align-items:center;gap:8px;padding:3rem 1rem;text-align:center;color:var(--t3);font-size:.83rem}
+    .fempt .ej{font-size:1.8rem}
+    .fcard{display:flex;align-items:center;gap:12px;padding:12px;background:var(--alt);border-radius:var(--rs);animation:sUp .3s var(--ease) both;cursor:pointer;transition:background .15s ease}
+    .fcard:hover{background:#e2e0db}
+    @keyframes sUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+    .fico{width:46px;height:46px;border-radius:var(--rx);display:grid;place-items:center;font-size:1.3rem;flex-shrink:0}
+    .ftx{flex:1;min-width:0}
+    .ftx h4{font-size:.82rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .ftx p{font-size:.7rem;color:var(--t3);margin-top:2px}
+    .fdel{width:30px;height:30px;border:none;background:var(--surface);color:var(--t3);border-radius:8px;cursor:pointer;display:grid;place-items:center;flex-shrink:0;transition:all .15s ease}
+    .fdel:hover{background:var(--nope-s);color:var(--nope)}
+    .fdel svg{width:14px;height:14px}
+
+    /* DETAIL */
+    .dmod{position:fixed;inset:0;z-index:200;display:flex;align-items:flex-end;justify-content:center;pointer-events:none;visibility:hidden;padding:12px}
+    .dmod.open{pointer-events:auto;visibility:visible}
+    .dbg{position:absolute;inset:0;background:rgba(28,27,31,.45);opacity:0;transition:opacity .3s ease}
+    .dmod.open .dbg{opacity:1}
+    .dsheet{position:relative;width:100%;max-width:460px;max-height:88dvh;background:var(--surface);border-radius:var(--r);overflow-y:auto;transform:translateY(40px);opacity:0;transition:transform .4s var(--spring),opacity .3s ease}
+    .dmod.open .dsheet{transform:translateY(0);opacity:1}
+    .dvis{width:100%;height:190px;position:relative}
+    .demoji{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:3.8rem}
+    .dx{position:absolute;top:12px;right:12px;width:34px;height:34px;border:none;background:var(--surface);color:var(--t1);border-radius:50%;cursor:pointer;display:grid;place-items:center;z-index:5;transition:transform .15s ease}
+    .dx:hover{transform:scale(1.1)}
+    .dx svg{width:16px;height:16px}
+    .dbody{padding:22px 20px;display:flex;flex-direction:column;gap:10px}
+    .dbody h2{font-family:var(--fd);font-size:1.5rem;font-weight:700;line-height:1.2}
+    .dbody .dd{font-size:.86rem;line-height:1.6;color:var(--t2)}
+    .dchips{display:flex;flex-wrap:wrap;gap:5px;margin-top:2px}
+    .dchips span{padding:5px 11px;background:var(--alt);border-radius:8px;font-size:.7rem;font-weight:500;color:var(--t2)}
+    .dtips{margin-top:6px;padding:14px;background:var(--alt);border-radius:var(--rs);display:flex;flex-direction:column;gap:5px}
+    .dtips .tl{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--accent)}
+    .dtips p{font-size:.8rem;line-height:1.55;color:var(--t1)}
+    .dacts{display:flex;gap:8px;margin-top:6px}
+    .dbtn{flex:1;padding:13px;border-radius:var(--rs);border:none;font-family:var(--fb);font-size:.85rem;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;transition:transform .2s var(--spring);text-decoration:none}
+    .dbtn:hover{transform:scale(1.02)}
+    .dbtn.sv{background:var(--dark);color:#fff}
+    .dbtn.sv.saved{background:var(--like)}
+    .dbtn.dr{background:var(--alt);color:var(--t1)}
+
+    /* MODALS */
+    .mov{position:fixed;inset:0;z-index:300;display:flex;align-items:flex-end;justify-content:center;pointer-events:none;visibility:hidden;padding:12px}
+    .mov.open{pointer-events:auto;visibility:visible}
+    .mbg{position:absolute;inset:0;background:rgba(28,27,31,.45);opacity:0;transition:opacity .3s ease}
+    .mov.open .mbg{opacity:1}
+    .msh{position:relative;width:100%;max-width:460px;max-height:90dvh;background:var(--surface);border-radius:var(--r);overflow-y:auto;transform:translateY(40px);opacity:0;transition:transform .4s var(--spring),opacity .3s ease}
+    .mov.open .msh{transform:translateY(0);opacity:1}
+    .mtop{display:flex;align-items:center;justify-content:space-between;padding:20px 20px 0}
+    .mtop h2{font-family:var(--fd);font-size:1.25rem;font-weight:700}
+    .mbod{padding:16px 20px 24px;display:flex;flex-direction:column;gap:14px}
+    .mbod p,.pbod p{font-size:.82rem;line-height:1.6;color:var(--t2)}
+    .pbod{padding:16px 20px 28px;display:flex;flex-direction:column;gap:14px}
+    .pbod h3{font-size:.88rem;font-weight:700;color:var(--t1);margin-bottom:-6px}
+    .fg{display:flex;flex-direction:column;gap:5px}
+    .fg label{font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--t3)}
+    .fg input,.fg textarea{width:100%;padding:11px 13px;border:1.5px solid var(--alt);border-radius:var(--rx);background:var(--surface);font-family:var(--fb);font-size:.83rem;color:var(--t1);transition:border-color .2s ease;outline:none;resize:vertical}
+    .fg input:focus,.fg textarea:focus{border-color:var(--accent)}
+    .fg input::placeholder,.fg textarea::placeholder{color:var(--t3)}
+    .fsub{padding:13px;border-radius:var(--rs);border:none;background:var(--accent);color:#fff;font-family:var(--fb);font-size:.85rem;font-weight:600;cursor:pointer;transition:transform .2s var(--spring)}
+    .fsub:hover{transform:scale(1.02)}
+    .fsucc{display:none;flex-direction:column;align-items:center;text-align:center;gap:8px;padding:2rem 1rem}
+    .fsucc.show{display:flex}
+    .fsucc .ej{font-size:2rem}
+    .fsucc h3{font-family:var(--fd);font-size:1.15rem;font-weight:700}
+    .fsucc p{font-size:.8rem;color:var(--t2);line-height:1.5}
+
+    @media(min-width:500px){.cstack{max-height:480px}}
+    @media(max-width:400px){.screen{padding:8px;gap:8px}.card h3{font-size:1.15rem}.agrid{gap:6px}}
+    .ehdr{display:flex;align-items:center;justify-content:space-between;margin:16px 0 8px}
+    .ehdr h3{font-size:.85rem;font-weight:700;color:var(--t1)}
+    .ehdr .eupd{font-size:.55rem;color:var(--t2);opacity:.7}
+    .escroll{display:flex;gap:10px;overflow-x:auto;padding:4px 0 12px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+    .escroll::-webkit-scrollbar{display:none}
+    .ecard{min-width:200px;max-width:220px;flex-shrink:0;background:var(--c);border-radius:var(--rx);padding:12px;border:1px solid var(--brd);display:flex;flex-direction:column;gap:6px;text-decoration:none;color:inherit;transition:transform .15s}
+    .ecard:active{transform:scale(.97)}
+    .ecat{font-size:.55rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);background:var(--alt);padding:2px 7px;border-radius:10px;align-self:flex-start}
+    .ecard h4{font-size:.78rem;font-weight:700;color:var(--t1);line-height:1.3}
+    .ecard .ewhen{font-size:.65rem;color:var(--accent);font-weight:600}
+    .ecard .ewhere{font-size:.6rem;color:var(--t2)}
+  </style>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"SEVN","url":"https://www.sevnapp.com/","description":"Things to see and do across the Vegas valley. Curated by locals, for everyone. Discover 290+ activities across the Strip, Downtown, Summerlin, Henderson, Mt. Charleston, and more.","applicationCategory":"TravelApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"areaServed":{"@type":"City","name":"Las Vegas","containedInPlace":{"@type":"State","name":"Nevada"}},"about":[{"@type":"Thing","name":"Las Vegas attractions"},{"@type":"Thing","name":"Las Vegas things to do"},{"@type":"Thing","name":"The Strip"},{"@type":"Thing","name":"Downtown Las Vegas"},{"@type":"Thing","name":"Fremont Street"},{"@type":"Thing","name":"Red Rock Canyon"},{"@type":"Thing","name":"Summerlin"},{"@type":"Thing","name":"Henderson Nevada"},{"@type":"Thing","name":"Mt. Charleston"},{"@type":"Thing","name":"Lake Mead"},{"@type":"Thing","name":"Hoover Dam"},{"@type":"Thing","name":"Las Vegas events"},{"@type":"Thing","name":"Las Vegas sports"},{"@type":"Thing","name":"Golden Knights"},{"@type":"Thing","name":"Centennial Hills"},{"@type":"Thing","name":"Lee Canyon"}]}
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KHHPSJ5JML"></script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-KHHPSJ5JML');
+  </script>
+</head>
+<body>
+
+  <!-- WELCOME SCREEN -->
+  <div class="screen" id="ws">
+    <div class="bento hero an">
+      <div class="hlogo"><div class="hmark">7</div><div class="htxt">SEVN<span>.</span></div></div>
+      <p class="hsub">Things to see and do across the Vegas valley. Curated by locals, for everyone.</p>
+    </div>
+    <div class="bento abento an d1">
+      <div class="ehdr"><h3>Happening Now</h3><span class="eupd" id="evUpd"></span></div>
+      <div class="escroll" id="evScroll"></div>
+      <span class="alabel">Pick your area</span>
+      <div class="agrid" id="areaGrid">
+        <label class="aopt" data-area="the-strip"><input type="radio" name="area" value="the-strip"><span class="aoji">&#127920;</span><div><div class="aoh4">The Strip</div><div class="aop">Iconic landmarks</div></div></label>
+        <label class="aopt" data-area="downtown"><input type="radio" name="area" value="downtown"><span class="aoji">&#127747;</span><div><div class="aoh4">Downtown</div><div class="aop">Fremont, arts</div></div></label>
+        <label class="aopt" data-area="summerlin"><input type="radio" name="area" value="summerlin"><span class="aoji">&#9968;&#65039;</span><div><div class="aoh4">Summerlin</div><div class="aop">Red Rock, trails</div></div></label>
+        <label class="aopt" data-area="henderson"><input type="radio" name="area" value="henderson"><span class="aoji">&#127749;</span><div><div class="aoh4">Henderson</div><div class="aop">Parks, nature</div></div></label>
+        <label class="aopt" data-area="north-lv"><input type="radio" name="area" value="north-lv"><span class="aoji">&#127797;</span><div><div class="aoh4">N. Las Vegas</div><div class="aop">Desert, history</div></div></label>
+        <label class="aopt" data-area="centennial"><input type="radio" name="area" value="centennial"><span class="aoji">&#127956;&#65039;</span><div><div class="aoh4">Centennial Hills</div><div class="aop">Parks, views</div></div></label>
+        <label class="aopt" data-area="enterprise"><input type="radio" name="area" value="enterprise"><span class="aoji">&#127964;&#65039;</span><div><div class="aoh4">Enterprise</div><div class="aop">Mountains, open desert</div></div></label>
+        <label class="aopt" data-area="mt-charleston"><input type="radio" name="area" value="mt-charleston"><span class="aoji">&#127956;&#65039;</span><div><div class="aoh4">Mt. Charleston</div><div class="aop">Alpine forest, mountain trails</div></div></label>
+      </div>
+    </div>
+    <div class="gobento an d2"><button class="gobtn" id="goBtn" disabled>Explore Adventures <span>&#8594;</span></button></div>
+    <div class="brow an d3">
+      <div class="bento mbento" id="bizBtn"><div class="mico b1">&#128233;</div><h4>List Your Business</h4><p>Want to be featured?</p><span class="marr">&#8594;</span></div>
+      <div class="bento mbento" id="privBtn"><div class="mico b2">&#128274;</div><h4>Privacy</h4><p>How we handle info.</p><span class="marr">&#8594;</span></div>
+    </div>
+  </div>
+
+  <!-- SWIPE SCREEN -->
+  <div class="screen swipe hidden" id="ss">
+    <div class="bento hdr an">
+      <div class="logo" id="logoHome" style="cursor:pointer"><div class="lmark">7</div><div class="ltxt">SEVN<span>.</span></div></div>
+      <div class="hacts">
+        <button class="aind" id="areaBack"><span class="dot"></span><span id="areaName">The Strip</span></button>
+        <button class="ibtn" id="favToggle" aria-label="Favorites"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><span class="badge" id="favBadge">0</span></button>
+      </div>
+    </div>
+    <div class="bento pbar an d1"><div class="ptrack"><div class="pfill" id="pFill"></div></div><span class="plbl" id="pLbl">1 / 20</span></div>
+    <div class="bento cbento an d2">
+      <div class="cstack" id="cStack"></div>
+      <div class="empty" id="emptyS"><div class="ej">&#127797;</div><h2>All explored!</h2><p>Check your favorites or shuffle for a new round.</p><button class="rbtn" id="resetBtn">Shuffle Again</button></div>
+    </div>
+    <div class="acts an d3" id="actsRow">
+      <button class="abtn bk" id="backBtn" disabled><span class="aico">&#8592;</span></button>
+      <button class="abtn np" id="nopeBtn"><span class="aico">&#10005;</span> Skip</button>
+      <button class="abtn lk" id="likeBtn"><span class="aico">&#9829;</span> Save</button>
+      <button class="abtn fw" id="fwdBtn" disabled><span class="aico">&#8594;</span></button>
+    </div>
+  </div>
+
+  <!-- BIZ MODAL -->
+  <div class="mov" id="bizMod"><div class="mbg" id="bizBg"></div><div class="msh"><div class="mtop"><h2>List Your Business</h2><button class="ibtn" id="bizX"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div><div class="mbod" id="bizForm"><p>Want your business featured? Drop us a note.</p><div class="fg"><label>Business Name</label><input type="text" id="bizName" placeholder="e.g. Desert Sun Tours"></div><div class="fg"><label>Contact Email</label><input type="email" id="bizEmail" placeholder="you@business.com"></div><div class="fg"><label>Tell us about it</label><textarea id="bizNote" rows="3" placeholder="What makes it unique?"></textarea></div><button class="fsub" id="bizSub">Send Inquiry</button></div><div class="fsucc" id="bizOk"><div class="ej">&#127881;</div><h3>Sent!</h3><p>We will review and get back to you soon.</p></div></div></div>
+
+  <!-- PRIV MODAL -->
+  <div class="mov" id="privMod"><div class="mbg" id="privBg"></div><div class="msh"><div class="mtop"><h2>Privacy Policy</h2><button class="ibtn" id="privX"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div><div class="pbod"><p>Your privacy matters. Here is how SEVN handles your information.</p><h3>What We Collect</h3><p>Favorites are stored locally on your device. We do not create accounts or require logins.</p><h3>Business Inquiries</h3><p>If you submit a listing request, we collect only what you provide and never share it.</p><h3>Third Parties</h3><p>We do not sell, rent, or share your information with anyone.</p><h3>Contact</h3><p>Questions? Reach out at cuadventuresllc@gmail.com.</p></div></div></div>
+
+  <!-- FAVS PANEL -->
+  <div class="fpan" id="favPan"><div class="fov" id="favOv"></div><div class="fsh"><div class="fhandle"><div></div></div><div class="ftop"><h2>Saved Adventures</h2><button class="ibtn" id="favX"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div><div class="fbody" id="favBody"><div class="fempt" id="favE"><div class="ej">&#129782;</div><p>Swipe right on things you love and they will show here.</p></div></div></div></div>
+
+  <!-- DETAIL -->
+  <div class="dmod" id="dMod"><div class="dbg" id="dBg"></div><div class="dsheet" id="dSheet"></div></div>
+<script>
+const EVENTS_UPDATED="Mar 3, 2026";
+const EVENTS=[
+{t:"CONEXPO-CON/AGG",when:"Mar 3-7",where:"Convention Center",cat:"Convention",link:"https://www.conexpoconagg.com"},
+{t:"The Eagles: Final Sphere Shows",when:"Mar 20, 21, 27, 28",where:"Sphere",cat:"Concert",link:"https://www.thesphere.com"},
+{t:"Jennifer Lopez: Up All Night",when:"All March",where:"Colosseum at Caesars",cat:"Residency",link:"https://www.caesars.com/caesars-palace/shows/jennifer-lopez"},
+{t:"NASCAR Pennzoil 400 Weekend",when:"Mar 14-15",where:"LV Motor Speedway",cat:"Sports",link:"https://www.lvms.com"},
+{t:"UFC 326: Holloway vs Oliveira 2",when:"Mar 7",where:"T-Mobile Arena",cat:"Sports",link:"https://www.ufc.com"},
+{t:"Nine Inch Nails",when:"Mar 7",where:"MGM Grand Garden",cat:"Concert",link:"https://www.mgmgrand.com"},
+{t:"Golden Knights Home Games",when:"Mar 6, 8, 12, 14, 17, 19, 26, 28, 30",where:"T-Mobile Arena",cat:"Sports",link:"https://www.nhl.com/goldenknights/schedule"},
+{t:"St. Patrick's Day",when:"Mar 17",where:"Fremont and Strip-wide",cat:"Holiday",link:"https://vegasexperience.com"},
+{t:"March Madness Watch Parties",when:"Mar 18-30",where:"Sportsbooks city-wide",cat:"Sports",link:""},
+{t:"Foreigner: The Hits Orchestral",when:"Mar 6-14",where:"Venetian Theatre",cat:"Concert",link:"https://www.venetianlasvegas.com"},
+{t:"Boy George and Culture Club",when:"Mar 18-28",where:"Venetian Theatre",cat:"Concert",link:"https://www.venetianlasvegas.com"},
+{t:"Barry Manilow",when:"Mar 26-28",where:"Westgate Las Vegas",cat:"Concert",link:"https://www.westgateresorts.com"},
+{t:"Wizard of Oz at Sphere",when:"All March",where:"Sphere",cat:"Experience",link:"https://www.thesphere.com"},
+{t:"Pool Season Opens",when:"Early March",where:"Dayclub venues Strip-wide",cat:"Seasonal",link:""},
+{t:"Jerry Seinfeld",when:"Mar 17-18",where:"Colosseum at Caesars",cat:"Comedy",link:"https://www.caesars.com/caesars-palace/shows"}
+];
+const D=[
+// THE STRIP (20)
+{id:1,a:"the-strip",c:"Experience",t:"Bellagio Fountain Show",e:"\u26F2",d:"Over 1,200 nozzles shoot water up to 460 feet, choreographed to music from opera to pop. Runs every 15\u201330 min. Best at night from the sidewalk.",g:"Bellagio Hotel Las Vegas",tg:["Iconic","Romantic","Night"]},
+{id:2,a:"the-strip",c:"Culture",t:"Bellagio Conservatory",e:"\uD83C\uDF3A",d:"A massive indoor botanical garden that transforms each season with intricate floral sculptures and living walls. Always free, always stunning.",g:"Bellagio Conservatory Las Vegas",tg:["Seasonal","Photography"]},
+{id:3,a:"the-strip",c:"Culture",t:"AREA15 Free Art Walk",e:"\uD83C\uDFAD",d:"The free Level 0 pass unlocks Art Island Gallery, Origin Quest scavenger hunt, and a digital art tour through the largest gallery in Vegas.",g:"AREA15 Las Vegas",tg:["Art","Immersive"]},
+{id:4,a:"the-strip",c:"Experience",t:"Flamingo Wildlife Habitat",e:"\uD83E\uDDA9",d:"Chilean flamingos, pelicans, koi ponds, and waterfalls in a tropical oasis. A peaceful escape right in the middle of the Strip.",g:"Flamingo Wildlife Habitat Las Vegas",tg:["Family","Nature"]},
+{id:5,a:"the-strip",c:"Experience",t:"Welcome to Las Vegas Sign",e:"\uD83D\uDCF8",d:"The quintessential Vegas photo op at the south end of the Strip. Go early or at sunset to avoid the line. Free parking across the street.",g:"Welcome to Fabulous Las Vegas sign",tg:["Iconic","Photo Op"]},
+{id:6,a:"the-strip",c:"Experience",t:"Wynn Lake of Dreams",e:"\uD83C\uDF0A",d:"A 40-foot waterfall with giant puppets, floating video orbs, and 5,500 LEDs over a 3-acre lake. Every 30 minutes after dusk. Free to watch.",g:"Wynn Las Vegas",tg:["Show","Night"]},
+{id:7,a:"the-strip",c:"Culture",t:"Fontainebleau Art Walk",e:"\uD83D\uDDBC\uFE0F",d:"The newest Strip resort has art installations scattered everywhere. Take a self-guided stroll through luxury architecture and contemporary pieces.",g:"Fontainebleau Las Vegas",tg:["Art","Architecture"]},
+{id:8,a:"the-strip",c:"Experience",t:"Miracle Mile Rainstorm",e:"\uD83C\uDF27\uFE0F",d:"Indoor thunder, lightning, fog, and rain inside Miracle Mile Shops at Planet Hollywood. Runs hourly. Surprisingly immersive and totally free.",g:"Miracle Mile Shops Las Vegas",tg:["Unique","Family"]},
+{id:9,a:"the-strip",c:"Culture",t:"Atlantis Show at Caesars",e:"\uD83C\uDFDB\uFE0F",d:"Nine-foot animatronic statues battle with fire and water for the throne of Atlantis inside the Forum Shops. Free aquarium nearby too.",g:"Forum Shops Caesars Palace Las Vegas",tg:["Show","Family"]},
+{id:10,a:"the-strip",c:"Experience",t:"Pinball Hall of Fame",e:"\uD83D\uDD79\uFE0F",d:"Over 200 vintage pinball machines from the 1950s to today. Free admission. Bring quarters to play. All proceeds go to charity.",g:"Pinball Hall of Fame Las Vegas",tg:["Retro","Fun"]},
+{id:11,a:"the-strip",c:"Experience",t:"Circus Acts at Circus Circus",e:"\uD83C\uDFAA",d:"Free world-class circus performances daily. Trapeze, juggling, acrobats on the Midway stage. Old-school Vegas entertainment that still delivers.",g:"Circus Circus Las Vegas",tg:["Family","Classic"]},
+{id:12,a:"the-strip",c:"Culture",t:"Shelby Heritage Center",e:"\uD83C\uDFCE\uFE0F",d:"The Shelby Cobra collection and racing memorabilia at Carroll Shelby HQ. Free guided tours available. A must for car enthusiasts.",g:"Shelby Heritage Center Las Vegas",tg:["Cars","History"]},
+{id:13,a:"the-strip",c:"Experience",t:"Venetian Grand Canal",e:"\uD83D\uDEF6",d:"Walk along the indoor replica of Venice with painted sky ceilings, Italian architecture, and live performers. Gondola rides cost extra, walking is free.",g:"Venetian Resort Las Vegas",tg:["Romantic","Architecture"]},
+{id:14,a:"the-strip",c:"Experience",t:"Seven Magic Mountains",e:"\uD83E\uDEA8",d:"Towering neon-painted boulder totems by Swiss artist Ugo Rondinone set against raw desert 20 min south. One of the best photo spots in Nevada.",g:"Seven Magic Mountains",tg:["Art","Photography"]},
+{id:15,a:"the-strip",c:"Experience",t:"Walk the Strip at Night",e:"\uD83C\uDF03",d:"Four miles of sensory overload. Casino hop from Mandalay Bay to the Wynn, soak in the lights, people, and energy. The best free show in Vegas.",g:"Las Vegas Boulevard",tg:["Iconic","Nightlife"]},
+{id:16,a:"the-strip",c:"Experience",t:"The Park Las Vegas",e:"\uD83C\uDF34",d:"Open-air district between NYNY and Park MGM with shade trees, public art, and the 40-foot Bliss Dance sculpture. Free to explore anytime.",g:"The Park Las Vegas",tg:["Art","Outdoor"]},
+{id:17,a:"the-strip",c:"Experience",t:"BLVD Overlook",e:"\uD83C\uDFD9\uFE0F",d:"Free observation deck at the BLVD mall north of MGM Grand with seating and views overlooking the south end of the Strip.",g:"The BLVD Las Vegas",tg:["Views","Chill"]},
+{id:18,a:"the-strip",c:"Culture",t:"Wynn Floral Lobby",e:"\uD83C\uDF37",d:"Thousands of fresh flowers arranged into seasonal sculptures in the Wynn lobby. Changes regularly, always gorgeous, always free to walk through.",g:"Wynn Las Vegas lobby",tg:["Photography","Seasonal"]},
+{id:19,a:"the-strip",c:"Experience",t:"Cosmopolitan Art Walk",e:"\uD83D\uDDBC\uFE0F",d:"The Cosmo features a rotating collection of contemporary art installations throughout the resort. Grab a map at the front desk for the self-guided tour.",g:"Cosmopolitan Las Vegas",tg:["Art","Indoor"]},
+{id:20,a:"the-strip",c:"Views",t:"Bellagio Bridge Sunset",e:"\uD83C\uDF05",d:"The pedestrian bridge between Bellagio and Caesars offers one of the best free vantage points for watching sunset paint the Strip gold.",g:"Bellagio Las Vegas pedestrian bridge",tg:["Sunset","Views"]},
+
+// DOWNTOWN (20)
+{id:101,a:"downtown",c:"Experience",t:"Fremont Viva Vision",e:"\u2728",d:"The world's largest LED canopy with 16.4 million pixels. Light shows run nightly on the hour from 6pm. Recently upgraded for $32 million.",g:"Fremont Street Experience Las Vegas",tg:["Iconic","Night"]},
+{id:102,a:"downtown",c:"Nightlife",t:"Fremont Live Music",e:"\uD83C\uDFB8",d:"Three stages of free live music every night starting at 6pm. Local bands, touring acts, and the Downtown Rocks concert series.",g:"Fremont Street Experience stages",tg:["Music","Nightlife"]},
+{id:103,a:"downtown",c:"Culture",t:"Arts District First Friday",e:"\uD83C\uDFA8",d:"A massive free monthly festival in the 18b Arts District. Galleries, street artists, food trucks, and live music on Main Street. First Friday of every month.",g:"18b Arts District Las Vegas",tg:["Art","Community"]},
+{id:104,a:"downtown",c:"Experience",t:"Container Park",e:"\uD83D\uDCE6",d:"Open-air center built from recycled shipping containers. Boutiques, restaurants, treehouse playground, live music, and a fire-breathing Mantis at sundown.",g:"Downtown Container Park Las Vegas",tg:["Shopping","Unique"]},
+{id:105,a:"downtown",c:"Culture",t:"Street Art Murals",e:"\uD83D\uDD8C\uFE0F",d:"Over 30 murals by internationally known artists. Look for the solar-powered mural on 7th Street and the retro Greetings from Las Vegas mural on Main.",g:"18b Arts District murals Las Vegas",tg:["Photography","Art"]},
+{id:106,a:"downtown",c:"Culture",t:"The Arts Factory",e:"\uD83C\uDFED",d:"A multi-studio gallery complex functioning like a free contemporary art museum. Individual artists, galleries, and shops all under one roof.",g:"The Arts Factory Las Vegas",tg:["Art","Local"]},
+{id:107,a:"downtown",c:"Experience",t:"Golden Nugget Hand of Faith",e:"\uD83E\uDE99",d:"One of the largest gold nuggets in the world at 61 pounds, displayed in the Golden Nugget lobby. Free to see, incredible to stand next to.",g:"Golden Nugget Las Vegas",tg:["History","Quick"]},
+{id:108,a:"downtown",c:"Experience",t:"Binion's Million Dollar Photo",e:"\uD83D\uDCB5",d:"Stand behind a pyramid of one million real dollars and snap a free photo. A Binion's tradition since 1954. Open 24/7 for guests 21+.",g:"Binions Gambling Hall Las Vegas",tg:["Iconic","Photo Op"]},
+{id:109,a:"downtown",c:"Experience",t:"The Mantis Fire Show",e:"\uD83D\uDD25",d:"At sundown a drum circle awakens the giant metal praying mantis at Container Park, which erupts in a mesmerizing fire-breathing display.",g:"Downtown Container Park Las Vegas mantis",tg:["Spectacle","Night"]},
+{id:110,a:"downtown",c:"Culture",t:"Recycled Propaganda",e:"\uD83C\uDFAD",d:"A unique art studio in the Arts District known for satirical street art. The artist often debuts new works during First Friday events.",g:"Recycled Propaganda Las Vegas",tg:["Art","Provocative"]},
+{id:111,a:"downtown",c:"Experience",t:"Circa Lobby and Sportsbook",e:"\uD83C\uDFDF\uFE0F",d:"Walk through Circa's lobby to see the world's largest sportsbook with a 78-million-pixel LED wall. The architecture alone is worth the visit.",g:"Circa Resort Las Vegas",tg:["Architecture","Sports"]},
+{id:112,a:"downtown",c:"Culture",t:"Golden Gate Casino History",e:"\uD83C\uDFB0",d:"Opened in 1906, the oldest casino in Vegas. Vintage gaming ledgers, historic chip racks, and artifacts from the earliest days of Sin City.",g:"Golden Gate Hotel Casino Las Vegas",tg:["History","Classic"]},
+{id:113,a:"downtown",c:"Experience",t:"Berlin Wall at Main Street Station",e:"\uD83E\uDDF1",d:"A genuine section of the Berlin Wall is on display inside Main Street Station. One of the weirdest and most unexpected hidden gems in Vegas.",g:"Main Street Station Las Vegas",tg:["History","Weird"]},
+{id:114,a:"downtown",c:"Experience",t:"Free Downtown Loop Shuttle",e:"\uD83D\uDE8C",d:"A free shuttle connecting Fremont Street, the Arts District, and the Strat. The easiest way to hop between downtown neighborhoods with no car.",g:"Downtown Loop Las Vegas",tg:["Transportation","Convenient"]},
+{id:115,a:"downtown",c:"Nightlife",t:"Dueling Pianos Show",e:"\uD83C\uDFB9",d:"An energetic crowd-driven piano show with two pianists battling over audience requests. Free to watch, hilarious, and a legitimately great time.",g:"New York New York Las Vegas dueling pianos",tg:["Live Music","Fun"]},
+{id:116,a:"downtown",c:"Culture",t:"Art Square Complex",e:"\uD83C\uDFD8\uFE0F",d:"A cluster of galleries, shops, and a theater in the Arts District. Becomes a buzzing hub every First Friday. Great for finding new local talent.",g:"Art Square Las Vegas",tg:["Art","Local"]},
+{id:117,a:"downtown",c:"Experience",t:"Neon Museum Photo Walk",e:"\uD83D\uDCA1",d:"Even without a ticket, the exterior Neon signs along Las Vegas Blvd near the museum are free to photograph. The outdoor North Gallery is visible 24/7.",g:"Neon Museum Las Vegas",tg:["Photography","History"]},
+{id:118,a:"downtown",c:"Experience",t:"Fremont East People Watching",e:"\uD83D\uDC40",d:"Grab a seat at Whiskey Licker Up at Binion's overlooking Fremont and watch the parade of humanity. The best free entertainment in downtown.",g:"Binions Whiskey Licker Up Las Vegas",tg:["Nightlife","Chill"]},
+{id:119,a:"downtown",c:"Experience",t:"El Cortez Historic Tour",e:"\uD83C\uDFE8",d:"Walk through El Cortez, listed on the National Register of Historic Places. Original Bugsy Siegel-era architecture still visible. Free to explore.",g:"El Cortez Las Vegas",tg:["History","Architecture"]},
+{id:120,a:"downtown",c:"Culture",t:"Vegas Test Site History Walk",e:"\u2622\uFE0F",d:"Downtown casinos once marketed poolside views of nuclear tests 60 miles away. Informational plaques and exhibits at several Fremont properties are free.",g:"Fremont Street atomic history Las Vegas",tg:["History","Unique"]},
+
+// SUMMERLIN (20)
+{id:201,a:"summerlin",c:"Outdoors",t:"Red Rock Scenic Drive",e:"\uD83C\uDFDC\uFE0F",d:"A 13-mile one-way loop through towering red sandstone. Dozens of pullouts, trails, and photo spots. Best at sunrise or golden hour.",g:"Red Rock Canyon Scenic Drive Las Vegas",tg:["Nature","Photography"]},
+{id:202,a:"summerlin",c:"Outdoors",t:"Calico Tanks Trail",e:"\uD83E\uDD7E",d:"A 2.5-mile trail ending with panoramic views of the Strip from deep in the desert. Scramble over rocks to reach the tank overlook. Moderate difficulty.",g:"Calico Tanks Trail Red Rock Canyon",tg:["Hiking","Views"]},
+{id:203,a:"summerlin",c:"Outdoors",t:"Ice Box Canyon Hike",e:"\uD83E\uDDCA",d:"A shaded canyon at Red Rock that stays cool even in summer. The 2.6-mile out-and-back ends at a seasonal waterfall between towering walls.",g:"Ice Box Canyon Red Rock",tg:["Hiking","Hidden Gem"]},
+{id:204,a:"summerlin",c:"Outdoors",t:"Keystone Thrust Trail",e:"\uD83E\uDEA8",d:"A 2.2-mile trail where you can see two tectonic plates collide. Gray limestone over red sandstone, 65 million years in the making.",g:"Keystone Thrust Trail Red Rock Canyon",tg:["Geology","Unique"]},
+{id:205,a:"summerlin",c:"Outdoors",t:"Turtlehead Peak",e:"\uD83D\uDC22",d:"The most challenging hike at Red Rock. Steep 5-mile round trip to 6,323 feet with 360-degree valley views. Bring lots of water.",g:"Turtlehead Peak Red Rock Canyon",tg:["Challenge","Views"]},
+{id:206,a:"summerlin",c:"Outdoors",t:"First Creek Canyon",e:"\uD83C\uDF3F",d:"An easy 3-mile round trip following a desert wash to a seasonal waterfall surrounded by cottonwood trees. Great for beginners and families.",g:"First Creek Canyon Red Rock",tg:["Easy","Nature"]},
+{id:207,a:"summerlin",c:"Outdoors",t:"Kraft Mountain Loop",e:"\u26F0\uFE0F",d:"A 3.5-mile loop on the edge of Summerlin with sweeping views of Red Rock and the valley. Moderate difficulty. Amazing for sunset hikes.",g:"Kraft Mountain Trail Summerlin",tg:["Sunset","Free"]},
+{id:208,a:"summerlin",c:"Outdoors",t:"Red Rock Bike Loop",e:"\uD83D\uDEB4",d:"Cycle the 13-mile scenic loop on bike-friendly roads with desert views the entire way. Rent bikes nearby or bring your own.",g:"Red Rock Canyon bike loop",tg:["Cycling","Active"]},
+{id:209,a:"summerlin",c:"Outdoors",t:"Cottonwood Valley Trails",e:"\uD83C\uDF35",d:"A network of trails on Summerlin's southern edge connecting to Red Rock. Mountain biking, horseback riding, and running through open desert.",g:"Cottonwood Valley trailhead Las Vegas",tg:["Biking","Free"]},
+{id:210,a:"summerlin",c:"Experience",t:"Summerlin Farmers Market",e:"\uD83E\uDD6C",d:"Every Saturday 9am\u20132pm at the Pavilion. Farm-fresh produce, baked goods, handcrafted items, and local vendors. Free to browse, year-round.",g:"Downtown Summerlin Farmers Market",tg:["Food","Community"]},
+{id:211,a:"summerlin",c:"Experience",t:"Summerlin Sounds Concerts",e:"\uD83C\uDFB5",d:"Free live music on The Lawn at Downtown Summerlin on Wednesday evenings. Bring a blanket for sunset tunes backed by Red Rock Canyon views.",g:"Downtown Summerlin The Lawn",tg:["Music","Outdoor"]},
+{id:212,a:"summerlin",c:"Experience",t:"Free Yoga on The Lawn",e:"\uD83E\uDDD8",d:"Free fitness classes at Downtown Summerlin on Tuesday evenings. Yoga, barre, and HIIT with views of Red Rock at sunset. All levels.",g:"Downtown Summerlin fitness lawn",tg:["Fitness","Outdoor"]},
+{id:213,a:"summerlin",c:"Experience",t:"Movies Under the Stars",e:"\uD83C\uDFAC",d:"Free outdoor movies at The Trails Park on Saturday evenings in summer. Bring blankets, lawn chairs, and snacks for a neighborhood hangout.",g:"Trails Park Summerlin",tg:["Family","Seasonal"]},
+{id:214,a:"summerlin",c:"Culture",t:"Summerlin Library Arts Center",e:"\uD83D\uDCDA",d:"Hosts ballet, musicals, art shows, and concerts. More performing arts center than library. A cultural gem for the west side of the valley.",g:"Summerlin Library Performing Arts Center",tg:["Culture","Family"]},
+{id:215,a:"summerlin",c:"Views",t:"Red Rock Overlook",e:"\uD83C\uDF04",d:"The first major pullout on the scenic drive has a large observation area with 180-degree views of the canyon and city. Free with park entry.",g:"Red Rock Canyon overlook",tg:["Views","Photography"]},
+{id:216,a:"summerlin",c:"Experience",t:"Browse Downtown Summerlin",e:"\uD83D\uDECD\uFE0F",d:"An upscale open-air center with 125+ stores and 30+ restaurants. Great people watching, window shopping, and outdoor dining year-round.",g:"Downtown Summerlin",tg:["Shopping","Food"]},
+{id:217,a:"summerlin",c:"Outdoors",t:"Late Night Trailhead Stargazing",e:"\u2B50",d:"Red Rock pullouts after dark offer some of the best stargazing near the city. Low light pollution and wide desert sky. Bring a blanket.",g:"Red Rock Canyon night sky",tg:["Night","Nature"]},
+{id:218,a:"summerlin",c:"Outdoors",t:"Sandstone Quarry Loop",e:"\uD83E\uDEA8",d:"A flat, easy 2-mile loop through old sandstone quarries with unique rock formations and desert flora. Great for kids and casual walkers.",g:"Sandstone Quarry Red Rock Canyon",tg:["Easy","Family"]},
+{id:219,a:"summerlin",c:"Nature",t:"Desert Tortoise Habitat",e:"\uD83D\uDC22",d:"Spring is the best time to spot desert tortoises along Red Rock trails. They emerge from burrows in April and May. Keep your distance.",g:"Red Rock Canyon desert tortoise",tg:["Wildlife","Seasonal"]},
+{id:220,a:"summerlin",c:"Views",t:"Calico Hills Scramble",e:"\uD83E\uDDD7",d:"Scramble up the red Calico Hills for close-up views of layered sandstone and panoramic city vistas. No official trail, just explore the rocks.",g:"Calico Hills Red Rock Canyon",tg:["Adventure","Views"]},
+
+// HENDERSON (20)
+{id:301,a:"henderson",c:"Outdoors",t:"Valley of Fire Day Trip",e:"\uD83D\uDD25",d:"Ancient red sandstone formations create an alien landscape one hour away. Fire Wave trail is the crown jewel. Petroglyphs, arches, and endless photo ops.",g:"Valley of Fire State Park Nevada",tg:["Road Trip","Photography"]},
+{id:302,a:"henderson",c:"Nature",t:"Ethel M Cactus Garden",e:"\uD83C\uDF35",d:"A stunning botanical cactus garden with over 300 species. Free self-guided tour of the chocolate factory too. Free chocolate samples at the end.",g:"Ethel M Chocolates Henderson",tg:["Family","Gardens"]},
+{id:303,a:"henderson",c:"Nature",t:"Henderson Bird Preserve",e:"\uD83E\uDD86",d:"140 acres with nine ponds and over 270 bird species. Paved paths, peaceful vibes, and the third largest body of water in Southern Nevada.",g:"Henderson Bird Viewing Preserve",tg:["Birdwatching","Free"]},
+{id:304,a:"henderson",c:"Outdoors",t:"River Mountains Loop Trail",e:"\uD83D\uDEB4",d:"A 34-mile paved trail connecting Henderson to Lake Mead, Hoover Dam, and Boulder City. Bike or walk sections with stunning desert and lake views.",g:"River Mountains Loop Trail Henderson",tg:["Biking","Scenic"]},
+{id:305,a:"henderson",c:"Outdoors",t:"Sloan Canyon Petroglyphs",e:"\uD83E\uDEA8",d:"Over 300 rock art panels, some 10,000+ years old, in a dramatic canyon. Challenging hike but incredibly rewarding. A walk through deep history.",g:"Sloan Canyon petroglyphs Henderson",tg:["History","Hiking"]},
+{id:306,a:"henderson",c:"Experience",t:"Lake Las Vegas Village",e:"\uD83C\uDFD6\uFE0F",d:"Italian-style village on the shores of a man-made lake. Free to stroll with waterfront restaurants, shops, and seasonal events like yoga and concerts.",g:"Lake Las Vegas Henderson",tg:["Scenic","Relaxing"]},
+{id:307,a:"henderson",c:"Nature",t:"Cornerstone Park",e:"\uD83C\uDFDE\uFE0F",d:"A 31-acre lake in a former gravel mine turned gorgeous park. Trails, picnic areas, courts, wildlife, and stunning mountain views.",g:"Cornerstone Park Henderson",tg:["Park","Family"]},
+{id:308,a:"henderson",c:"Outdoors",t:"Black Mountain Summit",e:"\u26F0\uFE0F",d:"Hike to panoramic views of the entire Las Vegas Valley from the mountaintop. Challenging but worth every step of elevation.",g:"Black Mountain trailhead Henderson",tg:["Hiking","Views"]},
+{id:309,a:"henderson",c:"Nature",t:"Whitney Mesa Preserve",e:"\uD83C\uDF04",d:"A one-mile trail along a stream to a mesa with breathtaking sunrise and sunset views. Picnic areas and restrooms. Peaceful and uncrowded.",g:"Whitney Mesa Nature Preserve Henderson",tg:["Sunset","Nature"]},
+{id:310,a:"henderson",c:"Experience",t:"Hoover Dam Walk",e:"\uD83C\uDFD7\uFE0F",d:"Drive across the dam for free and walk along the top with views of Lake Mead and the Colorado River. Visitor center is extra but the dam is free.",g:"Hoover Dam Nevada",tg:["Iconic","History"]},
+{id:311,a:"henderson",c:"Outdoors",t:"Lake Mead Trails",e:"\uD83D\uDEF6",d:"Explore trails, hidden coves, and desert scenery around the largest reservoir in the US. Just 30 minutes from Henderson.",g:"Lake Mead National Recreation Area",tg:["Nature","Adventure"]},
+{id:312,a:"henderson",c:"Outdoors",t:"Amargosa Trail",e:"\uD83D\uDEE4\uFE0F",d:"A paved 10-mile multi-use trail through Henderson with interpretive signs, shade structures, and connections to parks. Walk, run, or bike.",g:"Amargosa Trail Henderson",tg:["Trail","Easy"]},
+{id:313,a:"henderson",c:"Nature",t:"Wetlands Park",e:"\uD83C\uDF3E",d:"Over 200 acres of trails through wetland habitats along the Las Vegas Wash. Boardwalks, wildlife platforms, and a nature center.",g:"Clark County Wetlands Park Las Vegas",tg:["Nature","Walking"]},
+{id:314,a:"henderson",c:"Experience",t:"Shan-Gri-La Prehistoric Park",e:"\uD83E\uDD95",d:"Life-sized dinosaur sculptures in a small park in the Cadence community. Kids love climbing on them. Quirky, totally free, and fun.",g:"Shan-Gri-La Prehistoric Park Henderson",tg:["Family","Quirky"]},
+{id:315,a:"henderson",c:"Nature",t:"Acacia Demonstration Gardens",e:"\uD83C\uDF38",d:"A beautifully maintained garden showcasing water-wise plants and desert landscaping. Peaceful walking paths through native desert species.",g:"Acacia Demonstration Gardens Henderson",tg:["Gardens","Relaxing"]},
+{id:316,a:"henderson",c:"Experience",t:"District at Green Valley Ranch",e:"\uD83D\uDECD\uFE0F",d:"Outdoor shopping and dining hub with seasonal events, live music, and a relaxed neighborhood vibe. Free to stroll and great for people watching.",g:"The District Green Valley Ranch Henderson",tg:["Shopping","Dining"]},
+{id:317,a:"henderson",c:"Views",t:"McCullough Hills Trail",e:"\uD83E\uDDED",d:"Family-friendly trails through Henderson foothills with interpretive signs, bike paths, and wide desert views. Easy to moderate difficulty.",g:"McCullough Hills trailhead Henderson",tg:["Hiking","Family"]},
+{id:318,a:"henderson",c:"Nature",t:"Hidden Falls Park",e:"\uD83D\uDCA7",d:"A neighborhood park with a small waterfall feature, walking paths, playground, and green space. A locals-only find in a quiet neighborhood.",g:"Hidden Falls Park Henderson",tg:["Park","Hidden Gem"]},
+{id:319,a:"henderson",c:"Views",t:"Lake Las Vegas Sunset Walk",e:"\uD83C\uDF05",d:"Walk the lakefront path at golden hour for desert-meets-water views. The Italian village and Reflection Bay provide a surprisingly European backdrop.",g:"Lake Las Vegas walking path Henderson",tg:["Sunset","Scenic"]},
+{id:320,a:"henderson",c:"Outdoors",t:"Bootleg Canyon Trails",e:"\uD83D\uDEB5",d:"A world-class mountain biking and hiking trail system in Boulder City, just south of Henderson. Free access, stunning views, and flowy singletrack.",g:"Bootleg Canyon Boulder City",tg:["Biking","Adventure"]},
+
+// NORTH LAS VEGAS (15)
+{id:401,a:"north-lv",c:"Outdoors",t:"Floyd Lamb Park at Tule Springs",e:"\uD83C\uDF33",d:"A 680-acre park with ponds, mature trees, peacocks, and walking trails. One of the most peaceful green spaces in the valley. Free to walk in.",g:"Floyd Lamb Park Tule Springs Las Vegas",tg:["Park","Nature"]},
+{id:402,a:"north-lv",c:"Outdoors",t:"Tule Springs Fossil Beds",e:"\uD83E\uDD9B",d:"A national monument preserving Ice Age fossils. Walk the desert landscape where mammoths and giant sloths once roamed. Free, no entrance fee.",g:"Tule Springs Fossil Beds National Monument",tg:["History","Nature"]},
+{id:403,a:"north-lv",c:"Outdoors",t:"Upper Las Vegas Wash Trail",e:"\uD83D\uDEE4\uFE0F",d:"A paved multi-use path along the historic wash with interpretive signs about the Mojave ecosystem. Easy walking and biking. Free access.",g:"Upper Las Vegas Wash Trail",tg:["Trail","Easy"]},
+{id:404,a:"north-lv",c:"Nature",t:"Craig Ranch Regional Park",e:"\uD83C\uDFDE\uFE0F",d:"A massive regional park with a skate park, splash pad, sports fields, walking trails, and a 4-acre dog park. Free and family-friendly.",g:"Craig Ranch Regional Park N. Las Vegas",tg:["Park","Family"]},
+{id:405,a:"north-lv",c:"Experience",t:"Aliante Nature Discovery Park",e:"\uD83E\uDD86",d:"A nature-themed park in Aliante with desert gardens, interpretive trails, a pond, and bird watching areas. Peaceful escape from city streets.",g:"Aliante Nature Discovery Park N. Las Vegas",tg:["Nature","Free"]},
+{id:406,a:"north-lv",c:"Outdoors",t:"N. Las Vegas Desert Trails",e:"\uD83C\uDFDC\uFE0F",d:"Open desert BLM land north of the city offers miles of unofficial trails for hiking and mountain biking with unobstructed mountain views.",g:"North Las Vegas desert trails BLM",tg:["Hiking","Desert"]},
+{id:407,a:"north-lv",c:"Views",t:"Sunrise from Nellis Dunes Overlook",e:"\uD83C\uDF05",d:"Drive to the edge of Nellis Dunes at dawn for unobstructed sunrise views over the desert. The sand dunes glow orange in morning light.",g:"Nellis Sand Dunes Las Vegas",tg:["Sunrise","Photography"]},
+{id:408,a:"north-lv",c:"Nature",t:"Eglington Preserve Walk",e:"\uD83C\uDF3F",d:"A small but serene green space with walking paths, native plants, and a chance to spot local wildlife. Free entry, rarely crowded.",g:"Eglington Preserve N. Las Vegas",tg:["Nature","Quiet"]},
+{id:409,a:"north-lv",c:"Experience",t:"Veterans Memorial Park",e:"\uD83C\uDF96\uFE0F",d:"A well-maintained community park honoring veterans with memorials, walking paths, green lawns, and picnic areas. A reflective and peaceful spot.",g:"Veterans Memorial Park N. Las Vegas",tg:["Memorial","Park"]},
+{id:410,a:"north-lv",c:"Outdoors",t:"Apex Trail Area",e:"\uD83E\uDDED",d:"Rugged desert terrain northeast of the city with unofficial trails through volcanic rock formations. Great for exploring off the beaten path.",g:"Apex Nevada trails",tg:["Adventure","Desert"]},
+{id:411,a:"north-lv",c:"Views",t:"Sheep Range Viewpoint",e:"\uD83D\uDC11",d:"Drive north toward the Sheep Range for stunning views of the Desert National Wildlife Refuge. The road itself is the attraction. Free.",g:"Desert National Wildlife Refuge Las Vegas",tg:["Scenic Drive","Wildlife"]},
+{id:412,a:"north-lv",c:"Nature",t:"Kiel Ranch Historic Park",e:"\uD83C\uDFE1",d:"A small historic park preserving some of the oldest structures in the valley. Walking paths through ranch remnants and cottonwood trees.",g:"Kiel Ranch Historic Park N. Las Vegas",tg:["History","Park"]},
+{id:413,a:"north-lv",c:"Experience",t:"Aliante Casino Waterfall",e:"\uD83D\uDCA7",d:"The Aliante Casino lobby features an impressive indoor waterfall and desert art collection. Free to walk through and admire.",g:"Aliante Casino Hotel N. Las Vegas",tg:["Indoor","Free"]},
+{id:414,a:"north-lv",c:"Outdoors",t:"Corn Creek Visitor Station",e:"\uD83C\uDF3E",d:"A desert oasis at the entrance to the Desert National Wildlife Refuge. Short trails through mesquite trees and natural springs. Free admission.",g:"Corn Creek Visitor Station Las Vegas",tg:["Nature","Wildlife"]},
+{id:415,a:"north-lv",c:"Views",t:"Centennial Overlook Point",e:"\uD83C\uDFD9\uFE0F",d:"High points along the northern valley edge offer expansive views stretching from the Strip to the Spring Mountains. Best at sunset.",g:"N. Las Vegas valley overlook",tg:["Views","Sunset"]},
+
+// CENTENNIAL HILLS (15)
+{id:501,a:"centennial",c:"Outdoors",t:"Centennial Hills Park Trails",e:"\uD83D\uDEB6",d:"A large community park with paved walking and jogging trails, sports courts, playgrounds, and open grass. Great morning or evening spot.",g:"Centennial Hills Park Las Vegas",tg:["Park","Walking"]},
+{id:502,a:"centennial",c:"Nature",t:"Lone Mountain Hike",e:"\u26F0\uFE0F",d:"A standalone desert peak with a short, steep trail to summit views of the entire northwest valley. Under 2 miles round trip but rewarding.",g:"Lone Mountain Las Vegas",tg:["Hiking","Views"]},
+{id:503,a:"centennial",c:"Outdoors",t:"Horse Drive Trail",e:"\uD83D\uDC0E",d:"A paved multi-use trail on the northern edge of the city. Popular with joggers, cyclists, and families. Desert mountain backdrop the whole way.",g:"Horse Drive Trail N. Las Vegas",tg:["Trail","Easy"]},
+{id:504,a:"centennial",c:"Nature",t:"Desert Breeze Park",e:"\uD83C\uDF43",d:"Though in Spring Valley, this beloved park has a train museum, duck pond, and walking paths. Worth the short drive from Centennial Hills.",g:"Desert Breeze Park Las Vegas",tg:["Park","Family"]},
+{id:505,a:"centennial",c:"Views",t:"Ann Road Desert Overlook",e:"\uD83C\uDF05",d:"The end of Ann Road heading west offers unobstructed views of the Spring Mountains. A favorite locals-only sunset spot with no crowds.",g:"Ann Road Centennial Hills Las Vegas",tg:["Sunset","Quiet"]},
+{id:506,a:"centennial",c:"Outdoors",t:"Skye Canyon Park Trails",e:"\uD83C\uDFDE\uFE0F",d:"New community on the far northwest edge with paved trails winding through desert landscaping and mountain views. Very well maintained.",g:"Skye Canyon Park Las Vegas",tg:["Walking","New"]},
+{id:507,a:"centennial",c:"Nature",t:"Gilcrease Nature Sanctuary",e:"\uD83E\uDD9C",d:"A small sanctuary in the northwest valley with horses, birds, and desert gardens. Donation-based entry. A quiet, unexpected gem.",g:"Gilcrease Nature Sanctuary Las Vegas",tg:["Wildlife","Hidden Gem"]},
+{id:508,a:"centennial",c:"Experience",t:"Centennial Hills Library",e:"\uD83D\uDCDA",d:"One of the nicest library branches in the system with community events, kids programs, and a peaceful reading garden. Always free.",g:"Centennial Hills Library Las Vegas",tg:["Culture","Free"]},
+{id:509,a:"centennial",c:"Outdoors",t:"Aliante Trail System",e:"\uD83D\uDEB5",d:"Connected walking and biking trails throughout the Aliante master-planned community. Desert landscaping, public art, and mountain views.",g:"Aliante trails N. Las Vegas",tg:["Biking","Community"]},
+{id:510,a:"centennial",c:"Views",t:"US 95 Overlook at Sunset",e:"\uD83C\uDF07",d:"Pull off at the northern end of US 95 heading toward Indian Springs for jaw-dropping sunset panoramas over the valley. Free roadside views.",g:"US 95 Las Vegas overlook north",tg:["Sunset","Views"]},
+{id:511,a:"centennial",c:"Nature",t:"Tropical Breeze Park",e:"\uD83C\uDF34",d:"A neighborhood park with walking paths, palm trees, playground, and covered picnic areas. A nice morning walk spot for Centennial residents.",g:"Tropical Breeze Park Las Vegas",tg:["Park","Free"]},
+{id:512,a:"centennial",c:"Outdoors",t:"Northwest Desert Edge Walk",e:"\uD83C\uDFDC\uFE0F",d:"Where Centennial Hills meets open desert you can walk into raw Mojave landscape. Unofficial trails lead to small washes and rock outcrops.",g:"Centennial Hills desert edge Las Vegas",tg:["Desert","Explore"]},
+{id:513,a:"centennial",c:"Experience",t:"Tivoli Village Window Walk",e:"\uD83C\uDFDB\uFE0F",d:"A Mediterranean-themed outdoor shopping village with fountains, architecture, and restaurants. Free to wander and enjoy the European-style ambiance.",g:"Tivoli Village Las Vegas",tg:["Architecture","Dining"]},
+{id:514,a:"centennial",c:"Outdoors",t:"Lee Canyon Road Drive",e:"\uD83D\uDE97",d:"Drive up Kyle Canyon Road toward Mt. Charleston for dramatic elevation changes and cooler temps. Free scenic drive with pullouts for photos.",g:"Lee Canyon Road Mount Charleston",tg:["Scenic Drive","Mountains"]},
+{id:515,a:"centennial",c:"Nature",t:"Spring Mountain Ranch Grounds",e:"\uD83C\uDFE1",d:"Just west in the Spring Mountains, this state park has free picnic areas and open lawns with red rock backdrops. Small vehicle entry fee.",g:"Spring Mountain Ranch State Park",tg:["Nature","Scenic"]},
+
+// ENTERPRISE / SOUTH (15)
+{id:601,a:"enterprise",c:"Outdoors",t:"Sloan Canyon South Trailhead",e:"\uD83E\uDDED",d:"Access Sloan Canyon from the south for fewer crowds and raw desert hiking. Petroglyphs, desert tortoise habitat, and wide open views.",g:"Sloan Canyon National Conservation Area",tg:["Hiking","Desert"]},
+{id:602,a:"enterprise",c:"Experience",t:"Town Square Park",e:"\uD83C\uDF33",d:"An outdoor shopping and dining center with a central park, playground, splash pad, and frequent free events. Family-friendly and well shaded.",g:"Town Square Las Vegas",tg:["Family","Free"]},
+{id:603,a:"enterprise",c:"Views",t:"South Point Area Desert Views",e:"\uD83C\uDF05",d:"Drive south on Las Vegas Blvd past South Point for unobstructed desert and mountain views. Park at turnoffs for sunset photography.",g:"South Las Vegas Boulevard desert",tg:["Sunset","Photography"]},
+{id:604,a:"enterprise",c:"Outdoors",t:"McCullough Range Trails",e:"\u26F0\uFE0F",d:"Rugged desert trails in the mountains south of Henderson and Enterprise. Rocky terrain, solitude, and expansive views. For experienced hikers.",g:"McCullough Range trails Las Vegas",tg:["Hiking","Adventure"]},
+{id:605,a:"enterprise",c:"Nature",t:"Mountain Edge Wilderness Park",e:"\uD83C\uDF3F",d:"A large community park at the southern edge of the city with walking trails, exercise stations, and mountain views. Free and uncrowded.",g:"Mountain Edge Wilderness Park Las Vegas",tg:["Park","Walking"]},
+{id:606,a:"enterprise",c:"Experience",t:"Seven Magic Mountains",e:"\uD83E\uDEA8",d:"Towering neon-painted boulder totems by Swiss artist Ugo Rondinone in the open desert south of town. One of Nevada's most Instagrammed spots.",g:"Seven Magic Mountains Las Vegas",tg:["Art","Photography"]},
+{id:607,a:"enterprise",c:"Views",t:"Jean Dry Lake Viewpoint",e:"\uD83C\uDFDC\uFE0F",d:"A vast dry lakebed south of Vegas used for photography and events. The flat white surface against desert mountains is surreal and free.",g:"Jean Dry Lake Las Vegas",tg:["Photography","Unique"]},
+{id:608,a:"enterprise",c:"Outdoors",t:"Anthem East Trail",e:"\uD83D\uDEB6",d:"Connected desert trails on the southeast edge of Enterprise near Anthem. Views of the McCullough Range and Black Mountain.",g:"Anthem East Trail Henderson",tg:["Hiking","Views"]},
+{id:609,a:"enterprise",c:"Nature",t:"Exploration Peak Park",e:"\uD83C\uDFDE\uFE0F",d:"A hilltop park in Mountain's Edge with walking trails, climbing structures, and 360-degree views from the summit. Free and family-friendly.",g:"Exploration Peak Park Las Vegas",tg:["Family","Views"]},
+{id:610,a:"enterprise",c:"Outdoors",t:"Primm Valley Drive",e:"\uD83D\uDE97",d:"The I-15 south toward Primm passes through dramatic desert passes and wide-open basin views. Stop at the state line for photos.",g:"Primm Valley Nevada",tg:["Scenic Drive","Desert"]},
+{id:611,a:"enterprise",c:"Nature",t:"Silverado Ranch Park",e:"\uD83C\uDF33",d:"A well-maintained neighborhood park with a large pond, walking paths, sports courts, and green space. A quiet escape in the south valley.",g:"Silverado Ranch Park Las Vegas",tg:["Park","Quiet"]},
+{id:612,a:"enterprise",c:"Views",t:"Enterprise Desert Sunset",e:"\uD83C\uDF07",d:"The wide-open desert at the southern edge of Enterprise offers some of the most vivid, unobstructed sunsets in the valley. Just drive and park.",g:"Enterprise Las Vegas sunset viewpoint",tg:["Sunset","Nature"]},
+{id:613,a:"enterprise",c:"Outdoors",t:"Duck Creek Trail",e:"\uD83D\uDEB4",d:"A paved multi-use trail running through residential Enterprise connecting parks and schools. Easy flat route for walking, jogging, or biking.",g:"Duck Creek Trail Las Vegas",tg:["Trail","Easy"]},
+{id:614,a:"enterprise",c:"Experience",t:"M Resort Overlook",e:"\uD83C\uDFE8",d:"The M Resort lobby has floor-to-ceiling windows with sweeping south valley and mountain views. Free to walk in and enjoy the vista.",g:"M Resort Henderson",tg:["Views","Architecture"]},
+{id:615,a:"enterprise",c:"Outdoors",t:"Goodsprings Ghost Town Visit",e:"\uD83C\uDFDA\uFE0F",d:"A genuine Nevada ghost town 35 min south. The Pioneer Saloon (1913) still operates. Walk the streets, see abandoned mines, all free to explore.",g:"Goodsprings Nevada ghost town",tg:["History","Adventure"]},
+// STRIP PAID + EXPERIENCES (30 more = 50 total)
+{id:21,a:"the-strip",c:"Experience",t:"Meow Wolf Omega Mart",e:"\uD83D\uDED2",d:"A surreal grocery store that is actually a massive immersive art installation at AREA15. Portals, secret rooms, and the kind of weirdness Vegas does best.",g:"Meow Wolf Omega Mart Las Vegas",tg:["Art","Immersive"],p:"$$"},
+{id:22,a:"the-strip",c:"Experience",t:"High Roller Observation Wheel",e:"\uD83C\uDFA1",d:"The world's tallest observation wheel at 550 feet. A 30-minute revolution with 360-degree views. Opt for the Happy Half Hour cabin with open bar.",g:"High Roller LINQ Promenade Las Vegas",tg:["Views","Drinks"],p:"$$"},
+{id:23,a:"the-strip",c:"Experience",t:"Helicopter Night Flight",e:"\uD83D\uDE81",d:"Soar over the glowing Strip in a helicopter at night. 12-minute flights show you every major landmark from above. Unforgettable.",g:"helicopter tour Las Vegas Strip",tg:["Thrill","Night"],p:"$$$"},
+{id:24,a:"the-strip",c:"Culture",t:"Cirque du Soleil O",e:"\uD83C\uDFAA",d:"The legendary water-based Cirque show at Bellagio. Acrobatics, synchronized swimming, and diving in a 1.5 million gallon pool. World class.",g:"Cirque du Soleil O Bellagio Las Vegas",tg:["Show","Iconic"],p:"$$$"},
+{id:25,a:"the-strip",c:"Experience",t:"The Sphere Experience",e:"\uD83C\uDF10",d:"The world's largest spherical structure featuring a massive wraparound LED interior. Catch films and concerts in a truly next-generation venue.",g:"Sphere Las Vegas",tg:["Tech","Entertainment"],p:"$$$"},
+{id:26,a:"the-strip",c:"Experience",t:"Strat SkyJump",e:"\uD83E\uDDD7",d:"Leap off the tallest freestanding observation tower in the US. A controlled 829-foot descent at speeds up to 40 mph. Not for the faint of heart.",g:"Strat SkyJump Las Vegas",tg:["Thrill","Adrenaline"],p:"$$$"},
+{id:27,a:"the-strip",c:"Food & Drink",t:"Bacchanal Buffet at Caesars",e:"\uD83C\uDF7D\uFE0F",d:"Widely considered the best buffet in Vegas. Nine open kitchens serving over 250 dishes spanning global cuisines. Worth every dollar.",g:"Bacchanal Buffet Caesars Palace Las Vegas",tg:["Dining","Iconic"],p:"$$"},
+{id:28,a:"the-strip",c:"Experience",t:"Venetian Gondola Ride",e:"\uD83D\uDEF6",d:"Float through the Grand Canal on a romantic gondola ride with a singing gondolier. Indoor and outdoor routes available. Pure Vegas charm.",g:"Venetian Gondola Rides Las Vegas",tg:["Romantic","Unique"],p:"$$"},
+{id:29,a:"the-strip",c:"Experience",t:"Topgolf Las Vegas",e:"\u26F3",d:"Multi-level driving range with a rooftop terrace, full bar, and Strip views. Great food, climate-controlled hitting bays, and live music.",g:"Topgolf Las Vegas",tg:["Sports","Social"],p:"$$"},
+{id:30,a:"the-strip",c:"Experience",t:"Eiffel Tower Viewing Deck",e:"\uD83D\uDDFC",d:"The 46th floor observation deck at Paris Las Vegas offers stunning 360-degree views. At night, the tower sparkles every 30 minutes.",g:"Eiffel Tower Experience Paris Las Vegas",tg:["Views","Romantic"],p:"$$"},
+{id:31,a:"the-strip",c:"Food & Drink",t:"Secret Pizza at Cosmo",e:"\uD83C\uDF55",d:"No sign, no menu board. Find the hidden hallway on the 3rd floor of The Cosmopolitan for some of the best late-night slices in Vegas.",g:"Secret Pizza Cosmopolitan Las Vegas",tg:["Late Night","Hidden Gem"],p:"$"},
+{id:32,a:"the-strip",c:"Culture",t:"Titanic Artifact Exhibition",e:"\uD83D\uDEA2",d:"Hundreds of artifacts recovered from the Titanic wreck at the Luxor. A 15-ton piece of the hull, recreated cabins, and deeply moving exhibits.",g:"Titanic Exhibition Luxor Las Vegas",tg:["History","Museum"],p:"$$"},
+{id:33,a:"the-strip",c:"Experience",t:"Swingers Crazy Golf",e:"\u26F3",d:"Adults-only mini golf at Mandalay Bay with craft cocktails, great pizza, and carnival games. British-style crazy golf with a Vegas twist.",g:"Swingers Mandalay Bay Las Vegas",tg:["Fun","Social"],p:"$$"},
+{id:34,a:"the-strip",c:"Experience",t:"FlyOver Las Vegas",e:"\u2708\uFE0F",d:"A flying ride simulation that takes you soaring over America's most stunning landscapes. Wind, mist, and scent effects make it feel real.",g:"FlyOver Las Vegas Strip",tg:["Immersive","Family"],p:"$$"},
+{id:35,a:"the-strip",c:"Food & Drink",t:"Gordon Ramsay Hell's Kitchen",e:"\uD83D\uDD25",d:"The restaurant inspired by the TV show at Caesars Palace. Signature beef Wellington, sticky toffee pudding, and fiery decor. Reservations essential.",g:"Gordon Ramsay Hells Kitchen Las Vegas",tg:["Celebrity Chef","Dining"],p:"$$$"},
+{id:36,a:"the-strip",c:"Experience",t:"Bodies Exhibition",e:"\uD83E\uDDB4",d:"Real preserved human bodies and organs at the Luxor. Thirteen galleries covering every system of the human body. Educational and fascinating.",g:"Bodies Exhibition Luxor Las Vegas",tg:["Science","Museum"],p:"$$"},
+{id:37,a:"the-strip",c:"Food & Drink",t:"Mon Ami Gabi Patio Brunch",e:"\u2615",d:"French bistro with the best patio on the Strip, overlooking the Bellagio fountains. Steak frites, crepes, and people watching at its finest.",g:"Mon Ami Gabi Paris Las Vegas",tg:["Brunch","Views"],p:"$$"},
+{id:38,a:"the-strip",c:"Experience",t:"Madame Tussauds",e:"\uD83E\uDD33",d:"Get up close with wax figures of celebrities, athletes, and pop culture icons at the Venetian. Tons of photo ops and interactive experiences.",g:"Madame Tussauds Las Vegas",tg:["Fun","Photo Op"],p:"$$"},
+{id:39,a:"the-strip",c:"Experience",t:"Mandalay Bay Shark Reef",e:"\uD83E\uDD88",d:"Walk through an underwater tunnel surrounded by sharks, rays, and sea turtles. Over 2,000 animals in 1.6 million gallons of seawater.",g:"Shark Reef Aquarium Mandalay Bay Las Vegas",tg:["Family","Aquarium"],p:"$$"},
+{id:40,a:"the-strip",c:"Food & Drink",t:"Wicked Spoon Buffet",e:"\uD83C\uDF72",d:"The Cosmopolitan's upscale buffet with individually plated dishes instead of chafing pans. Great brunch with unlimited champagne option.",g:"Wicked Spoon Cosmopolitan Las Vegas",tg:["Brunch","Dining"],p:"$$"},
+{id:41,a:"the-strip",c:"Experience",t:"Las Vegas Premium Outlets",e:"\uD83D\uDECD\uFE0F",d:"Designer brands at discount prices just minutes from the Strip. Calvin Klein, Nike, Under Armour, Coach, and 150+ more stores.",g:"Las Vegas North Premium Outlets",tg:["Shopping","Deals"],p:"Free Entry"},
+{id:42,a:"the-strip",c:"Experience",t:"Coca-Cola Store Tasting",e:"\uD83E\uDD64",d:"Sample 16 Coca-Cola flavors from around the world for $20. The Russian cucumber soda is legendary. Fun memorabilia and a giant Coke bear.",g:"Coca-Cola Store Las Vegas Strip",tg:["Tasting","Family"],p:"$"},
+{id:43,a:"the-strip",c:"Experience",t:"Paradox Museum",e:"\uD83E\uDE9E",d:"Over 90 mind-bending exhibits at the Showcase Mall. Interactive illusions, gravity-defying rooms, and Instagram-worthy photo spots throughout.",g:"Paradox Museum Las Vegas",tg:["Interactive","Fun"],p:"$$"},
+{id:44,a:"the-strip",c:"Culture",t:"Blue Man Group",e:"\uD83D\uDD35",d:"Percussion, comedy, and multimedia spectacle at the Luxor. A wild sensory experience unlike any other show in Vegas. Great for all ages.",g:"Blue Man Group Luxor Las Vegas",tg:["Show","Family"],p:"$$"},
+{id:45,a:"the-strip",c:"Food & Drink",t:"Nobu at Caesars Palace",e:"\uD83C\uDF63",d:"World-renowned Japanese-Peruvian fusion by Chef Nobu Matsuhisa. The black cod miso is legendary. One of the finest dining experiences on the Strip.",g:"Nobu Restaurant Caesars Palace Las Vegas",tg:["Fine Dining","Japanese"],p:"$$$"},
+{id:46,a:"the-strip",c:"Experience",t:"T-Mobile Arena Event",e:"\uD83C\uDFDF\uFE0F",d:"Home of the Vegas Golden Knights and host to UFC fights, concerts, and major events. The electric atmosphere is pure Vegas energy.",g:"T-Mobile Arena Las Vegas",tg:["Sports","Entertainment"],p:"$$"},
+{id:47,a:"the-strip",c:"Experience",t:"Fashion Show Mall Runway",e:"\uD83D\uDC57",d:"One of the largest malls in the US with a retractable runway for live fashion shows on weekends. Free shows, world-class shopping.",g:"Fashion Show Mall Las Vegas",tg:["Shopping","Fashion"],p:"Free Entry"},
+{id:48,a:"the-strip",c:"Experience",t:"Museum of Illusions",e:"\uD83E\uDE9E",d:"15,000 square feet of mind-bending optical illusions at 63 CityCenter. Infinity mirrors, forced perspective rooms, and a poker game with yourself.",g:"Museum of Illusions Las Vegas",tg:["Interactive","Photo Op"],p:"$$"},
+{id:49,a:"the-strip",c:"Food & Drink",t:"Javier's at Aria",e:"\uD83C\uDF2E",d:"Upscale Mexican cuisine that locals say is the best in the country. Tacos, guacamole tableside, and Clase Azul margaritas in a gorgeous setting.",g:"Javiers Aria Las Vegas",tg:["Mexican","Fine Dining"],p:"$$$"},
+{id:50,a:"the-strip",c:"Experience",t:"Allegiant Stadium Tour",e:"\uD83C\uDFC8",d:"Behind-the-scenes tour of the Raiders' $1.9 billion stadium. Visit the locker room, field level, and luxury suites of this architectural marvel.",g:"Allegiant Stadium Las Vegas",tg:["Sports","Architecture"],p:"$$"},
+
+// DOWNTOWN PAID + EXPERIENCES (25 more = 45 total)
+{id:121,a:"downtown",c:"Culture",t:"Neon Museum Night Tour",e:"\uD83D\uDCA1",d:"Walk through the Neon Boneyard after dark where retired Vegas signs glow again. Classic signage from the Stardust, Sassy Sally's, and dozens more.",g:"Neon Museum Las Vegas",tg:["Photography","History"],p:"$$"},
+{id:122,a:"downtown",c:"Culture",t:"Mob Museum Full Experience",e:"\uD83D\uDD75\uFE0F",d:"Interactive exhibits on organized crime history, a firearms simulator, and a real speakeasy in the basement serving Prohibition-era cocktails.",g:"Mob Museum Las Vegas",tg:["History","Interactive"],p:"$$"},
+{id:123,a:"downtown",c:"Experience",t:"SlotZilla Zipline",e:"\u26A1",d:"Launch from an 11-story slot machine and fly Superman-style over Fremont Street at 40 mph. The best way to see the canopy up close.",g:"SlotZilla Zipline Las Vegas",tg:["Thrill","Iconic"],p:"$$"},
+{id:124,a:"downtown",c:"Food & Drink",t:"Esther's Kitchen",e:"\uD83C\uDF5D",d:"Seasonal Italian comfort food with some of the best bread in Vegas. Outdoor patio in the Arts District. A James Trees masterpiece.",g:"Esthers Kitchen Las Vegas",tg:["Italian","Local Fave"],p:"$$"},
+{id:125,a:"downtown",c:"Food & Drink",t:"Carson Kitchen",e:"\uD83C\uDF74",d:"Creative American small plates in a converted mid-century motel. The crispy chicken skins with smoked honey are a must. Rooftop patio.",g:"Carson Kitchen Las Vegas",tg:["Small Plates","Rooftop"],p:"$$"},
+{id:126,a:"downtown",c:"Nightlife",t:"Atomic Liquors",e:"\uD83C\uDF78",d:"Vegas's oldest freestanding bar, where locals once watched nuclear tests from the roof. Great craft cocktails and a living piece of history.",g:"Atomic Liquors Las Vegas",tg:["Historic","Cocktails"],p:"$"},
+{id:127,a:"downtown",c:"Nightlife",t:"Commonwealth Rooftop",e:"\uD83C\uDF1F",d:"A two-story cocktail bar on Fremont East with a rooftop overlooking downtown. Prohibition-era decor, great drinks, and a secret room.",g:"Commonwealth Las Vegas",tg:["Rooftop","Cocktails"],p:"$$"},
+{id:128,a:"downtown",c:"Food & Drink",t:"Le Thai Drunken Noodles",e:"\uD83C\uDF5C",d:"Vibrant Thai street food with a patio on Fremont East. The drunken noodles are legendary among locals. Perfect fuel between bars and galleries.",g:"Le Thai Las Vegas",tg:["Thai","Patio"],p:"$"},
+{id:129,a:"downtown",c:"Experience",t:"Circa Stadium Swim",e:"\uD83C\uDFCA",d:"A rooftop pool amphitheater with a massive LED screen, six pools, and cabanas. Watch games poolside on the world's largest sportsbook screen.",g:"Stadium Swim Circa Las Vegas",tg:["Pool","Sports"],p:"$$"},
+{id:130,a:"downtown",c:"Food & Drink",t:"Evel Pie",e:"\uD83C\uDF55",d:"Punk rock pizza on Fremont East with Evel Knievel memorabilia covering every wall. Massive New York-style slices and late-night energy.",g:"Evel Pie Las Vegas",tg:["Late Night","Casual"],p:"$"},
+{id:131,a:"downtown",c:"Nightlife",t:"Velveteen Rabbit",e:"\uD83D\uDC07",d:"A whimsical cocktail bar in the Arts District with seasonal menus, an eclectic patio, and art-forward vibes. One of the best bars in Vegas.",g:"Velveteen Rabbit Las Vegas",tg:["Cocktails","Arts District"],p:"$$"},
+{id:132,a:"downtown",c:"Food & Drink",t:"Able Baker Brewing",e:"\uD83C\uDF7A",d:"A craft brewery in the Arts District with an extensive beer selection and a welcoming taproom. Perfect post-First Friday hangout.",g:"Able Baker Brewing Company Las Vegas",tg:["Beer","Local"],p:"$"},
+{id:133,a:"downtown",c:"Food & Drink",t:"Hugo's Cellar",e:"\uD83E\uDD40",d:"Old-school steakhouse at the Four Queens where every woman receives a red rose. Classic tableside preparations and an incredible wine list.",g:"Hugos Cellar Las Vegas",tg:["Steakhouse","Classic"],p:"$$$"},
+{id:134,a:"downtown",c:"Experience",t:"Downtown Grand Pool Deck",e:"\u2600\uFE0F",d:"A chill pool deck with views of the Fremont Street canopy. Affordable day passes, cabanas, and a more relaxed vibe than Strip pool clubs.",g:"Downtown Grand Hotel Las Vegas pool",tg:["Pool","Relaxing"],p:"$"},
+{id:135,a:"downtown",c:"Food & Drink",t:"Cornish Pasty Co.",e:"\uD83E\uDD56",d:"A British pub in the Arts District with a massive selection of pasties, craft beers, and a laid-back patio. Great post-gallery fuel.",g:"Cornish Pasty Company Las Vegas",tg:["British","Casual"],p:"$"},
+{id:136,a:"downtown",c:"Experience",t:"Downtown Cocktail Room",e:"\uD83C\uDF79",d:"A dimly lit speakeasy-style lounge that was one of the first craft cocktail bars in Vegas. Expert mixologists and a moody atmosphere.",g:"Downtown Cocktail Room Las Vegas",tg:["Speakeasy","Cocktails"],p:"$$"},
+{id:137,a:"downtown",c:"Experience",t:"Gold Spike Social Club",e:"\uD83C\uDFB2",d:"A bar and social club with giant Jenga, beer pong, shuffleboard, and a backyard vibe. Free entry, cheap drinks, and good times.",g:"Gold Spike Las Vegas",tg:["Games","Social"],p:"$"},
+{id:138,a:"downtown",c:"Culture",t:"Zak Bagans Haunted Museum",e:"\uD83D\uDC7B",d:"A collection of haunted artifacts in a genuinely spooky historic mansion. From the host of Ghost Adventures. No photos allowed inside.",g:"Zak Bagans Haunted Museum Las Vegas",tg:["Spooky","Unique"],p:"$$"},
+{id:139,a:"downtown",c:"Food & Drink",t:"8 East at Circa",e:"\uD83C\uDF63",d:"Pan-Asian cuisine with standout brisket fried rice and sushi. Stylish interiors inside the newest downtown resort. Locals rave about it.",g:"8 East Circa Las Vegas",tg:["Asian Fusion","Upscale"],p:"$$"},
+{id:140,a:"downtown",c:"Experience",t:"Koolsville $10 Tattoo",e:"\uD83D\uDC89",d:"A Las Vegas institution offering a menu of small tattoos all under $10. A quirky, permanent souvenir of your Vegas trip.",g:"Koolsville Tattoo Las Vegas",tg:["Unique","Cheap"],p:"$"},
+
+// SUMMERLIN PAID + FOOD (25 more = 45 total)
+{id:221,a:"summerlin",c:"Food & Drink",t:"Nittaya's Secret Kitchen",e:"\uD83C\uDF5C",d:"Intimate Thai restaurant with a secret Kua menu. The Purple Rainforest Curry is Instagram-famous. Locals consider this the best Thai in Vegas.",g:"Nittayas Secret Kitchen Las Vegas",tg:["Thai","Local Fave"],p:"$$"},
+{id:222,a:"summerlin",c:"Food & Drink",t:"Echo & Rig",e:"\uD83E\uDD69",d:"Butcher shop and restaurant combo. Dry-aged steaks, craft cocktails, and a case full of premium cuts. The bone marrow appetizer is incredible.",g:"Echo and Rig Las Vegas",tg:["Steakhouse","Upscale"],p:"$$$"},
+{id:223,a:"summerlin",c:"Food & Drink",t:"Honey Salt",e:"\uD83C\uDF3B",d:"Farm-to-table comfort food on Rampart. Caramelized sea scallops, fried chicken sandwiches, and seasonal menus. A Summerlin staple.",g:"Honey Salt Las Vegas",tg:["Farm to Table","Brunch"],p:"$$"},
+{id:224,a:"summerlin",c:"Food & Drink",t:"Al Solito Posto",e:"\uD83C\uDF5D",d:"Neighborhood Italian with house-made pappardelle Bolognese that locals call the best in Vegas. Wood-fired pizza with perfectly blistered crust.",g:"Al Solito Posto Las Vegas",tg:["Italian","Local Fave"],p:"$$"},
+{id:225,a:"summerlin",c:"Food & Drink",t:"Ohlala French Bistro",e:"\uD83E\uDD50",d:"Authentic French dining with escargot, French onion soup, and filet mignon. Parisian-inspired decor and a calm atmosphere for relaxed evenings.",g:"Ohlala French Bistro Las Vegas",tg:["French","Romantic"],p:"$$"},
+{id:226,a:"summerlin",c:"Experience",t:"Las Vegas Aviators Game",e:"\u26BE",d:"Triple-A baseball at the stunning Las Vegas Ballpark. Great atmosphere, affordable tickets, craft beer, and fireworks on Friday nights.",g:"Las Vegas Ballpark Summerlin",tg:["Sports","Family"],p:"$$"},
+{id:227,a:"summerlin",c:"Experience",t:"Golden Knights Practice",e:"\uD83C\uDFD2",d:"Watch the Vegas Golden Knights practice at City National Arena. Free to watch, with open skate sessions available after. A cool escape from the heat.",g:"City National Arena Las Vegas",tg:["Sports","Free"],p:"Free"},
+{id:228,a:"summerlin",c:"Experience",t:"Red Rock Casino Spa & Pool",e:"\uD83D\uDC86",d:"A luxury resort with a stunning pool complex, full-service spa, bowling alley, and multiple restaurants. A vacation without leaving town.",g:"Red Rock Casino Resort Las Vegas",tg:["Resort","Relaxing"],p:"$$"},
+{id:229,a:"summerlin",c:"Food & Drink",t:"Vintner Grill",e:"\uD83C\uDF77",d:"Farm-to-table American cuisine with Mediterranean influences. White leather booths, patio with cabanas, and an extensive organic wine list.",g:"Vintner Grill Las Vegas",tg:["American","Wine"],p:"$$$"},
+{id:230,a:"summerlin",c:"Food & Drink",t:"Americana",e:"\uD83C\uDF54",d:"Elevated American comfort food in Downtown Summerlin. Creative cocktails, a gorgeous patio, and dishes that go well beyond standard bar food.",g:"Americana Las Vegas Summerlin",tg:["American","Patio"],p:"$$"},
+{id:231,a:"summerlin",c:"Experience",t:"Suncoast Bowling Center",e:"\uD83C\uDFB3",d:"A 64-lane bowling center inside Suncoast Casino. League play, cosmic bowling nights, and a full arcade. Low-key fun for all ages.",g:"Suncoast Bowling Center Las Vegas",tg:["Bowling","Family"],p:"$"},
+{id:232,a:"summerlin",c:"Food & Drink",t:"Meraki Greek Grill",e:"\uD83E\uDD59",d:"Authentic Greek that transports you to the Mediterranean. Perfectly seasoned gyros, fresh salads, and warm hospitality. Locals can not stop talking about it.",g:"Meraki Greek Grill Las Vegas",tg:["Greek","Casual"],p:"$"},
+{id:233,a:"summerlin",c:"Experience",t:"Red Rock Canyon Horseback Ride",e:"\uD83D\uDC0E",d:"Guided horseback rides through the desert landscape around Red Rock Canyon. Sunrise and sunset rides available for stunning photography.",g:"Red Rock Canyon horseback riding",tg:["Outdoors","Unique"],p:"$$"},
+{id:234,a:"summerlin",c:"Food & Drink",t:"Bagel Nook Summerlin",e:"\uD83E\uDD6F",d:"Unconventional stuffed bagels with flavors like Fruity Pebbles, Hot Cheetos, and Oreo. A viral sensation that lives up to the hype.",g:"Bagel Nook Downtown Summerlin Las Vegas",tg:["Breakfast","Viral"],p:"$"},
+{id:235,a:"summerlin",c:"Food & Drink",t:"Frankie's Uptown",e:"\uD83C\uDF78",d:"A neighborhood bar with elevated food, craft cocktails, and a warm vibe. The kind of place where the bartenders know your name.",g:"Frankies Uptown Las Vegas",tg:["Bar","Local"],p:"$"},
+{id:236,a:"summerlin",c:"Experience",t:"Wet'n'Wild / Cowabunga Canyon",e:"\uD83C\uDFC4",d:"A waterpark with 25 slides, a lazy river, wave pool, and a 60-foot freefall drop. The perfect way to beat the Vegas summer heat.",g:"Cowabunga Canyon Las Vegas Summerlin",tg:["Waterpark","Family"],p:"$$"},
+{id:237,a:"summerlin",c:"Food & Drink",t:"Tomoya Japanese Cuisine",e:"\uD83C\uDF63",d:"Top-rated Japanese restaurant with expertly prepared sushi, sashimi, and hot dishes. A quiet neighborhood gem that punches way above its weight.",g:"Tomoya Japanese Cuisine Las Vegas",tg:["Japanese","Sushi"],p:"$$"},
+{id:238,a:"summerlin",c:"Experience",t:"TPC Las Vegas Golf",e:"\u26F3",d:"One of two Tournament Players Club courses in Summerlin. Desert golf with stunning Red Rock views. Public tee times available.",g:"TPC Las Vegas Summerlin",tg:["Golf","Premium"],p:"$$$"},
+{id:239,a:"summerlin",c:"Food & Drink",t:"Cap't Loui Seafood Boil",e:"\uD83E\uDD9E",d:"Authentic Louisiana seafood boils with a secret sauce that has locals obsessed. Shrimp po boys, gumbo, and mountains of crawfish on the patio.",g:"Capt Loui Summerlin Las Vegas",tg:["Seafood","Casual"],p:"$$"},
+{id:240,a:"summerlin",c:"Experience",t:"Spring Mountain Ranch Picnic",e:"\uD83E\uDDFA",d:"State park just west of Summerlin with picnic lawns, red rock backdrops, and summer theater under the stars. A beautiful escape.",g:"Spring Mountain Ranch State Park",tg:["Nature","Family"],p:"$"},
+
+// HENDERSON PAID + FOOD (25 more = 45 total)
+{id:321,a:"henderson",c:"Experience",t:"Green Valley Ranch Resort",e:"\uD83C\uDFE8",d:"Henderson's favorite resort with a gorgeous pool, great restaurants, spa, and a relaxed casino. European-inspired aesthetics. A mini vacation.",g:"Green Valley Ranch Resort Henderson",tg:["Resort","Pool"],p:"$$"},
+{id:322,a:"henderson",c:"Food & Drink",t:"Hank's Fine Steaks",e:"\uD83E\uDD69",d:"Classic steakhouse inside Green Valley Ranch with an old-world vibe, prime cuts, and an extensive wine list. A Henderson special occasion spot.",g:"Hanks Fine Steaks Henderson",tg:["Steakhouse","Upscale"],p:"$$$"},
+{id:323,a:"henderson",c:"Experience",t:"Cowabunga Bay Waterpark",e:"\uD83C\uDFC4",d:"A massive waterpark with slides, a lazy river, wave pool, and splash zones. The top family attraction in Henderson during summer months.",g:"Cowabunga Bay Henderson",tg:["Waterpark","Family"],p:"$$"},
+{id:324,a:"henderson",c:"Culture",t:"Clark County Museum",e:"\uD83C\uDFDB\uFE0F",d:"A 30-acre complex with historic homes, a ghost town, mining trail, and Southern Nevada history exhibits. Only $2 admission. Best deal in Henderson.",g:"Clark County Museum Henderson",tg:["History","Budget"],p:"$"},
+{id:325,a:"henderson",c:"Experience",t:"Lion Habitat Ranch",e:"\uD83E\uDD81",d:"A big cat sanctuary where you can see rescued lions up close. Guided tours, feeding opportunities, and giraffe encounters. Not a zoo, a rescue.",g:"Lion Habitat Ranch Henderson",tg:["Animals","Family"],p:"$$"},
+{id:326,a:"henderson",c:"Food & Drink",t:"Borracha Mexican Cantina",e:"\uD83C\uDF2E",d:"Lively Mexican restaurant at Green Valley Ranch with creative tacos, tableside guacamole, and a vibrant bar scene. Great happy hour.",g:"Borracha Mexican Cantina Henderson",tg:["Mexican","Happy Hour"],p:"$$"},
+{id:327,a:"henderson",c:"Outdoors",t:"Lake Mead Kayak Tour",e:"\uD83D\uDEF6",d:"Guided kayak tours through hidden coves and slot canyons on Lake Mead. Paddle to Emerald Cave where the water glows turquoise green.",g:"Emerald Cave kayak Lake Mead",tg:["Kayaking","Adventure"],p:"$$"},
+{id:328,a:"henderson",c:"Food & Drink",t:"Settebello Pizzeria",e:"\uD83C\uDF55",d:"Certified Neapolitan pizza in Henderson's District. Wood-fired, authentic, and widely regarded as some of the best pizza in the valley.",g:"Settebello Pizzeria Henderson",tg:["Pizza","Authentic"],p:"$"},
+{id:329,a:"henderson",c:"Experience",t:"M Resort Pool & Views",e:"\uD83C\uDFCA",d:"The M Resort has floor-to-ceiling windows with sweeping valley views and a gorgeous pool. Great restaurants and a more sophisticated local vibe.",g:"M Resort Henderson",tg:["Resort","Views"],p:"$$"},
+{id:330,a:"henderson",c:"Outdoors",t:"Bootleg Canyon Zipline",e:"\u26A1",d:"Fly across Boulder Canyon on ziplines reaching speeds of 60 mph with views of Lake Mead and the desert below. Four lines, each more thrilling.",g:"Bootleg Canyon zipline Boulder City",tg:["Thrill","Outdoors"],p:"$$"},
+{id:331,a:"henderson",c:"Food & Drink",t:"Lucille's Smokehouse BBQ",e:"\uD83C\uDF56",d:"Southern BBQ and comfort food at The District. Smoked ribs, brisket, and cornbread in a warm, family-friendly setting. Great patio.",g:"Lucilles BBQ Henderson",tg:["BBQ","Family"],p:"$$"},
+{id:332,a:"henderson",c:"Experience",t:"Ethel M Holiday Lights",e:"\uD83C\uDF84",d:"Every November through January, the cactus garden transforms with over a million holiday lights. Free admission. The most magical free event in Henderson.",g:"Ethel M holiday cactus garden lights Henderson",tg:["Seasonal","Free"],p:"Free"},
+{id:333,a:"henderson",c:"Food & Drink",t:"Mojave Brewing Company",e:"\uD83C\uDF7A",d:"Local craft brewery with a rotating tap list and laid-back taproom. Part of Henderson's growing brewery district. Try a flight.",g:"Mojave Brewing Company Henderson",tg:["Beer","Local"],p:"$"},
+{id:334,a:"henderson",c:"Outdoors",t:"Valley of Fire Guided Hike",e:"\uD83E\uDDED",d:"Hire a local guide for an in-depth exploration of petroglyphs, geology, and hidden arches. Learn the stories behind the formations.",g:"Valley of Fire guided tour",tg:["Hiking","Educational"],p:"$$"},
+{id:335,a:"henderson",c:"Experience",t:"Henderson Pavilion Concert",e:"\uD83C\uDFB6",d:"Outdoor amphitheater hosting concerts, plays, and festivals year-round. Bring a lawn chair and enjoy live entertainment under the desert sky.",g:"Henderson Pavilion",tg:["Music","Outdoor"],p:"$"},
+{id:336,a:"henderson",c:"Food & Drink",t:"Rachel's Kitchen",e:"\uD83E\uDD57",d:"A healthy cafe chain born in Henderson with fresh salads, paninis, acai bowls, and smoothies. Clean eating done right. Multiple locations.",g:"Rachels Kitchen Henderson",tg:["Healthy","Brunch"],p:"$"},
+{id:337,a:"henderson",c:"Experience",t:"Hoover Dam Tour",e:"\uD83C\uDFD7\uFE0F",d:"Go beyond the free walk with the guided Powerplant Tour or Dam Tour. See the massive generators, tunnels, and learn the incredible construction story.",g:"Hoover Dam tour",tg:["History","Engineering"],p:"$$"},
+{id:338,a:"henderson",c:"Food & Drink",t:"Bad Beat Brewing",e:"\uD83C\uDF7B",d:"Another standout in Henderson's brewery park. Known for creative seasonal brews and a chill outdoor seating area. Very dog-friendly.",g:"Bad Beat Brewing Henderson",tg:["Beer","Dog Friendly"],p:"$"},
+{id:339,a:"henderson",c:"Experience",t:"Lake Las Vegas Paddleboard",e:"\uD83C\uDFC4",d:"Rent a paddleboard or kayak on Lake Las Vegas for a peaceful morning on the water surrounded by desert mountains. Rentals available hourly.",g:"Lake Las Vegas water sports Henderson",tg:["Water Sports","Relaxing"],p:"$"},
+{id:340,a:"henderson",c:"Food & Drink",t:"Todd's Unique Dining",e:"\uD83C\uDF7D\uFE0F",d:"A hidden gem run by Chef Todd Clore serving creative American cuisine in a small, intimate setting. One of the most underrated restaurants in the valley.",g:"Todds Unique Dining Henderson",tg:["Fine Dining","Hidden Gem"],p:"$$$"},
+
+// NORTH LV PAID (15 more = 30 total)
+{id:416,a:"north-lv",c:"Experience",t:"Las Vegas Motor Speedway",e:"\uD83C\uDFCE\uFE0F",d:"Drive a real NASCAR stock car or exotic supercar on the speedway. Multiple experiences from ride-alongs to full driving packages. Pure adrenaline.",g:"Las Vegas Motor Speedway",tg:["Thrill","Cars"],p:"$$$"},
+{id:417,a:"north-lv",c:"Experience",t:"Dig This! Heavy Equipment",e:"\uD83D\uDE9C",d:"Operate bulldozers and excavators in a giant sandbox. Stack tires, dig trenches, and build mounds. A uniquely Vegas experience for adults.",g:"Dig This Las Vegas",tg:["Unique","Fun"],p:"$$$"},
+{id:418,a:"north-lv",c:"Food & Drink",t:"Aliante Casino Dining",e:"\uD83C\uDF74",d:"MRKT Sea & Land offers upscale dining with a seafood focus. The resort also has Farm 24/7 for casual eats and a solid sports bar.",g:"Aliante Casino Hotel N. Las Vegas dining",tg:["Dining","Casino"],p:"$$"},
+{id:419,a:"north-lv",c:"Experience",t:"Nellis AFB Air Show",e:"\u2708\uFE0F",d:"The annual Aviation Nation air show at Nellis Air Force Base features the Thunderbirds, military displays, and incredible aerial performances. Free admission.",g:"Nellis Air Force Base air show Las Vegas",tg:["Aviation","Free"],p:"Free"},
+{id:420,a:"north-lv",c:"Experience",t:"Craig Ranch Skate Park",e:"\uD83D\uDEF9",d:"One of the largest free public skate parks in the valley. Well-maintained bowls, rails, and street features. Helmets required for minors.",g:"Craig Ranch Regional Park skate park",tg:["Skating","Free"],p:"Free"},
+{id:421,a:"north-lv",c:"Food & Drink",t:"Mabel's BBQ",e:"\uD83C\uDF56",d:"Celebrity chef Michael Symon's BBQ joint at the Palms. Cleveland-style BBQ with Eastern European spice influences. The brisket is phenomenal.",g:"Mabels BBQ Las Vegas",tg:["BBQ","Celebrity Chef"],p:"$$"},
+{id:422,a:"north-lv",c:"Outdoors",t:"Desert National Wildlife Refuge",e:"\uD83E\uDD85",d:"The largest wildlife refuge in the lower 48 states. Bighorn sheep habitat, desert hiking, and vast solitude. Free to enter. Bring lots of water.",g:"Desert National Wildlife Refuge Las Vegas",tg:["Wildlife","Solitude"],p:"Free"},
+{id:423,a:"north-lv",c:"Experience",t:"Cannery Casino Entertainment",e:"\uD83C\uDFB5",d:"A locals casino with surprisingly good live entertainment, a movie theater, and affordable dining. The Star of the Desert Arena hosts concerts and events.",g:"Cannery Casino N. Las Vegas",tg:["Entertainment","Budget"],p:"$"},
+{id:424,a:"north-lv",c:"Food & Drink",t:"Hainan Chicken at Mama's",e:"\uD83C\uDF57",d:"Mama's Kitchen in N. Las Vegas serves some of the best Chinese comfort food in the valley. Known for generous portions and authentic flavors.",g:"Mamas Kitchen North Las Vegas",tg:["Chinese","Local"],p:"$"},
+{id:425,a:"north-lv",c:"Experience",t:"Vegas Indoor Skydiving",e:"\uD83E\uDE82",d:"Experience freefall in a vertical wind tunnel without jumping from a plane. Professional instructors guide you through the flight. All skill levels.",g:"Vegas Indoor Skydiving",tg:["Thrill","Indoor"],p:"$$"},
+{id:426,a:"north-lv",c:"Outdoors",t:"Mt Charleston Day Trip",e:"\uD83C\uDFD4\uFE0F",d:"Drive 45 minutes to drop 30 degrees in temperature. Pine forests, hiking trails, and even skiing in winter. A complete escape from the desert.",g:"Mount Charleston Las Vegas",tg:["Mountains","Escape"],p:"Free"},
+{id:427,a:"north-lv",c:"Experience",t:"N. Las Vegas Airport Scenic Flight",e:"\u2708\uFE0F",d:"Small plane scenic flights depart from North LV Airport over Red Rock Canyon and the Strip. More affordable than Strip helicopter tours.",g:"North Las Vegas Airport scenic flights",tg:["Scenic","Views"],p:"$$"},
+{id:428,a:"north-lv",c:"Food & Drink",t:"Roberto's Taco Shop",e:"\uD83C\uDF2F",d:"A Vegas institution with multiple locations. The carne asada burritos and green sauce are legendary. Open late, always packed, always worth it.",g:"Robertos Taco Shop Las Vegas",tg:["Mexican","Late Night"],p:"$"},
+{id:429,a:"north-lv",c:"Experience",t:"Speedvegas Exotic Driving",e:"\uD83C\uDFCE\uFE0F",d:"Drive Ferraris, Lamborghinis, and Porsches on a 1.5-mile racetrack. Multiple packages from ride-alongs to full driving experiences.",g:"Speedvegas Las Vegas",tg:["Cars","Thrill"],p:"$$$"},
+{id:430,a:"north-lv",c:"Experience",t:"Escape Room Challenge",e:"\uD83D\uDD10",d:"Several escape room venues in North LV offer themed puzzle experiences. Great for groups who want something different beyond the casino floor.",g:"escape rooms N. Las Vegas",tg:["Puzzles","Group"],p:"$$"},
+
+// CENTENNIAL PAID (15 more = 30 total)
+{id:516,a:"centennial",c:"Food & Drink",t:"DW Bistro",e:"\uD83C\uDF74",d:"A beloved local restaurant blending New Mexican and Jamaican flavors. Green chile cheeseburgers, jerk chicken, and a fantastic patio vibe.",g:"DW Bistro Las Vegas",tg:["Fusion","Local Fave"],p:"$$"},
+{id:517,a:"centennial",c:"Experience",t:"Tivoli Village Dining & Wine",e:"\uD83C\uDF77",d:"Mediterranean-themed outdoor village with upscale restaurants, wine bars, and boutique shopping. A European-style evening out on the west side.",g:"Tivoli Village Las Vegas",tg:["Dining","Shopping"],p:"$$"},
+{id:518,a:"centennial",c:"Food & Drink",t:"Lindo Michoacan",e:"\uD83C\uDF2E",d:"Authentic regional Mexican cuisine with a massive menu and vibrant atmosphere. Known for the mole and the lively weekend scene. A local institution.",g:"Lindo Michoacan Las Vegas",tg:["Mexican","Authentic"],p:"$"},
+{id:519,a:"centennial",c:"Experience",t:"Skye Canyon Community Events",e:"\uD83C\uDF89",d:"The newest master-planned community hosts free events like outdoor movies, food truck festivals, and holiday celebrations at Skye Canyon Park.",g:"Skye Canyon events Las Vegas",tg:["Community","Free"],p:"Free"},
+{id:520,a:"centennial",c:"Outdoors",t:"Mt Charleston Cathedral Rock",e:"\u26EA",d:"A moderate 3-mile round trip hike to Cathedral Rock on Mt Charleston. Pine forests and cool temperatures just 45 min from Centennial Hills.",g:"Cathedral Rock Trail Mount Charleston",tg:["Hiking","Cool"],p:"Free"},
+{id:521,a:"centennial",c:"Food & Drink",t:"Pizza Rock",e:"\uD83C\uDF55",d:"Award-winning pizza from a World Pizza Champion. Multiple styles from Neapolitan to New York. Creative pies and a great beer selection.",g:"Pizza Rock Las Vegas",tg:["Pizza","Award-Winning"],p:"$"},
+{id:522,a:"centennial",c:"Experience",t:"Suncoast Casino Movies & Bowling",e:"\uD83C\uDFAC",d:"A locals casino with a 16-screen movie theater, 64-lane bowling center, bingo, and affordable dining. Solid entertainment for the whole family.",g:"Suncoast Hotel Casino Las Vegas",tg:["Movies","Bowling"],p:"$"},
+{id:523,a:"centennial",c:"Outdoors",t:"Mary Jane Falls Hike",e:"\uD83D\uDCA7",d:"A popular 2.5-mile trail to a seasonal waterfall on Mt Charleston. Pine-scented air and mountain scenery that feels nothing like Vegas.",g:"Mary Jane Falls Mount Charleston",tg:["Hiking","Waterfall"],p:"Free"},
+{id:524,a:"centennial",c:"Food & Drink",t:"Avery's Coffee",e:"\u2615",d:"A local coffee roaster with a cozy shop perfect for morning work sessions. Single-origin pour-overs and pastries in a welcoming space.",g:"Averys Coffee Las Vegas",tg:["Coffee","Local"],p:"$"},
+{id:525,a:"centennial",c:"Experience",t:"Santa Fe Station Bowling",e:"\uD83C\uDFB3",d:"A locals casino with a well-maintained bowling center, movie theater, and surprisingly good sushi restaurant. Great value entertainment.",g:"Santa Fe Station Las Vegas",tg:["Bowling","Casino"],p:"$"},
+{id:526,a:"centennial",c:"Outdoors",t:"Bristlecone Loop Trail",e:"\uD83C\uDF32",d:"A moderate 6-mile loop through ancient bristlecone pines on Mt Charleston. Some of the oldest living trees on Earth in a stunning alpine setting.",g:"Bristlecone Loop Trail Mount Charleston",tg:["Hiking","Ancient"],p:"Free"},
+{id:527,a:"centennial",c:"Food & Drink",t:"Hash House A Go Go",e:"\uD83E\uDD5E",d:"Twisted Farm Food with massive portions. The Sage Fried Chicken Benedict and Chicken & Waffles are legendary. Come very hungry.",g:"Hash House A Go Go Las Vegas",tg:["Breakfast","Huge Portions"],p:"$$"},
+{id:528,a:"centennial",c:"Experience",t:"Lee Canyon Ski Resort",e:"\u26F7\uFE0F",d:"Skiing and snowboarding just 45 minutes from the Strip. Small but charming resort on Mt Charleston with rentals and lessons available.",g:"Lee Canyon ski resort Las Vegas",tg:["Skiing","Winter"],p:"$$"},
+{id:529,a:"centennial",c:"Food & Drink",t:"Freed's Bakery",e:"\uD83C\uDF82",d:"A Las Vegas institution since 1959 making cakes, pastries, and cupcakes. Featured on TV multiple times. The cupcakes alone are worth the trip.",g:"Freeds Bakery Las Vegas",tg:["Bakery","Institution"],p:"$"},
+{id:530,a:"centennial",c:"Experience",t:"Gilcrease Orchard U-Pick",e:"\uD83C\uDF4E",d:"A working farm in the northwest valley offering seasonal u-pick produce. Peaches in summer, pumpkins in fall. A slice of rural life in the city.",g:"Gilcrease Orchard Las Vegas",tg:["Farm","Seasonal"],p:"$"},
+
+// ENTERPRISE PAID (15 more = 30 total)
+{id:616,a:"enterprise",c:"Experience",t:"Town Square Events & Dining",e:"\uD83C\uDF33",d:"Outdoor shopping center with a central park, splash pad, free live events, and great restaurants like Yard House and Tommy Bahama.",g:"Town Square Las Vegas",tg:["Shopping","Family"],p:"Free Entry"},
+{id:617,a:"enterprise",c:"Food & Drink",t:"Grape Street Wine Bar",e:"\uD83C\uDF77",d:"A casual wine bar and bistro at Town Square with an extensive by-the-glass list, flatbreads, and a gorgeous patio. Date night favorite.",g:"Grape Street Wine Bar Las Vegas",tg:["Wine","Patio"],p:"$$"},
+{id:618,a:"enterprise",c:"Experience",t:"Allegiant Stadium Event",e:"\uD83C\uDFC8",d:"Home of the Raiders and host to massive concerts, soccer matches, and special events. The $1.9 billion stadium is an architectural marvel.",g:"Allegiant Stadium Las Vegas",tg:["Sports","Concerts"],p:"$$"},
+{id:619,a:"enterprise",c:"Food & Drink",t:"Tacotarian",e:"\uD83C\uDF2E",d:"Award-winning plant-based Mexican food that even meat lovers rave about. Creative vegan tacos, burritos, and nachos. Nationally recognized.",g:"Tacotarian Las Vegas",tg:["Vegan","Mexican"],p:"$"},
+{id:620,a:"enterprise",c:"Experience",t:"Topgolf Las Vegas",e:"\u26F3",d:"Multi-level driving range with Strip views, a rooftop terrace, full bar, and great food. Climate-controlled bays and live music.",g:"Topgolf Las Vegas",tg:["Sports","Social"],p:"$$"},
+{id:621,a:"enterprise",c:"Outdoors",t:"Sloan Canyon Conservation Hike",e:"\uD83E\uDDED",d:"Southern approach to Sloan Canyon for fewer crowds and raw desert hiking. Ancient petroglyphs and desert tortoise habitat.",g:"Sloan Canyon National Conservation Area",tg:["Hiking","Desert"],p:"Free"},
+{id:622,a:"enterprise",c:"Food & Drink",t:"The Stove",e:"\uD83C\uDF73",d:"All-day brunch spot with creative dishes and a warm atmosphere. The cinnamon roll pancakes and lobster mac are fan favorites.",g:"The Stove Las Vegas",tg:["Brunch","Creative"],p:"$$"},
+{id:623,a:"enterprise",c:"Experience",t:"South Point Arena & Events",e:"\uD83C\uDFAA",d:"An equestrian arena and events center hosting rodeos, horse shows, concerts, and community events. Check the calendar for free events.",g:"South Point Arena Las Vegas",tg:["Events","Entertainment"],p:"$"},
+{id:624,a:"enterprise",c:"Food & Drink",t:"Pin-Up Pizza at Planet Hollywood",e:"\uD83C\uDF55",d:"Massive 24-inch slices at Planet Hollywood. Consistently voted among the best pizza on the Strip. A great late-night option.",g:"Pin-Up Pizza Las Vegas",tg:["Pizza","Late Night"],p:"$"},
+{id:625,a:"enterprise",c:"Experience",t:"Silverton Aquarium",e:"\uD83D\uDC20",d:"A 117,000-gallon saltwater aquarium inside Silverton Casino with stingrays, sharks, and free mermaid shows. Completely free to watch.",g:"Silverton Casino Aquarium Las Vegas",tg:["Family","Free"],p:"Free"},
+{id:626,a:"enterprise",c:"Food & Drink",t:"Yard House at Town Square",e:"\uD83C\uDF7A",d:"Over 100 beers on tap, a massive menu, and a great patio at Town Square. The gardein orange chicken is shockingly good.",g:"Yard House Town Square Las Vegas",tg:["Beer","Casual"],p:"$$"},
+{id:627,a:"enterprise",c:"Outdoors",t:"Blue Diamond Trail System",e:"\uD83D\uDEB4",d:"Mountain bike and hiking trails southwest of Enterprise near the village of Blue Diamond. Rocky desert terrain with Red Rock views.",g:"Blue Diamond trails Las Vegas",tg:["Biking","Desert"],p:"Free"},
+{id:628,a:"enterprise",c:"Food & Drink",t:"Other Mama Sushi & Izakaya",e:"\uD83C\uDF63",d:"A trendy neighborhood sushi and izakaya spot with creative rolls, sake, and a late-night menu. A local favorite on Spring Mountain.",g:"Other Mama Las Vegas",tg:["Sushi","Late Night"],p:"$$"},
+{id:629,a:"enterprise",c:"Experience",t:"Pioneer Saloon Goodsprings",e:"\uD83E\uDD20",d:"A genuine 1913 saloon in the ghost town of Goodsprings, 35 min south. Bullet holes in the walls, cold beer, and real Nevada history.",g:"Pioneer Saloon Goodsprings Nevada",tg:["History","Saloon"],p:"$"},
+{id:630,a:"enterprise",c:"Experience",t:"Las Vegas South Premium Outlets",e:"\uD83D\uDECD\uFE0F",d:"Over 140 designer outlet stores in an open-air setting south of the Strip. Nike, Coach, Kate Spade, and more at discount prices.",g:"Las Vegas South Premium Outlets",tg:["Shopping","Deals"],p:"Free Entry"},
+{id:701,a:"mt-charleston",c:"Outdoors",t:"Mary Jane Falls Trail",e:"\uD83D\uDCA7",d:"One of the most popular hikes on the mountain. A 3-mile round trip with 1,000 feet of elevation gain through pine forest to a stunning waterfall fed by snowmelt. Moderately challenging.",g:"Mary Jane Falls Trail Mt Charleston",tg:["Hiking","Waterfall"],p:"Free"},
+{id:702,a:"mt-charleston",c:"Outdoors",t:"Cathedral Rock Trail",e:"\u26F0\uFE0F",d:"A 2.8-mile round trip to a dramatic rock formation with panoramic views. The fall colors along this trail are the best on the mountain. Popular with families and photographers.",g:"Cathedral Rock Trail Mt Charleston",tg:["Hiking","Views"],p:"Free"},
+{id:703,a:"mt-charleston",c:"Experience",t:"Lee Canyon Ski Resort",e:"\u26F7\uFE0F",d:"Las Vegas's only ski resort at 8,500 feet. Skiing, snowboarding, and tubing in winter. Summer operations include scenic chair rides, mountain biking, disc golf, and axe throwing.",g:"Lee Canyon Las Vegas",tg:["Skiing","Adventure"],p:"$$"},
+{id:704,a:"mt-charleston",c:"Outdoors",t:"Charleston Peak Summit",e:"\uD83C\uDFD4\uFE0F",d:"The highest point in Southern Nevada at 11,916 feet. A grueling 17-mile round trip via South Loop or North Loop trails. One of the most rewarding summit hikes in the state.",g:"Charleston Peak summit trail",tg:["Summit","Advanced"],p:"Free"},
+{id:705,a:"mt-charleston",c:"Outdoors",t:"Fletcher Canyon Trail",e:"\uD83C\uDF32",d:"A peaceful 3.6-mile round trip through a shaded canyon. No waterfall at the end, just solitude and natural beauty. One of the quieter trails on the mountain. Easy to moderate.",g:"Fletcher Canyon Trail Mt Charleston",tg:["Hiking","Peaceful"],p:"Free"},
+{id:706,a:"mt-charleston",c:"Food & Drink",t:"Canyon Restaurant at The Retreat",e:"\uD83C\uDF7D\uFE0F",d:"Gourmet American comfort food at 6,700 feet elevation in Kyle Canyon. Open to the public with mountain views, a cozy fireplace, and fresh baked goods from the 24-hour cafe.",g:"Canyon Restaurant Retreat on Charleston Peak",tg:["Dining","Mountain"],p:"$$"},
+{id:707,a:"mt-charleston",c:"Experience",t:"Mt. Charleston Lodge Cabins",e:"\uD83C\uDFE0",d:"23 rustic log cabins at 7,717 feet. The historic lodge is being rebuilt after fire but the cabins remain open. Fireplaces, forest views, and total seclusion from city life.",g:"Mt Charleston Lodge cabins",tg:["Lodging","Rustic"],p:"$$$"},
+{id:708,a:"mt-charleston",c:"Outdoors",t:"Bristlecone Trail",e:"\uD83C\uDF3F",d:"A 6-mile loop through groves of ancient bristlecone pines, some of the oldest living organisms on Earth. The twisted, weathered trunks are endlessly photogenic. Moderate difficulty.",g:"Bristlecone Trail Mt Charleston",tg:["Hiking","Ancient Trees"],p:"Free"},
+{id:709,a:"mt-charleston",c:"Experience",t:"Kyle Canyon Scenic Byway",e:"\uD83D\uDE97",d:"The drive up Kyle Canyon Road (SR-157) is a dramatic journey from desert floor to alpine forest. Temperature drops 20-30 degrees. Multiple pullouts for photos. One of the best drives near Vegas.",g:"Kyle Canyon Road scenic drive",tg:["Scenic Drive","Photography"],p:"Free"},
+{id:710,a:"mt-charleston",c:"Outdoors",t:"Big Falls / Waterfall Hike",e:"\uD83C\uDFDE\uFE0F",d:"Beyond Mary Jane Falls, Big Falls rewards the extra effort with a larger cascade fed entirely by snowmelt. Best flow in spring after heavy winter snow. The trail is steep and rocky.",g:"Big Falls Mt Charleston",tg:["Waterfall","Advanced"],p:"Free"},
+{id:711,a:"mt-charleston",c:"Nature",t:"Spring Mountains Wildlife",e:"\uD83E\uDD8C",d:"The Spring Mountains host mule deer, wild horses, Palmer chipmunks (found nowhere else on Earth), and a rich variety of bird species. Seven distinct climate zones in one mountain range.",g:"Spring Mountains National Recreation Area wildlife",tg:["Wildlife","Nature"],p:"Free"},
+{id:712,a:"mt-charleston",c:"Experience",t:"Retreat on Charleston Peak Hotel",e:"\uD83C\uDFE8",d:"A rustic, pet-friendly hotel in mid-Kyle Canyon at 6,700 feet. Rooms, a lounge, restaurant, and banquet facilities. A genuine mountain retreat 45 minutes from the Strip.",g:"Retreat on Charleston Peak hotel",tg:["Lodging","Resort"],p:"$$"},
+{id:713,a:"mt-charleston",c:"Outdoors",t:"Lee Meadows Picnic Area",e:"\uD83E\uDDFA",d:"A wide open mountain meadow perfect for picnics, reading, or just breathing cool pine-scented air. No reservation needed for groups under 20. Open dawn to dusk. Free.",g:"Lee Meadows Mt Charleston",tg:["Picnic","Family"],p:"Free"},
+{id:714,a:"mt-charleston",c:"Outdoors",t:"Sawmill Trailhead Loop",e:"\uD83D\uDC0E",d:"Access to over 35 miles of trails for hikers, equestrians, and mountain bikers. Views of Mummy Mountain. The multi-use trail system is the most extensive on the mountain.",g:"Sawmill Trailhead Mt Charleston",tg:["Multi-Use","Equestrian"],p:"Free"},
+{id:715,a:"mt-charleston",c:"Experience",t:"Lee Canyon Summer Activities",e:"\uD83C\uDFAF",d:"When the snow melts, Lee Canyon transforms into a summer adventure park. Scenic chair rides, mountain biking, disc golf, axe throwing, and archery. Open daily May through September.",g:"Lee Canyon summer activities",tg:["Adventure","Summer"],p:"$$"},
+{id:716,a:"mt-charleston",c:"Culture",t:"Cold War Memorial",e:"\uD83C\uDFDB\uFE0F",d:"The nation's first memorial dedicated to Cold War veterans. Located within the Spring Mountains National Recreation Area. A solemn and meaningful stop on the mountain.",g:"Cold War Memorial Mt Charleston",tg:["Memorial","History"],p:"Free"},
+{id:717,a:"mt-charleston",c:"Outdoors",t:"Fletcher View Campground",e:"\u26FA",d:"One of the most popular campgrounds on the mountain at 7,000 feet. Pine-shaded sites with tables, fire rings, and vault toilets. First come, first served. Open May through September.",g:"Fletcher View Campground Mt Charleston",tg:["Camping","Forest"],p:"$"},
+{id:718,a:"mt-charleston",c:"Experience",t:"Rainbow Canyon Community",e:"\uD83C\uDF08",d:"One of Mt. Charleston's most beloved residential neighborhoods. Log cabins and custom homes nestled among towering ponderosa pines. Homes start around $365K. No HOA, lots averaging quarter-acre.",g:"Rainbow Canyon Mt Charleston",tg:["Community","Homes"],p:"Free to explore"},
+{id:719,a:"mt-charleston",c:"Experience",t:"Estates at Cathedral Rock",e:"\uD83C\uDFD4\uFE0F",d:"The premier gated community on Mt. Charleston. Million-dollar custom homes built on the ridges with sweeping mountain views. Modern construction, large lots, and ultimate privacy.",g:"Estates at Cathedral Rock Mt Charleston",tg:["Luxury","Gated"],p:"Free to explore"},
+{id:720,a:"mt-charleston",c:"Experience",t:"Echo Ridge Community",e:"\uD83C\uDFE1",d:"A mid-range residential subdivision on Mt. Charleston. Custom homes starting around $710K surrounded by national forest. Four-season living with mountain character and charm.",g:"Echo Ridge Mt Charleston homes",tg:["Community","Mountain Living"],p:"Free to explore"},
+{id:721,a:"mt-charleston",c:"Experience",t:"Mt. Charleston Village Condos",e:"\uD83C\uDFD8\uFE0F",d:"Affordable mountain living next to the US Forest Service Kyle Gateway. One and two-bedroom condos starting around $200K. The most accessible entry point to owning property on the mountain.",g:"Mt Charleston Village condos",tg:["Condos","Affordable"],p:"Free to explore"},
+{id:722,a:"mt-charleston",c:"Experience",t:"Lee Canyon Cabins & Homes",e:"\uD83E\uDEB5",d:"The highest residential area on Mt. Charleston at 8,000-8,500 feet elevation. Secluded cabins and homes in the Toiyabe National Forest. Camp Lady of the Snows is a gated subdivision here.",g:"Lee Canyon homes Mt Charleston",tg:["Cabins","Secluded"],p:"Free to explore"},
+{id:723,a:"mt-charleston",c:"Experience",t:"Deer Creek Off-Grid Community",e:"\uD83C\uDF32",d:"Mt. Charleston's most remote and secluded area. Accessed via a 2-mile dirt road. Off-grid living with pitched topography. Primarily three-season use. For those seeking true wilderness.",g:"Deer Creek Mt Charleston",tg:["Off-Grid","Remote"],p:"Free to explore"},
+{id:724,a:"mt-charleston",c:"Experience",t:"Lower Kyle Canyon Ranchettes",e:"\uD83D\uDC34",d:"Custom residences and equestrian estates at the base of Mt. Charleston. Horse-zoned with space for trail riding and gardening. Joshua trees, dark skies, and views of Charleston Peak. No HOA.",g:"Lower Kyle Canyon homes Mt Charleston",tg:["Equestrian","Rural"],p:"Free to explore"},
+{id:725,a:"mt-charleston",c:"Food & Drink",t:"Bighorn Grill at Lee Canyon",e:"\uD83C\uDF54",d:"Casual mountain dining at the ski resort base. Burgers, sandwiches, and comfort food after a day on the slopes or trails. The Brewin Burro coffee shop is open for morning hikers.",g:"Bighorn Grill Lee Canyon",tg:["Casual","Mountain"],p:"$"},
+{id:726,a:"mt-charleston",c:"Outdoors",t:"McWilliams Campground",e:"\uD83C\uDFD5\uFE0F",d:"A quieter alternative to Fletcher View at 8,400 feet elevation. 40 sites surrounded by dense pine forest. Tables, fire rings, vault toilets. Reservation or first come first served.",g:"McWilliams Campground Mt Charleston",tg:["Camping","Quiet"],p:"$"},
+{id:727,a:"mt-charleston",c:"Nature",t:"Fall Colors on the Mountain",e:"\uD83C\uDF42",d:"September through October, the aspens and oaks on Mt. Charleston turn brilliant gold, orange, and crimson. Cathedral Rock Trail and Kyle Canyon Road offer the best displays. Peak color varies yearly.",g:"Mt Charleston fall colors",tg:["Seasonal","Photography"],p:"Free"},
+{id:728,a:"mt-charleston",c:"Outdoors",t:"South Loop to Charleston Peak",e:"\uD83E\uDD7E",d:"The more popular of two routes to the 11,916-foot summit. 8.4 miles one way with 4,300 feet of elevation gain. Passes through five climate zones. Start before dawn in summer.",g:"South Loop Trail Charleston Peak",tg:["Summit","Strenuous"],p:"Free"},
+{id:729,a:"mt-charleston",c:"Experience",t:"Spring Mountains Visitor Gateway",e:"\uD83D\uDCCD",d:"The US Forest Service visitor center at the base of Kyle Canyon. Maps, trail conditions, ranger programs, and a gift shop. The best first stop for anyone new to the mountain.",g:"Spring Mountains Visitor Gateway",tg:["Visitor Center","Info"],p:"Free"},
+{id:730,a:"mt-charleston",c:"Views",t:"Mummy Mountain Viewpoint",e:"\uD83D\uDC41\uFE0F",d:"Named for its profile resembling a mummy lying down, this 11,528-foot peak is visible from many trails. The best views are from Sawmill Trailhead and the Bristlecone Trail.",g:"Mummy Mountain Mt Charleston",tg:["Views","Landmark"],p:"Free"},
+];
+const TIPS={
+1:"🅿️ Free parking: Casino Royale or Treasure Island (both 5 min walk). 🏠 Locals: NV ID gets 3 hrs free at Bellagio garage.",
+2:"🅿️ Free parking: NV ID = 3 hrs free Bellagio garage. Caesars Rewards Platinum+ parks free everywhere. 🏠 Locals: Caesars Rewards members get 25% off F&B at 100+ restaurants.",
+3:"🅿️ AREA15 parking is free for everyone. 🏠 Locals: Meow Wolf runs NV resident discounts periodically, check their site. 💰 Go City pass includes Meow Wolf.",
+4:"🅿️ NV ID = 3 hrs free at Flamingo garage. Caesars Rewards Platinum+ always free. 🏠 Locals: Caesars Rewards 25% off food Sun-Thu with NV ID.",
+5:"🅿️ Free parking lot across the street. No discount needed, always 100% free for everyone.",
+6:"🅿️ Wynn self-park: first 3 hrs free for everyone, $25/day after. Hotel guests free. 🏠 Locals: Wynn Rewards members get tiered parking benefits.",
+7:"🅿️ Fontainebleau: check current parking rates. 🏠 Locals: Fontainebleau offers weekday pool daybed access $200 F&B min. BOGO Hall of Excellence admission with NV ID. 20% off spa.",
+8:"🅿️ NV locals free self-park Sun-Thu at Planet Hollywood with valid ID. Caesars Rewards Platinum+ free always. 🏠 Locals: 25% off F&B with Caesars Rewards.",
+9:"🅿️ NV locals free self-park Sun-Thu at Caesars Palace with ID. Platinum+ free always. 🏠 Locals: 25% off F&B with Caesars Rewards card.",
+10:"🅿️ Free parking lot on site. No discounts needed, quarters go to charity. Open 11am-11pm daily.",
+11:"🅿️ Circus Circus has FREE self-parking for everyone. No rewards card needed. One of the last free lots on the Strip.",
+12:"🅿️ Free parking lot on site. Free tour, call 702-942-7325 to schedule.",
+13:"🅿️ Venetian self-park: NV locals 3 hrs free. Rewards Premier+ parks free. 🏠 Locals: check venetian.com for seasonal resident offers.",
+14:"🅿️ Free parking area off I-15. No fees, no facilities. Bring water.",
+15:"🅿️ Free self-park: Treasure Island, Casino Royale, Circus Circus, Sahara. All free for everyone, no card needed.",
+16:"🅿️ Park MGM garage: MGM Rewards Pearl+ free. NV locals 3 hrs free. 🏠 Locals: $7 off Big Apple Coaster at NYNY with NV ID.",
+17:"🅿️ Nearby Strip garages. NV locals 3 hrs free at MGM properties with ID.",
+18:"🅿️ Wynn self-park 3 hrs free for everyone. 🏷️ Pool access: hotel guests only, or book a spa treatment for day access.",
+19:"🅿️ Cosmo self-park $20/day. 🏊 Pool: seasonal locals day pass options, check cosmopolitanlasvegas.com. 🏠 Locals: ask about NV resident pool rates.",
+20:"🅿️ NV locals 3 hrs free at Bellagio garage. Walk from free parking at Casino Royale (5 min).",
+21:"🅿️ AREA15 parking free. 💰 Go City pass includes admission. Book online save $5-10 off gate. 🏠 Locals: check for NV resident pricing on meowwolf.com.",
+22:"🅿️ NV locals 3 hrs free at LINQ/Caesars garages. 💰 Go City Explorer Pass includes this. Happy Half Hour cabin = open bar included.",
+23:"💰 Book direct with Papillon or Maverick for best rates. Go City 3+ day pass includes helicopter flight. 🏠 Locals: ask operators about NV resident discounts.",
+24:"💰 Check vegas.com for discounted tickets (promo code TIX20 sometimes works). 🅿️ NV locals 3 hrs free Bellagio garage.",
+25:"🅿️ Sphere parking limited and expensive. Use Venetian garage (NV locals 3 hrs free) and walk over. 💰 Book early on sphere.com for best seat selection.",
+26:"🅿️ Strat: FREE all-day self-park for NV locals with valid ID. 💰 Combo packages (observation deck + jump) save money. Check Groupon for deals.",
+27:"🅿️ NV locals free self-park Sun-Thu at Caesars with ID. 🏠 Locals: Caesars Rewards 25% off F&B. Weekday brunch ~$50 vs ~$75 dinner for nearly same spread.",
+28:"🅿️ Venetian: NV locals 3 hrs free. Premier+ free. 💰 Book venetian.com for best gondola rates. Full boat (4 ppl) = cheapest per person.",
+29:"🅿️ MGM Grand area parking. 🏊 Pool: Topgolf pool is FREE and open to public 21+, no purchase needed. 💰 Lunch bay rates are cheapest.",
+30:"🅿️ NV locals free self-park Sun-Thu at Paris with ID. 💰 Book sunset slots early, they sell out. 🏠 Locals: Caesars Rewards 25% off dining.",
+31:"💰 Cash only. ~$6-8/slice. No sign, follow vinyl records on Cosmo 3rd floor. 🅿️ Cosmo self-park $20/day.",
+32:"💰 Go City pass includes admission. vegas.com often has promo codes. 🅿️ Luxor: NV locals 3 hrs free. MGM Rewards Pearl+ free.",
+33:"🅿️ Mandalay Bay: NV locals 3 hrs free. MGM Pearl+ free. 🏊 Pool day pass: $30 on website for non-guests. Beach, wave pool included.",
+34:"💰 Go City Explorer Pass includes this. 🅿️ NV locals free self-park Sun-Thu at Caesars properties.",
+35:"🅿️ NV locals free self-park Sun-Thu at Caesars Palace. 🏠 Locals: Caesars Rewards 25% off F&B. 💰 Lunch has same signatures at lower prices.",
+36:"💰 Go City pass includes admission. 🅿️ Luxor: NV locals 3 hrs free. MGM Pearl+ free.",
+37:"🅿️ NV locals free Sun-Thu at Paris. 🏠 Locals: Caesars Rewards 25% off the bill. 💰 Brunch is best value, patio seats face the fountains.",
+38:"💰 Go City Explorer + All-Inclusive passes include this. Save up to 50% vs gate. 🅿️ Venetian: NV locals 3 hrs free.",
+39:"💰 Some Go City passes include this. 🅿️ Mandalay Bay: NV locals 3 hrs free. 🏊 Pool: non-guest day pass $30 on website.",
+40:"🅿️ Cosmo self-park $20/day. 💰 Weekend brunch with unlimited cocktails is the best deal in the building.",
+41:"🅿️ Free parking garage on site. 💰 Free VIP Shopper Club at customer service desk for extra coupon book. premiumoutlets.com for more coupons.",
+42:"🅿️ Showcase Mall garage $10. 💰 ~$20 for the 16-flavor tasting. Rooftop bar has Coke cocktails.",
+43:"💰 Book online save $5 off gate. 🅿️ Showcase Mall area parking.",
+44:"💰 vegas.com for discounted tickets. Go City pass includes it. 🅿️ Luxor: NV locals 3 hrs free. MGM Pearl+ free.",
+45:"🅿️ NV locals free self-park Sun-Thu at Caesars Palace. 🏠 Locals: Caesars Rewards 25% off F&B. 💰 Bar seats for walk-ins, no reservation needed.",
+46:"🅿️ Park MGM nearby: MGM Pearl+ free, NV locals 3 hrs free. 💰 Pre-game show at Toshiba Plaza is free, no ticket needed.",
+47:"🅿️ Fashion Show Mall parking garage, rates vary. 💰 Weekend runway shows are completely free. No ticket or purchase required.",
+48:"🅿️ Aria: NV locals 3 hrs free. MGM Pearl+ free. 💰 Book online for savings vs gate price.",
+49:"🅿️ Aria: NV locals 3 hrs free. MGM Pearl+ free. 🏊 Pool: Aria spa day pass from $40 includes outdoor therapy pool. 💰 Reserve 3+ weeks for dinner.",
+50:"🅿️ Allegiant Stadium parking varies by event. 💰 Tours: self-guided and VIP options on allegiantstadium.com.",
+101:"🅿️ Fremont: varies by casino. Many validate with dining or play. Casino Royale on Strip = free backup option. 🏠 Locals: Plug In Vegas (free app) gives free show tickets.",
+102:"🅿️ Same as Fremont Street above. 💰 All concerts are completely free. Check vegasexperience.com for lineup.",
+103:"🅿️ Arts District: street parking or pay lots ~$10-20. Arrive by 6pm for best spots. 💰 All galleries, art, food trucks, music = free.",
+104:"🅿️ Free Downtown Loop shuttle stops nearby. 💰 Entry, fire show, treehouse, and live music all free.",
+105:"🅿️ Arts District street parking usually available. 💰 Free 24/7. Download mural map from 18b.org.",
+106:"🅿️ Arts District street parking. 💰 Free admission, all galleries. Best during First Friday.",
+107:"🅿️ Golden Nugget: hotel guests free. Others: $25-50/day, validate with dining or casino play. 💰 The nugget itself is free to view 24/7.",
+108:"🅿️ Binion's: validate with dining or 5+ casino points = free. Otherwise $4-20 depending on duration. 💰 Photo is free, must be 21+.",
+109:"🅿️ Free Downtown Loop shuttle from Fremont. 💰 Fire show is free nightly at sundown.",
+110:"🅿️ Arts District street parking. 💰 Free studio visits during First Friday. Follow @recycledpropaganda on IG.",
+111:"🅿️ Circa: check rates, hotel guests free. 💰 Free to walk the sportsbook. 21+ property.",
+112:"🅿️ Golden Gate: free valet parking. Limited self-park. 💰 99-cent shrimp cocktail still available.",
+113:"🅿️ Main Street Station (Boyd): Emerald+ rewards free. Others $10 weekdays, $20 weekends. First 30 min free. 💰 Berlin Wall is free to see.",
+114:"💰 100% free shuttle. No car needed. Runs every 15-20 min. Connects Fremont, Arts District, Strat.",
+115:"🅿️ Varies by venue. 💰 Free with drink purchase at multiple downtown venues. No cover charge.",
+116:"🅿️ Arts District parking. 💰 Free galleries. Theater tickets are affordable. art-square.com for schedule.",
+117:"🅿️ Neon Museum has small free parking lot. 💰 Exterior signs free 24/7. Full Boneyard tour ticketed.",
+118:"🅿️ Fremont East street parking or nearby garages. 💰 Free to walk and people-watch. Bars have no cover.",
+119:"🅿️ El Cortez: hotel guests free. Others $5 weekdays, $10 weekends. 💰 Free to walk through the historic property.",
+120:"🅿️ Fremont casino parking (validate). 💰 Walking history is free. Atomic Testing Museum (east side) is separate ticketed.",
+121:"💰 Book night tour on neonmuseum.org. Brilliant projection show worth the add-on. 🏠 Locals: check for NV resident pricing on select dates.",
+122:"💰 Go City pass includes admission. 🏠 Locals: Mob Museum runs locals discount nights periodically. The Underground speakeasy has moonshine made on-site.",
+123:"💰 Book online for discount vs walk-up. Zoomline (upper, Superman-style) worth the upgrade. Night rides best.",
+124:"🅿️ Arts District street parking. 💰 No special discount needed. Reservations recommended.",
+125:"🅿️ Street parking. 💰 Walk-ins usually fine weeknights. Rooftop patio is the premium seat.",
+126:"🅿️ Fremont East street parking or lots. 💰 No cover. Cocktails $12-16.",
+127:"🅿️ Fremont East parking. 💰 No cover for ground floor. Laundry Room speakeasy: text for reservation.",
+128:"🅿️ Fremont East. 💰 Very affordable. Walk-in only, no reservations.",
+129:"🏊 Pool day passes at circa.com. 143-ft screen, 6 pools, year-round. Non-guests welcome. 🅿️ Circa garage, check rates.",
+130:"🅿️ Fremont East. 💰 Cash preferred. Slices ~$5-6. Open til 3-4am.",
+131:"🅿️ Arts District street parking. 💰 No cover, no reservations. Seasonal cocktail menu.",
+132:"🅿️ Arts District. 💰 No cover. Rotating taps. Dog-friendly patio.",
+133:"🅿️ Four Queens: hotel guests $5, validate with dining. Free valet. 💰 Reservations strongly recommended.",
+134:"🅿️ Downtown Grand validates parking with $25 restaurant spend. 🏊 Pool: affordable day passes for non-guests. Cabanas available.",
+135:"🅿️ Arts District. 💰 No reservations, counter service. Very affordable.",
+136:"🅿️ Downtown area. 💰 No cover. Cash preferred. Cocktails ~$14-16.",
+137:"🅿️ Fremont East. 💰 Free entry most nights. Cheap drinks. All games free to play.",
+138:"🅿️ Free parking lot on site. 💰 Book hauntedmuseum.com for best availability. ~$50 admission.",
+139:"🅿️ Circa garage. 💰 Reservations recommended for dinner.",
+140:"🅿️ Fremont Street. 💰 $10 flat for any design on the flash menu. Walk-in only.",
+201:"🅿️ $15/vehicle entry covers all trailheads and scenic drive. Annual pass $30 saves money if visiting 3+ times. 🏠 Locals: America the Beautiful pass ($80/yr) covers all federal lands.",
+202:"🅿️ Included with $15 park entry. 💰 America the Beautiful annual pass ($80) covers this and all national parks/BLM sites.",
+203:"🅿️ Included with park entry. 💰 Same $15 vehicle fee covers all Red Rock trails.",
+204:"🅿️ Included with park entry. 💰 Same vehicle fee.",
+205:"🅿️ Included with park entry. 💰 Same vehicle fee. Hardest sanctioned hike at Red Rock.",
+206:"🅿️ Included with park entry. 💰 Same vehicle fee. Easiest family hike at Red Rock.",
+207:"🅿️ Free trailhead parking, outside the paid scenic loop. No park entry fee needed.",
+208:"🅿️ Included with park entry. 💰 Rent bikes from shops near the entrance for ~$50-80/day.",
+209:"🅿️ Free trailhead parking throughout. No fees.",
+210:"🅿️ Free parking at Downtown Summerlin garage. 💰 Free to browse. All Summerlin shopping centers have free parking.",
+211:"🅿️ Free at Downtown Summerlin. 💰 Free concerts. Bring your own blanket and snacks.",
+212:"🅿️ Free at Downtown Summerlin. 💰 Free classes. Bring your own mat.",
+213:"🅿️ Free at whichever Summerlin park hosts. 💰 Free admission. Bring blankets.",
+214:"🅿️ Free lot. 💰 Many events free or very low cost. lvccld.org for calendar.",
+215:"🅿️ Included with $15 park entry. Wheelchair accessible pullout with shaded tables.",
+216:"🅿️ Free parking garage. 💰 Free to browse. Golden Knights practice at City National Arena often free to watch.",
+217:"🅿️ Free at Red Rock pullouts. 💰 Free stargazing. No equipment needed, just patience for eyes to adjust.",
+218:"🅿️ Included with park entry. 💰 Stroller and wheelchair accessible.",
+219:"🅿️ Included with park entry. 💰 Free wildlife viewing. Active April-June mornings.",
+220:"🅿️ Included with park entry. 💰 Free scrambling, no defined trail or fee.",
+221:"🅿️ Free lot parking. All Summerlin restaurants have free parking. 💰 No special discounts, just great food. Reserve ahead.",
+222:"🅿️ Free parking at Tivoli Village. 💰 Butcher counter sells premium cuts to cook at home if restaurant is too pricey.",
+223:"🅿️ Free lot parking. 💰 Brunch is better value than dinner. Go at opening for shortest wait.",
+224:"🅿️ Free parking. 💰 No discounts needed. Reservations essential weekends.",
+225:"🅿️ Free parking on W Charleston. 💰 Good date night value for the quality of French cooking.",
+226:"🅿️ Free parking at Las Vegas Ballpark garage. 💰 Tickets $12-30. Friday fireworks free for ticket holders. 🏊 Outfield pool bookable.",
+227:"🅿️ Free parking at City National Arena. 💰 Practice viewing is free. Public skating sessions ~$15.",
+228:"🅿️ Free parking (Station Casinos = free at all locations). 🏊 Pool: multiple pools, lazy river, Red Rock views. Day pass or hotel stay. 🏠 Locals: Station Casinos rewards card for dining discounts, 20% off spa.",
+229:"🅿️ Free parking on W Charleston. 💰 Patio with cabanas is premium but worth it.",
+230:"🅿️ Free at Downtown Summerlin. 💰 Walk-in friendly most nights.",
+231:"🅿️ Free parking (Suncoast/Station Casinos). 🏠 Locals: Station Casinos Boarding Pass card for discounts on bowling, movies, dining.",
+232:"🅿️ Free parking. 💰 Counter service, very affordable. No reservations.",
+233:"💰 1-hour rides ~$60-80, sunset rides ~$100-120. Book direct with outfitters near Red Rock for best rates.",
+234:"🅿️ Free at Downtown Summerlin. 💰 No discounts, but portions are enormous for the price.",
+235:"🅿️ Free parking. 💰 Walk-in friendly. Good value for quality.",
+236:"🅿️ Free parking on site. 💰 Season passes are best value ($60-80) if visiting 3+ times. Single day ~$40. cowabunga.com.",
+237:"🅿️ Free parking. 💰 Neighborhood prices for Strip-quality sushi. Omakase available.",
+238:"🅿️ TPC Las Vegas. 💰 Public tee times on tpc.com. Green fees $100-200+ depending on season.",
+239:"🅿️ Free parking. 💰 Very affordable. First come, no reservations.",
+240:"🅿️ Small vehicle entry fee ~$10. 💰 Summer theater tickets affordable. Picnic lawns free with entry. parks.nv.gov.",
+301:"🅿️ $10/vehicle entry covers all Valley of Fire. Annual pass available. 💰 America the Beautiful pass does NOT cover state parks (only federal).",
+302:"🅿️ Free parking lot. 💰 Free admission, free factory tour, free chocolate sample. 🏠 Locals: Holiday lights Nov-Jan completely free, go weeknight.",
+303:"🅿️ Free parking lot. 💰 Free admission dawn to dusk. Bring your own binoculars.",
+304:"🅿️ Free trailhead parking at multiple access points. 💰 Free trail, no fees. Water stations along route.",
+305:"🅿️ Free trailhead parking. 💰 Free, no fees. Do not touch petroglyphs.",
+306:"🅿️ Free parking at Lake Las Vegas Village. 💰 Free to walk. Paddleboard/kayak rentals ~$25-40/hr. 🏠 Locals: free seasonal events.",
+307:"🅿️ Free parking lot. 💰 Free admission. Fishing requires NV license ($18 resident, $40 non-resident).",
+308:"🅿️ Free trailhead parking. 💰 Free, no fees.",
+309:"🅿️ Free parking. 💰 Free, always open.",
+310:"🅿️ Parking at visitor center, small fee. 💰 Free to drive across and walk the dam crest. Powerplant Tour ~$15, Dam Tour ~$30 on usbr.gov.",
+311:"🅿️ $25/vehicle for Lake Mead NRA, or use America the Beautiful pass ($80/yr). 💰 Historic Railroad Trail is free with park entry.",
+312:"🅿️ Free trailhead parking. 💰 Free, no fees. Connects to River Mountains Loop.",
+313:"🅿️ Free parking lot. 💰 Free admission. Nature Center open regular hours.",
+314:"🅿️ Free street parking. 💰 Completely free, always open.",
+315:"🅿️ Free parking. 💰 Free admission. Maintained by Southern NV Water Authority.",
+316:"🅿️ Free parking at District and GVR. 💰 Free to stroll. 🏠 Locals: Station Casinos rewards card for dining discounts at GVR restaurants.",
+317:"🅿️ Free parking. 💰 Free trails.",
+318:"🅿️ Free parking. 💰 Free. Small waterfall feature and playground. A genuine hidden gem even most locals miss.",
+319:"🅿️ Free parking at Lake Las Vegas. 💰 Free to walk the promenade.",
+320:"🅿️ Free trailhead parking. 💰 Free trails. Bike rentals available in Boulder City.",
+321:"🅿️ Free parking (Station Casinos). 🏊 GVR Pool open to locals 7 days/week. Daybeds and cabanas available. The Pond = adults-only pool. 🏠 Locals: 20% off spa weekdays, Station Casinos rewards for dining perks.",
+322:"🅿️ Free parking (Station Casinos). 🏠 Locals: Station Casinos dining rewards. GVR $200M renovation recently completed.",
+323:"🅿️ Free parking on site. 💰 Season passes ~$70 best value. Single day ~$40. cowabunga.com for deals.",
+324:"🅿️ Free parking. 💰 Only $2 admission. Best museum value in the valley.",
+325:"🅿️ Free parking. 💰 Book online at lionhabitatranch.com. Giraffe feeding extra.",
+326:"🅿️ Free parking (Station Casinos/GVR). 🏠 Locals: Station Casinos rewards 25% off dining with card. Happy hour deals.",
+327:"💰 Half-day tours ~$80-100. Book 1+ week ahead with Desert Adventures or Blazin Paddles. Emerald Cave is the highlight.",
+328:"🅿️ Free parking at The District. 💰 Affordable, walk-in only. Certified Neapolitan pizza.",
+329:"🅿️ Free parking. 🏊 M Pool day pass: weekdays $15, weekends $25. Family-friendly infinity pools. 🏠 Locals: M Resort waives resort fees for NV residents booking direct. 30% off room rates.",
+330:"🅿️ Free parking in Boulder City. 💰 Book flightlinezbootleg.com. Zipline ~$120-160.",
+331:"🅿️ Free parking at District/GVR. 💰 No reservations, family-friendly, generous portions.",
+332:"🅿️ Free parking at Ethel M. 💰 Completely free. Over 1 million lights Nov-Jan.",
+333:"🅿️ Free parking. 💰 No cover, affordable craft beer.",
+334:"💰 Half-day guided tours ~$80-120 via GetYourGuide or Viator.",
+335:"🅿️ Free parking. 💰 Many shows free or very low cost. hendersonlive.com for calendar.",
+336:"🅿️ Free parking at all locations. 💰 Affordable, no reservations.",
+337:"🅿️ Parking at visitor center, fee varies. 💰 Free walk across dam. Powerplant Tour ~$15 (best value). Dam Tour ~$30.",
+338:"🅿️ Free parking. 💰 No cover, affordable.",
+339:"🅿️ Free parking at lake. 💰 Hourly rentals: paddleboards ~$25/hr, kayaks ~$20/hr.",
+340:"🅿️ Free parking. 💰 Very small spot, reservations essential. Worth every penny.",
+401:"🅿️ Free parking. 💰 Free, 680 acres. One of the best free things in Vegas.",
+402:"🅿️ Free parking lot. 💰 Free, National Natural Landmark. No facilities.",
+403:"🅿️ Free trailhead parking. 💰 Free paved trail.",
+404:"🅿️ Free parking. 💰 Free. Skate park, splash pad, dog park, sports fields all free.",
+405:"🅿️ Free parking. 💰 Free. Best early morning for birds.",
+406:"🅿️ Free, BLM land. 💰 No fees. Bring all supplies.",
+407:"🅿️ Free roadside. 💰 Free viewing. OHV permits needed for riding on dunes.",
+408:"🅿️ Free parking. 💰 Free park.",
+409:"🅿️ Free parking. 💰 Free. Veterans memorials.",
+410:"🅿️ Remote, park carefully. 💰 Free, BLM land.",
+411:"🅿️ Free parking at refuge entrance. 💰 Free scenic drive. Largest wildlife refuge in lower 48.",
+412:"🅿️ Free parking. 💰 Free. Historic structures.",
+413:"🅿️ Free parking (Station Casinos = free at all properties). 🏠 Locals: Station Casinos rewards card for dining deals.",
+414:"🅿️ Free parking at Corn Creek. 💰 Free. Desert oasis with springs.",
+415:"🅿️ Free roadside. 💰 Free sunset views.",
+416:"🅿️ Free parking at speedway. 💰 Packages $100-500+. Ride-alongs cheaper than driving. 🏠 Locals: check lvms.com for NV resident pricing.",
+417:"🅿️ Free parking. 💰 ~$250+ per session. Book digthislasvegas.com. Adults only.",
+418:"🅿️ Free parking (Station Casinos). 🏠 Locals: Station Casinos Boarding Pass card for dining rewards and promotions.",
+419:"🅿️ Free event parking. 💰 Free admission. Annual event, check nellis.af.mil for dates.",
+420:"🅿️ Free parking. 💰 Free skate park. Helmets required under 18.",
+421:"🅿️ Free parking (Aliante/Station Casinos). 🏠 Locals: Station Casinos rewards for dining discounts.",
+422:"🅿️ Free parking at refuge entrance. 💰 Free. Very remote, bring fuel, water, food. No cell service.",
+423:"🅿️ Free parking (Cannery). 💰 Affordable tickets. cannerycasino.com for schedule. 🏠 Locals: check for resident specials.",
+424:"🅿️ Free parking. 💰 Very affordable. Cash-friendly.",
+425:"🅿️ Free parking. 💰 ~$75+ per session. Book online for best rates.",
+426:"🅿️ Free trailhead parking throughout Mt Charleston. 💰 Free scenic drive, free hiking. Skiing at Lee Canyon: lift tickets ~$60-90.",
+427:"🅿️ Free parking at North LV Airport (2 hrs). 💰 Often more affordable than Strip-based tour companies.",
+428:"🅿️ Free parking at all locations. 💰 Very affordable. Cash preferred. Open late.",
+429:"🅿️ Free parking at track. 💰 Packages $200-2000+. 🏠 Locals: check speedvegas.com for NV resident pricing and flash sales.",
+430:"🅿️ Free parking. 💰 $25-35/person. Book online for best group rates.",
+501:"🅿️ Free parking. 💰 Free park. Paved trails, courts, playgrounds.",
+502:"🅿️ Free trailhead parking. 💰 Free. Short but rewarding summit views.",
+503:"🅿️ Free parking. 💰 Free paved trail.",
+504:"🅿️ Free parking. 💰 Free. Train museum and duck pond.",
+505:"🅿️ Free roadside. 💰 Free. No facilities, just incredible sunset views.",
+506:"🅿️ Free parking. 💰 Free. Well-maintained community trails.",
+507:"🅿️ Free parking. 💰 Donation-based entry. gilcreasesanctuary.org for hours.",
+508:"🅿️ Free lot. 💰 Free. Events, kids programs, reading garden.",
+509:"🅿️ Free parking. 💰 Free trails with public art.",
+510:"🅿️ Free roadside. 💰 Free sunset panoramas.",
+511:"🅿️ Free parking. 💰 Free neighborhood park. Covered picnic areas great for birthday parties.",
+512:"🅿️ Park on residential streets. 💰 Free. Unofficial desert trails.",
+513:"🅿️ Free parking garage at Tivoli Village. 💰 Free to stroll. Upscale dining and boutiques.",
+514:"🅿️ Free parking at pullouts. 💰 Free scenic drive to Mt Charleston.",
+515:"🅿️ Free parking inside park. 💰 Small vehicle entry ~$10. Summer theater tickets affordable.",
+516:"🅿️ Free parking. 💰 No special discounts. Reservations help weekends.",
+517:"🅿️ Free parking garage. 💰 Free to stroll Tivoli Village. Dining ranges from casual to upscale.",
+518:"🅿️ Free parking. 💰 No reservations needed. Very affordable.",
+519:"🅿️ Free parking. 💰 Free community events. skyecanyon.com for calendar.",
+520:"🅿️ Free trailhead parking. 💰 Free hike. 45 min drive from Centennial.",
+521:"🅿️ Free parking. 💰 No special discounts. Great beer selection.",
+522:"🅿️ Free parking (Suncoast/Station Casinos). 🏠 Locals: Station Casinos Boarding Pass card for bowling, movie, and dining discounts.",
+523:"🅿️ Free trailhead parking. 💰 Free hike. Go early weekends.",
+524:"🅿️ Free parking. 💰 No discounts needed, affordable local coffee.",
+525:"🅿️ Free parking (Santa Fe Station/Station Casinos). 🏠 Locals: Station Casinos card for discounts on bowling, movies, sushi.",
+526:"🅿️ Free trailhead parking. 💰 Free hike through ancient bristlecone pines.",
+527:"🅿️ Free parking. 💰 No discounts, but portions are comically large for the price.",
+528:"🅿️ Free parking at Lee Canyon. 💰 Lift tickets ~$60-90. Season passes on leecanyonlv.com. Rentals available.",
+529:"🅿️ Free parking at all locations. 💰 No discounts needed. Cupcakes and custom cakes.",
+530:"🅿️ Free parking. 💰 Cash only. Seasonal U-pick. gilcreaseorchard.org for availability.",
+601:"🅿️ Free trailhead parking. 💰 Free. Southern access point, fewer crowds.",
+602:"🅿️ Free parking at Town Square. 💰 Free park entry, splash pad, playground.",
+603:"🅿️ Free roadside. 💰 Free. Open desert sunset photography.",
+604:"🅿️ Remote, park carefully. 💰 Free. Experienced hikers only.",
+605:"🅿️ Free parking. 💰 Free park. Trails, exercise stations.",
+606:"🅿️ Small free parking area off I-15. 💰 Free. 10 miles south of Strip.",
+607:"🅿️ Remote, park carefully. 💰 Free. Bring water, no facilities.",
+608:"🅿️ Free parking. 💰 Free trails near Anthem.",
+609:"🅿️ Free parking. 💰 Free. Hilltop views, climbing structures.",
+610:"🅿️ Free roadside stops. 💰 Free scenic drive on I-15.",
+611:"🅿️ Free parking. 💰 Free. Small pond attracts ducks and wading birds. Quiet south valley escape.",
+612:"🅿️ Free parking. 💰 Free. Southern edge sunsets.",
+613:"🅿️ Free trailhead parking. 💰 Free paved trail connecting neighborhoods and parks through Enterprise.",
+614:"🅿️ Free parking. 🏊 M Resort Pool: day pass weekdays $15, weekends $25. Twin infinity-edge pools. 🏠 Locals: no resort fees booking direct, 30% off rooms.",
+615:"🅿️ Free parking in Goodsprings. 💰 Free to explore ghost town. Pioneer Saloon drinks at bar prices. Cash preferred.",
+616:"🅿️ Free parking garage. 💰 Free entry to Town Square. Splash pad, playground, seasonal events all free.",
+617:"🅿️ Free at Town Square. 💰 No special discounts. Extensive wine-by-glass list.",
+618:"🅿️ Parking varies by event, $20-40+ on event days. 💰 Tours on non-event days ~$40-70.",
+619:"🅿️ Free parking at all locations. 💰 Affordable. No discounts needed.",
+620:"🅿️ Topgolf parking. 🏊 Pool is FREE, open to public 21+, no purchase required. 💰 Lunch bay rates cheapest. No golf experience needed.",
+621:"🅿️ Free trailhead parking. 💰 Free. Southern approach, fewer crowds.",
+622:"🅿️ Free parking. 💰 No reservations. Affordable brunch. Come hungry.",
+623:"🅿️ Free parking (South Point). 💰 Many events free. southpointcasino.com for calendar. 🏠 Locals: South Point has strong locals loyalty program.",
+624:"🅿️ Planet Hollywood: NV locals free self-park Sun-Thu with ID. 💰 Massive 24-inch slices ~$8-12. Cash preferred.",
+625:"🅿️ Free parking (Silverton). 🏊 Silverton pool day pass: locals $15 weekdays, $25 weekends. 💰 Aquarium and mermaid shows completely free.",
+626:"🅿️ Free at Town Square. 💰 No reservations. 100+ beers on tap. Good group spot.",
+627:"🅿️ Free parking near Blue Diamond. 💰 Free trails.",
+628:"🅿️ Free parking on Spring Mountain Rd. 💰 No special discounts. Late-night menu available.",
+629:"🅿️ Free parking in Goodsprings. 💰 Drinks at bar prices. Cash preferred. Free to explore the ghost town.",
+630:"🅿️ Free parking garage. 💰 Free entry. premiumoutlets.com VIP Shopper Club = free extra coupons. 25-65% off retail."
+};
+D.forEach(x=>{if(TIPS[x.id])x.tip=TIPS[x.id];});
+const SEASONS={
+1:"Year-round",2:"Year-round",3:"Year-round",4:"Year-round",5:"Year-round, sunrise best",
+6:"Year-round, after dark",7:"Year-round",8:"Year-round",9:"Year-round",10:"Year-round",
+11:"Year-round",12:"Mon-Fri by appt",13:"Year-round",14:"Oct-Apr, golden hour",
+15:"Oct-Apr evenings",16:"Year-round, after dark",17:"Year-round",18:"Seasonal rotations",
+19:"Year-round",20:"Year-round, sunset",21:"Year-round",22:"Year-round, night best",
+23:"Year-round, night flights best",24:"Year-round",25:"Year-round",26:"Year-round",
+27:"Year-round, weekday brunch best",28:"Year-round",29:"Year-round",30:"Year-round, sunset slots",
+31:"Year-round, late night",32:"Year-round",33:"Year-round",34:"Year-round",
+35:"Year-round, lunch value",36:"Year-round",37:"Year-round, brunch best",38:"Year-round",
+39:"Year-round",40:"Year-round, weekend brunch",41:"Year-round",42:"Year-round",
+43:"Year-round",44:"Year-round",45:"Year-round",46:"Oct-Apr hockey season",
+47:"Year-round",48:"Year-round",49:"Year-round",50:"Year-round",
+101:"Year-round, after 6pm",102:"Year-round, nightly",103:"1st Fridays monthly",
+104:"Year-round",105:"Year-round",106:"1st Fridays best",107:"Year-round, 24/7",
+108:"Year-round, 24/7",109:"Year-round, after sundown",110:"1st Fridays + by appt",
+111:"Year-round, 21+",112:"Year-round, 24/7",113:"Year-round",114:"Year-round",
+115:"Year-round, nightly",116:"1st Fridays best",117:"Year-round, night tour best",
+118:"Year-round, weekends peak",119:"Year-round",120:"Year-round",
+121:"Year-round, night tour best",122:"Year-round",123:"Year-round, night rides best",
+124:"Year-round",125:"Year-round",126:"Year-round",127:"Year-round",128:"Year-round",
+129:"Year-round, pool heated",130:"Year-round, late night",131:"Year-round",132:"Year-round",
+133:"Year-round, reservations needed",134:"Mar-Oct pool season",135:"Year-round",136:"Year-round",
+137:"Year-round",138:"Year-round",139:"Year-round",140:"Year-round, weekends busiest",
+201:"Oct-Apr, sunrise best",202:"Oct-Apr, early morning",203:"Oct-Apr",204:"Oct-Apr",
+205:"Oct-Mar, start before 7am",206:"Year-round, spring best",207:"Year-round, sunset",
+208:"Oct-Apr, before 7am summer",209:"Year-round",210:"Year-round, Saturdays",
+211:"Spring + Fall series",212:"Seasonal schedule",213:"Spring + Summer",
+214:"Year-round",215:"Oct-Apr",216:"Year-round",217:"New moon nights best",
+218:"Year-round",219:"Apr-Jun mornings",220:"Oct-Apr, golden hour",221:"Year-round",
+222:"Year-round",223:"Year-round, brunch best",224:"Year-round",225:"Year-round",
+226:"Mar-Sep baseball season",227:"Oct-Jun hockey season",228:"Year-round",229:"Year-round",
+230:"Year-round",231:"Year-round",232:"Year-round",233:"Oct-Apr, sunrise/sunset rides",
+234:"Year-round",235:"Year-round",236:"May-Sep summer only",237:"Year-round",
+238:"Oct-Apr, morning tee times",239:"Year-round",240:"May-Aug summer theater",
+301:"Oct-Apr, avoid midday summer",302:"Year-round, holiday lights Nov-Jan",303:"Year-round, spring migration best",
+304:"Oct-Apr, morning rides",305:"Oct-Apr",306:"Year-round",307:"Year-round",
+308:"Oct-Apr",309:"Year-round, golden hour",310:"Year-round",311:"Oct-Apr",
+312:"Year-round",313:"Year-round, spring best",314:"Year-round",315:"Year-round, spring bloom",
+316:"Year-round",317:"Year-round",318:"Oct-Apr",319:"Year-round, golden hour",
+320:"Oct-Apr",321:"Year-round",322:"Year-round",323:"May-Sep summer only",
+324:"Year-round",325:"Year-round, book ahead",326:"Year-round",327:"Oct-May, book 1 week ahead",
+328:"Year-round",329:"Year-round, pool Mar-Oct",330:"Year-round",331:"Year-round",
+332:"Nov-Jan holiday lights",333:"Year-round",334:"Oct-Apr",335:"Seasonal event schedule",
+336:"Year-round",337:"Year-round",338:"Year-round",339:"Year-round, morning calmest",
+340:"Year-round, reservations essential",
+401:"Year-round, morning/evening",402:"Oct-Apr",403:"Year-round",404:"Year-round",
+405:"Year-round, early morning",406:"Oct-Apr",407:"Oct-Apr, dawn",408:"Oct-Apr",
+409:"Year-round",410:"Oct-Apr",411:"Oct-Apr",412:"Year-round",413:"Year-round",
+414:"Year-round, spring migration",415:"Year-round, sunset",416:"Year-round",
+417:"Year-round, book ahead",418:"Year-round",419:"Annual event, check dates",
+420:"Year-round",421:"Year-round",422:"Oct-Apr",423:"Seasonal event schedule",
+424:"Year-round",425:"Year-round",426:"Year-round, skiing Dec-Mar",427:"Year-round",
+428:"Year-round, late night",429:"Year-round",430:"Year-round",
+501:"Year-round",502:"Oct-Apr",503:"Year-round",504:"Year-round",
+505:"Year-round, sunset",506:"Year-round",507:"Year-round, check hours",
+508:"Year-round",509:"Year-round",510:"Year-round, sunset",511:"Year-round",
+512:"Oct-Apr",513:"Year-round",514:"Year-round",515:"May-Aug summer theater",
+516:"Year-round",517:"Year-round, evening best",518:"Year-round",519:"Seasonal events calendar",
+520:"May-Oct, summer best",521:"Year-round",522:"Year-round",523:"Mar-May, after snowmelt",
+524:"Year-round",525:"Year-round",526:"Jun-Oct, moderate temps",527:"Year-round, brunch best",
+528:"Dec-Mar ski season",529:"Year-round",530:"Seasonal: peaches summer, pumpkins fall",
+601:"Oct-Apr",602:"Year-round",603:"Year-round, sunset",604:"Oct-Apr",
+605:"Year-round",606:"Year-round, sunrise/sunset",607:"Oct-Apr",608:"Oct-Apr",
+609:"Year-round, sunset",610:"Year-round",611:"Year-round",612:"Year-round, sunset",
+613:"Year-round",614:"Year-round, pool Mar-Oct",615:"Year-round",616:"Year-round",
+617:"Year-round",618:"Event schedule varies",619:"Year-round",620:"Year-round",
+621:"Oct-Apr",622:"Year-round, brunch",623:"Event schedule varies",624:"Year-round, late night",
+625:"Year-round",626:"Year-round",627:"Oct-Apr",628:"Year-round",629:"Year-round",630:"Year-round",
+701:"Mar-May best flow, Oct-Nov fall colors",702:"Sep-Oct fall colors best",
+703:"Dec-Mar skiing, May-Sep summer activities",704:"Jun-Sep only, start before dawn",
+705:"Year-round",706:"Year-round",707:"Year-round",
+708:"Jun-Oct, check trail status",709:"Year-round, fall colors Sep-Oct",
+710:"Apr-May best waterfall flow",711:"Year-round, spring + fall best",
+712:"Year-round",713:"May-Sep",714:"Year-round",
+715:"May-Sep summer season",716:"Year-round",717:"May-Sep",
+718:"Year-round",719:"Year-round",720:"Year-round",721:"Year-round",
+722:"May-Oct, heavy snow winter",723:"Apr-Oct, 3-season access",724:"Year-round",
+725:"Year-round when Lee Canyon open",726:"May-Sep",727:"Sep-Oct peak color",
+728:"Jun-Sep, start before 5am",729:"Year-round",730:"Year-round"
+};
+D.forEach(x=>{if(SEASONS[x.id])x.s=SEASONS[x.id];});
+function linkify(t){return t.replace(/(https?:\/\/[^\s,)]+|[a-z0-9][-a-z0-9]*\.(com|org|gov|net|io)\/[^\s,)]*|[a-z0-9][-a-z0-9]*\.(com|org|gov|net|io))/gi,function(u){var h=u.startsWith('http')?u:'https://'+u;return '<a href="'+h+'" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline">'+u+'</a>';});}
+const AN={
+  "the-strip":"The Strip","downtown":"Downtown","summerlin":"Summerlin",
+  "henderson":"Henderson","north-lv":"N. Las Vegas","centennial":"Centennial Hills","enterprise":"Enterprise","mt-charleston":"Mt. Charleston"
+};
+const CC={Culture:"#fde8e4",Outdoors:"#dff0e8",Experience:"#e8e4fd",Nightlife:"#e4ecfd",Views:"#fef3e2",Nature:"#e0f5ec","Food & Drink":"#fef3e2"};
+
+let selArea=null, deck=[], ci=0, hist=[], favs=JSON.parse(localStorage.getItem("sevn_f")||"[]");
+const $=id=>document.getElementById(id);
+
+// WELCOME
+document.querySelectorAll(".aopt").forEach(o=>{
+  o.addEventListener("click",()=>{
+    document.querySelectorAll(".aopt").forEach(x=>x.classList.remove("sel"));
+    o.classList.add("sel");
+    selArea=o.dataset.area;
+    $("goBtn").disabled=false;
+  });
+});
+
+$("goBtn").addEventListener("click",()=>{
+  if(!selArea)return;
+  deck=D.filter(x=>x.a===selArea);
+  for(let i=deck.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[deck[i],deck[j]]=[deck[j],deck[i]];}
+  ci=0; hist=[];
+  $("areaName").textContent=AN[selArea];
+  $("ws").classList.add("hidden");
+  $("ss").classList.remove("hidden");
+  render(); updateBadge();
+});
+$("areaBack").addEventListener("click",()=>{$("ss").classList.add("hidden");$("ws").classList.remove("hidden");});
+$("logoHome").addEventListener("click",()=>{$("ss").classList.add("hidden");$("ws").classList.remove("hidden");});
+$("logoHome").addEventListener("click",()=>{$("ss").classList.add("hidden");$("ws").classList.remove("hidden");});
+
+// BIZ
+$("bizBtn").addEventListener("click",()=>$("bizMod").classList.add("open"));
+$("bizX").addEventListener("click",closeBiz);$("bizBg").addEventListener("click",closeBiz);
+function closeBiz(){$("bizMod").classList.remove("open");setTimeout(()=>{$("bizForm").style.display="";$("bizOk").classList.remove("show");},300);}
+$("bizSub").addEventListener("click",()=>{
+  const n=$("bizName").value.trim(),e=$("bizEmail").value.trim();if(!n||!e)return;
+  const note=$("bizNote").value.trim();
+  window.open("mailto:cuadventuresllc@gmail.com?subject="+encodeURIComponent("SEVN Listing: "+n)+"&body="+encodeURIComponent("Business: "+n+"\nEmail: "+e+"\n\n"+note),"_blank");
+  $("bizForm").style.display="none";$("bizOk").classList.add("show");
+});
+
+// PRIV
+$("privBtn").addEventListener("click",()=>$("privMod").classList.add("open"));
+$("privX").addEventListener("click",()=>$("privMod").classList.remove("open"));
+$("privBg").addEventListener("click",()=>$("privMod").classList.remove("open"));
+
+// PRICE TAG
+function priceTag(p){
+  if(!p||p==="Free"||p==="Free Entry") return '<span class="ptag free">Free</span>';
+  if(p==="$") return '<span class="ptag low">$</span>';
+  if(p==="$$") return '<span class="ptag mid">$$</span>';
+  return '<span class="ptag high">$$$</span>';
+}
+
+// RENDER
+function render(){
+  const st=$("cStack"),em=$("emptyS"),ar=$("actsRow");
+  st.innerHTML="";
+  if(ci>=deck.length){st.style.display="none";ar.style.display="none";em.classList.add("show");updProg();updNav();return;}
+  st.style.display="";ar.style.display="";em.classList.remove("show");
+  const vis=deck.slice(ci,ci+3).reverse();
+  vis.forEach((act,i)=>{const d=vis.length-1-i;st.appendChild(mkCard(act,d));});
+  const top=st.lastElementChild;if(top)swipe(top);
+  updProg();updNav();
+}
+
+function mkCard(act,si){
+  const el=document.createElement("div");el.className="card";el.dataset.id=act.id;el.dataset.s=si===0?"top":String(si);
+  const price=act.p?priceTag(act.p):'<span class="ptag free">Free</span>';
+  el.innerHTML=`<span class="stamp like">Like</span><span class="stamp nope">Nope</span>
+    <div class="cvis"><div class="cemoji" data-c="${act.c}">${act.e}</div></div>
+    <div class="ccont">
+      <div class="ctop"><span class="ctag">${act.e} ${act.c}</span>${price}</div>
+      <h3>${act.t}</h3>
+      <p class="cdesc">${act.d}</p>${act.s?`<span class="stag">${act.s}</span>`:``}${act.tip?`<div class="ctips"><span class="tl">💡 Tip</span><p>${linkify(act.tip)}</p></div>`:``}
+      <div class="cpills">${act.tg.map(t=>'<span class="pill">'+t+'</span>').join("")}</div>
+    </div>`;
+  return el;
+}
+
+// SWIPE
+function swipe(card){
+  let sx=0,dx=0,drag=false;
+  function start(ev){drag=true;card.classList.add("dragging");sx=(ev.touches?ev.touches[0]:ev).clientX;dx=0;}
+  function move(ev){if(!drag)return;dx=(ev.touches?ev.touches[0]:ev).clientX-sx;
+    card.style.transform=`translate(${dx}px,0) rotate(${dx*.06}deg)`;
+    card.querySelector(".stamp.like").style.opacity=Math.min(Math.max(dx/60,0),1);
+    card.querySelector(".stamp.nope").style.opacity=Math.min(Math.max(-dx/60,0),1);}
+  function end(){if(!drag)return;drag=false;card.classList.remove("dragging");
+    if(dx>100)fly(card,"right");else if(dx<-100)fly(card,"left");
+    else{card.style.transform="";card.querySelector(".stamp.like").style.opacity=0;card.querySelector(".stamp.nope").style.opacity=0;}dx=0;}
+  card.addEventListener("mousedown",start);card.addEventListener("touchstart",start,{passive:true});
+  window.addEventListener("mousemove",move);window.addEventListener("touchmove",move,{passive:true});
+  window.addEventListener("mouseup",end);window.addEventListener("touchend",end);
+  let lt=0;
+  card.addEventListener("click",()=>{if(Math.abs(dx)>5)return;const n=Date.now();if(n-lt<350)openDetail(deck[ci]);lt=n;});
+}
+
+function fly(card,dir){
+  const act=deck[ci];const x=dir==="right"?window.innerWidth*1.5:-window.innerWidth*1.5;
+  card.style.transition="transform .4s ease";card.style.transform=`translate(${x}px,0) rotate(${dir==="right"?25:-25}deg)`;
+  if(dir==="right")addFav(act);
+  hist.push({idx:ci,dir:dir});
+  setTimeout(()=>{ci++;render();},280);
+}
+
+// NAV
+function updNav(){
+  $("backBtn").disabled=hist.length===0;
+  $("fwdBtn").disabled=ci>=deck.length;
+}
+
+$("nopeBtn").addEventListener("click",()=>{const t=$("cStack").lastElementChild;if(t)fly(t,"left");});
+$("likeBtn").addEventListener("click",()=>{const t=$("cStack").lastElementChild;if(t)fly(t,"right");});
+
+$("backBtn").addEventListener("click",()=>{
+  if(hist.length===0)return;
+  const prev=hist.pop();ci=prev.idx;render();
+});
+
+$("fwdBtn").addEventListener("click",()=>{
+  if(ci>=deck.length)return;
+  hist.push({idx:ci,dir:"skip"});ci++;render();
+});
+
+$("resetBtn").addEventListener("click",()=>{
+  for(let i=deck.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[deck[i],deck[j]]=[deck[j],deck[i]];}
+  ci=0;hist=[];render();
+});
+
+// PROGRESS
+function updProg(){
+  const tot=deck.length,done=Math.min(ci,tot);
+  $("pFill").style.width=(done/tot*100)+"%";
+  $("pLbl").textContent=done<tot?(done+1)+" / "+tot:tot+" / "+tot;
+}
+
+// FAVS
+function addFav(act){if(favs.find(f=>f.id===act.id))return;favs.push(act);saveFavs();updateBadge();}
+function rmFav(id){favs=favs.filter(f=>f.id!==id);saveFavs();updateBadge();renderFavs();}
+function saveFavs(){localStorage.setItem("sevn_f",JSON.stringify(favs));}
+function updateBadge(){$("favBadge").textContent=favs.length;$("favBadge").classList.toggle("show",favs.length>0);}
+
+function renderFavs(){
+  const b=$("favBody");b.querySelectorAll(".fcard").forEach(e=>e.remove());
+  $("favE").style.display=favs.length===0?"flex":"none";
+  favs.forEach((f,i)=>{
+    const el=document.createElement("div");el.className="fcard";el.style.animationDelay=i*.04+"s";
+    const bg=CC[f.c]||"#eae8e3";
+    el.innerHTML=`<div class="fico" style="background:${bg}">${f.e}</div>
+      <div class="ftx" data-did="${f.id}"><h4>${f.t}</h4><p>${f.c}${f.p&&f.p!=="Free"?" \u00b7 "+f.p:""}</p></div>
+      <button class="fdel" data-rid="${f.id}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>`;
+    b.appendChild(el);
+  });
+  b.querySelectorAll("[data-rid]").forEach(btn=>btn.addEventListener("click",ev=>{ev.stopPropagation();rmFav(Number(btn.dataset.rid));}));
+  b.querySelectorAll("[data-did]").forEach(el=>el.addEventListener("click",()=>{
+    closeFavs();const act=D.find(a=>a.id===Number(el.dataset.did));if(act)setTimeout(()=>openDetail(act),300);
+  }));
+}
+
+$("favToggle").addEventListener("click",()=>{$("favPan").classList.add("open");renderFavs();});
+$("favX").addEventListener("click",closeFavs);$("favOv").addEventListener("click",closeFavs);
+function closeFavs(){$("favPan").classList.remove("open");}
+
+// DETAIL with directions + price
+function openDetail(act){
+  const bg=CC[act.c]||"#eae8e3";
+  const isSaved=favs.some(f=>f.id===act.id);
+  const mapsQ=encodeURIComponent(act.g);
+  const isIOS=/iPad|iPhone|iPod/.test(navigator.userAgent);
+  const mapsUrl=isIOS?"https://maps.apple.com/?q="+mapsQ:"https://www.google.com/maps/search/?api=1&query="+mapsQ;
+  const price=act.p?priceTag(act.p):'<span class="ptag free">Free</span>';
+
+  $("dSheet").innerHTML=`
+    <button class="dx" id="dX"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <div class="dvis"><div class="demoji" style="background:${bg}">${act.e}</div></div>
+    <div class="dbody">
+      <div class="ctop"><span class="ctag">${act.e} ${act.c}</span>${price}</div>
+      <h2>${act.t}</h2>
+      <p class="dd">${act.d}</p>
+      <div class="dchips">${act.tg.map(t=>'<span>'+t+'</span>').join("")}</div>
+      ${act.s?`<div class="dtips"><span class="tl">Best Time</span><p>${act.s}</p></div>`:``}${act.tip?`<div class="dtips"><span class="tl">Tips & Deals</span><p>${linkify(act.tip)}</p></div>`:``}
+      <div class="dacts">
+        <button class="dbtn sv${isSaved?" saved":""}" id="dSave">${isSaved?"\u2713 Saved":"\u2665 Save"}</button>
+        <a class="dbtn dr" href="${mapsUrl}" target="_blank" rel="noopener">\uD83D\uDDFA\uFE0F Directions</a>
+      </div>
+    </div>`;
+
+  $("dMod").classList.add("open");
+  $("dX").addEventListener("click",closeDetail);
+  $("dSave").addEventListener("click",()=>{addFav(act);const b=$("dSave");b.textContent="\u2713 Saved";b.classList.add("saved");});
+}
+function closeDetail(){$("dMod").classList.remove("open");}
+$("dBg").addEventListener("click",closeDetail);
+
+// KEYBOARD
+document.addEventListener("keydown",e=>{
+  if($("dMod").classList.contains("open")){if(e.key==="Escape")closeDetail();return;}
+  if($("favPan").classList.contains("open")){if(e.key==="Escape")closeFavs();return;}
+  if($("bizMod").classList.contains("open")){if(e.key==="Escape")closeBiz();return;}
+  if($("privMod").classList.contains("open")){if(e.key==="Escape")$("privMod").classList.remove("open");return;}
+  if(!$("ss").classList.contains("hidden")){
+    if(e.key==="ArrowLeft")$("nopeBtn").click();
+    if(e.key==="ArrowRight")$("likeBtn").click();
+  }
+});
+
+updateBadge();
+(function(){
+var sc=document.getElementById("evScroll");
+var upd=document.getElementById("evUpd");
+if(!sc||typeof EVENTS==="undefined")return;
+if(upd)upd.textContent="Updated "+EVENTS_UPDATED;
+EVENTS.forEach(function(ev){
+var el=document.createElement(ev.link?"a":"div");
+el.className="ecard";
+if(ev.link){el.href=ev.link;el.target="_blank";el.rel="noopener";}
+var h='<span class="ecat">'+ev.cat+'</span>';
+h+='<h4>'+ev.t+'</h4>';
+h+='<span class="ewhen">'+ev.when+'</span>';
+h+='<span class="ewhere">'+ev.where+'</span>';
+el.innerHTML=h;
+sc.appendChild(el);
+});
+})();
+</script></body></html>
