@@ -104,6 +104,9 @@
     .filter-bar{display:flex;align-items:center;gap:8px;padding:0 20px 8px;max-width:480px;margin:0 auto;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
     .filter-bar::-webkit-scrollbar{display:none}
     @media(min-width:768px){.filter-bar{max-width:680px}}
+    .time-pills{display:flex;gap:4px;flex-shrink:0;}
+    .time-pill{padding:6px 12px;background:var(--surface);border:1.5px solid var(--brd);border-radius:99px;font-family:var(--fb);font-size:.68rem;font-weight:600;color:var(--t2);cursor:pointer;white-space:nowrap;transition:all .15s ease}
+    .time-pill.active{background:var(--accent);color:#fff;border-color:var(--accent);}
     .filter-btn{display:flex;align-items:center;gap:5px;padding:8px 14px;background:var(--surface);border:1.5px solid var(--brd);border-radius:99px;font-family:var(--fb);font-size:.74rem;font-weight:600;color:var(--t2);cursor:pointer;white-space:nowrap;flex-shrink:0;transition:all .15s ease}
     .filter-btn:active{transform:scale(.97)}
     .filter-btn svg{width:12px;height:12px;color:var(--t3)}
@@ -263,6 +266,7 @@
     <button class="filter-btn" id="areaTrig" data-drop="areaDrop">Area <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button>
     <button class="filter-btn" id="catTrig" data-drop="catDrop">Type <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button>
     <button class="filter-btn" id="tagTrig" data-drop="tagDrop">Vibe <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+    <div class="time-pills" id="timePills"></div>
     <button class="clear-btn" id="clearAll">&#10005; Clear</button>
     <div class="vt-spacer"></div>
     <select class="vt-select" id="viewSelect"><option value="list">List</option><option value="map">Map</option></select>
@@ -855,7 +859,39 @@ const D=[
 {id:970,a:"the-strip",c:"Food & Drink",t:"Lavo Italian at Palazzo",e:"\uD83C\uDF5D",d:"Italian food at the Palazzo that transitions into a nightclub after 10pm. The meatball appetizer is massive and the pasta portions are generous.",g:"Lavo Italian at Palazzo Las Vegas",tg:["Dining","Nightlife"]},
 {id:971,a:"henderson",c:"Experience",t:"Henderson Bird Preserve Sunrise Walk",e:"\uD83E\uDDA2",d:"Visit the bird preserve at sunrise when the birds are most active. Bring binoculars. Over 200 species have been documented here. Free and open dawn to dusk.",g:"Henderson Bird Preserve Sunrise Walk Las Vegas",tg:["Nature","Sunrise","Free"]},
 {id:972,a:"summerlin",c:"Experience",t:"Boca Park Shopping",e:"\uD83D\uDED2",d:"A popular shopping center in Summerlin with a mix of local and national stores, restaurants, and a movie theater. Less hectic than Downtown Summerlin.",g:"Boca Park Shopping Las Vegas",tg:["Shopping","Local"]},
+// NEW — Mar 2026 additions
+{id:973,a:"the-strip",c:"Food & Drink",t:"Sartiano's Italian Steakhouse",e:"\uD83E\uDD69",d:"Brand new at the Wynn, opened March 2026. Chef Alfred Portale leads an elevated Italian steakhouse with handmade pastas, dry-aged steaks, and a power-dining atmosphere.",g:"Sartianos Wynn Las Vegas",tg:["Dining","New","Date Night"]},
+{id:974,a:"the-strip",c:"Food & Drink",t:"Cantina Contramar",e:"\uD83C\uDF2E",d:"At the Fontainebleau by renowned Mexican chef Gabriela Camara. Fresh ceviche, wood-fired dishes, and mezcal cocktails in a vibrant, open-kitchen space.",g:"Cantina Contramar Fontainebleau Las Vegas",tg:["Dining","New"]},
+{id:976,a:"the-strip",c:"Experience",t:"LIV Beach at Fontainebleau",e:"\uD83C\uDFD6\uFE0F",d:"The newest ultra-dayclub on the Strip, imported from Miami. Massive pool, world-class DJs, bottle service, and a party atmosphere. Pool season is open.",g:"LIV Beach Fontainebleau Las Vegas",tg:["Nightlife","New","Pool"]},
+{id:977,a:"the-strip",c:"Experience",t:"Encore Beach Club",e:"\u2600\uFE0F",d:"The OG dayclub at the Wynn. 60,000 sq ft of pool, cabanas, daybeds, and some of the biggest DJ names in the world. Opens 11am on event days.",g:"Encore Beach Club Las Vegas",tg:["Nightlife","Pool","Iconic"]},
+{id:978,a:"the-strip",c:"Experience",t:"Marquee Dayclub",e:"\uD83C\uDF1E",d:"Rooftop pool party at the Cosmopolitan with panoramic Strip views, a refreshed sound system, and a library pool for a chill alternative. Open for 2026 season.",g:"Marquee Dayclub Cosmopolitan Las Vegas",tg:["Nightlife","Pool"]},
+{id:979,a:"the-strip",c:"Nightlife",t:"Omnia Nightclub",e:"\uD83C\uDF86",d:"75,000 sq ft mega-club at Caesars Palace. Three rooms, three vibes — main room with a massive kinetic chandelier, Heart of Omnia lounge, and the Terrace overlooking the Strip.",g:"Omnia Nightclub Caesars Palace Las Vegas",tg:["Nightlife","Iconic"]},
+{id:980,a:"the-strip",c:"Nightlife",t:"XS Nightclub",e:"\u2728",d:"Iconic nightclub at the Wynn with an outdoor pool area that transforms at night. Gold and black decor, world-class sound, and consistently top-tier DJ lineups.",g:"XS Nightclub Wynn Las Vegas",tg:["Nightlife","Iconic"]},
+{id:981,a:"the-strip",c:"Nightlife",t:"Here Kitty Kitty Vice Den",e:"\uD83D\uDC08\u200D\u2B1B",d:"Say 'meow' for entry at this speakeasy hidden inside Famous Foods at Resorts World. Prohibition-style cocktails with a Singaporean twist, red-tinted lanterns, and velvet booths.",g:"Here Kitty Kitty Vice Den Resorts World Las Vegas",tg:["Speakeasy","Hidden","Date Night"]},
+{id:982,a:"the-strip",c:"Nightlife",t:"Ghost Donkey",e:"\uD83E\uDD43",d:"A hidden mezcal and tequila lounge at the Cosmopolitan. NYC import. Find the unmarked door near the Block 16 food hall. Over 100 agave spirits on the menu.",g:"Ghost Donkey Cosmopolitan Las Vegas",tg:["Speakeasy","Hidden"]},
+{id:983,a:"downtown",c:"Food & Drink",t:"Bar Boheme",e:"\uD83C\uDF77",d:"A breakout new opening on Fremont East that's become the cornerstone of downtown's dining renaissance. Mediterranean-inspired small plates, natural wines, and a cozy patio.",g:"Bar Boheme Las Vegas",tg:["Dining","New","Local"]},
+{id:984,a:"downtown",c:"Food & Drink",t:"PublicUs",e:"\u2615",d:"Indoor farmer's market meets co-working cafe in the Fremont East area. Excellent specialty espresso, avocado toast, and a creative community vibe. Open early.",g:"PublicUs Las Vegas",tg:["Brunch","Local","Free"]},
+{id:985,a:"downtown",c:"Nightlife",t:"The Laundry Room",e:"\uD83E\uDDFA",d:"Only 22 seats. Behind Commonwealth on Fremont East. Text for a reservation — they open 2 weeks ahead. Internationally acclaimed craft cocktails in dead silence. No phones.",g:"The Laundry Room Las Vegas",tg:["Speakeasy","Hidden","Romantic"]},
+{id:986,a:"downtown",c:"Nightlife",t:"The Underground at Mob Museum",e:"\uD83C\uDFB7",d:"A Prohibition-era speakeasy in the basement of the Mob Museum. Live jazz, craft cocktails, and a working distillery. Included with museum admission or separate entry.",g:"The Underground Mob Museum Las Vegas",tg:["Speakeasy","History","Live Music"]},
+{id:987,a:"downtown",c:"Food & Drink",t:"Evel Pie",e:"\uD83C\uDF55",d:"Punk rock pizza joint on Fremont. Evel Knievel memorabilia on every wall, cheap slices, local craft beer, and open until 4am on weekends. A downtown institution.",g:"Evel Pie Las Vegas",tg:["Late Night","Local","Cheap"]},
+{id:988,a:"summerlin",c:"Food & Drink",t:"Vesta Coffee Roasters",e:"\u2615",d:"Las Vegas's best specialty coffee roaster with 4 locations including the new Durango Resort. Rated the best casino coffee shop in Vegas. Single-origin pourover done right.",g:"Vesta Coffee Roasters Las Vegas",tg:["Brunch","Local"]},
+{id:989,a:"henderson",c:"Food & Drink",t:"Stix Asia at UnCommons",e:"\uD83C\uDF5C",d:"New food hall from Honolulu with ~12 concepts — ramen, yakitori, takoyaki, poke, bao, and more. All under one roof in the UnCommons mixed-use district in Henderson.",g:"Stix Asia UnCommons Las Vegas",tg:["Dining","New","Local"]},
+{id:990,a:"enterprise",c:"Food & Drink",t:"Rock N' Potato",e:"\uD83E\uDD54",d:"Yelp's #23 restaurant in the entire US for 2026. Creative loaded potato dishes with global flavors. Lines are long but worth it. Bring cash for faster service.",g:"Rock N Potato Las Vegas",tg:["Dining","Local","Unique"]},
+{id:992,a:"the-strip",c:"Food & Drink",t:"e by Jose Andres",e:"\uD83C\uDF7D\uFE0F",d:"Only 8 seats. Avant-garde Spanish tasting menu at the Cosmopolitan. Book exactly 30 days ahead on OpenTable — it sells out in minutes. A culinary experience, not just dinner.",g:"e by Jose Andres Cosmopolitan Las Vegas",tg:["Dining","Unique","Date Night"]},
+{id:993,a:"the-strip",c:"Food & Drink",t:"Wakuda",e:"\uD83C\uDF63",d:"Chef Tetsuya Wakuda's fine Japanese restaurant at the Palazzo. The 8-seat omakase room runs $300 for nine courses. The main dining room is equally impressive but more accessible.",g:"Wakuda Palazzo Las Vegas",tg:["Dining","Date Night"]},
+{id:994,a:"the-strip",c:"Nightlife",t:"Drai's Nightclub & Beachclub",e:"\uD83C\uDF19",d:"Rooftop mega-club at The Cromwell with the best hip-hop lineups in Vegas. 4,000 sq ft LED screen, Strip views, and a daytime pool party on weekends.",g:"Drais Nightclub Las Vegas",tg:["Nightlife","Iconic"]},
+{id:995,a:"the-strip",c:"Nightlife",t:"Zouk Nightclub",e:"\uD83D\uDD0A",d:"Multi-level club at Resorts World with cutting-edge production, laser systems, and a mix of EDM and hip-hop nights. The newest major club on the Strip.",g:"Zouk Nightclub Resorts World Las Vegas",tg:["Nightlife","New"]},
+{id:996,a:"the-strip",c:"Nightlife",t:"1923 Prohibition Bar",e:"\uD83C\uDFB9",d:"Dim lighting, vintage decor, live burlesque and piano. A classy speakeasy vibe at Mandalay Bay. Open Thu-Sun from 9pm. Dress code enforced.",g:"1923 Prohibition Bar Mandalay Bay Las Vegas",tg:["Speakeasy","Live Music","Date Night"]},
+{id:997,a:"the-strip",c:"Nightlife",t:"Easy's Cocktail Lounge",e:"\uD83C\uDFB6",d:"Live music speakeasy inside Aria. Jazz, soul, and R&B in a modern glamour setting. Walk-ins welcome but it fills up fast on weekends.",g:"Easys Cocktail Lounge Aria Las Vegas",tg:["Speakeasy","Live Music"]},
+{id:998,a:"summerlin",c:"Outdoors",t:"Red Rock: First Creek Canyon Hike",e:"\uD83E\uDD7E",d:"3-mile round trip through a desert canyon to a seasonal waterfall. Best in spring when water is flowing. Moderate difficulty. Reservations required for scenic drive entry.",g:"First Creek Canyon Red Rock Las Vegas",tg:["Hiking","Nature","Adventure"]},
+{id:999,a:"summerlin",c:"Outdoors",t:"Red Rock: Spring Wildflower Walk",e:"\uD83C\uDF3C",d:"Guided naturalist walk through Willow Springs Loop. Spring 2026 wildflowers are blooming after good winter rains. Free with park entry. Check Red Rock website for dates.",g:"Willow Springs Red Rock Canyon Las Vegas",tg:["Nature","Free","Seasonal"]},
+{id:1000,a:"the-strip",c:"Food & Drink",t:"Grand Lux Cafe",e:"\uD83C\uDF7D\uFE0F",d:"Open 24/7 at the Venetian with a massive menu — 200+ items from Thai to Italian to burgers. Reliable late-night option when everything else is closed.",g:"Grand Lux Cafe Venetian Las Vegas",tg:["Late Night","Dining"]},
+{id:1002,a:"the-strip",c:"Food & Drink",t:"Maroon at Sahara",e:"\uD83C\uDF56",d:"New Caribbean steakhouse by James Beard winner Kwame Onwuachi. Bold flavors, plantain bread service, and a vibe that feels like nowhere else on the Strip.",g:"Maroon Sahara Las Vegas",tg:["Dining","New","Unique"]},
 ];
+// Time-of-day windows: am=6-11, pm=11-16, ev=16-20, nt=20-6
+const TIMES={1:["ev","nt"],4:["am","pm"],6:["ev","nt"],8:["am","pm"],9:["am","pm"],11:["am","pm"],15:["ev","nt"],20:["ev"],31:["ev","nt"],34:["am","pm"],37:["am"],39:["am","pm"],40:["am"],42:["am","pm"],43:["am","pm"],44:["am","pm"],45:["ev","nt"],48:["am","pm"],49:["ev","nt"],101:["ev","nt"],102:["ev","nt"],109:["ev","nt"],115:["ev","nt"],117:["am","pm"],118:["ev","nt"],121:["am","pm"],122:["am","pm"],126:["ev","nt"],127:["ev","nt"],130:["ev","nt"],131:["ev","nt"],133:["ev","nt"],136:["ev","nt"],138:["am","pm"],201:["am","pm"],202:["am","pm"],203:["am","pm"],204:["am","pm"],205:["am","pm"],206:["am","pm"],207:["am","pm"],208:["am","pm"],209:["am","pm"],210:["am"],213:["am","pm"],214:["am","pm"],217:["am","pm"],218:["am","pm"],219:["am","pm"],223:["am"],226:["am","pm"],231:["am","pm"],233:["am","pm"],234:["am"],236:["am","pm"],240:["am","pm"],301:["am","pm"],302:["am","pm"],303:["am","pm"],304:["am","pm"],305:["am","pm"],307:["am","pm"],308:["am","pm"],309:["am","pm"],311:["am","pm"],312:["am","pm"],313:["am","pm"],314:["am","pm"],315:["am","pm"],317:["am","pm"],318:["am","pm"],319:["ev"],320:["am","pm"],322:["ev","nt"],323:["am","pm"],324:["am","pm"],325:["am","pm"],327:["am","pm"],330:["am","pm"],334:["am","pm"],336:["am"],340:["ev","nt"],401:["am","pm"],402:["am","pm"],403:["am","pm"],404:["am","pm"],405:["am","pm"],406:["am","pm"],407:["am"],408:["am","pm"],410:["am","pm"],412:["am","pm"],414:["am","pm"],422:["am","pm"],426:["am","pm"],428:["ev","nt"],501:["am","pm"],502:["am","pm"],503:["am","pm"],504:["am","pm"],506:["am","pm"],507:["am","pm"],508:["am","pm"],509:["am","pm"],510:["ev"],511:["am","pm"],512:["am","pm"],514:["am","pm"],515:["am","pm"],519:["am","pm"],524:["am"],526:["am","pm"],601:["am","pm"],602:["am","pm"],604:["am","pm"],605:["am","pm"],606:["am","pm"],608:["am","pm"],609:["am","pm"],610:["am","pm"],611:["am","pm"],612:["ev"],613:["am","pm"],615:["am","pm"],616:["am","pm"],621:["am","pm"],622:["am"],624:["ev","nt"],625:["am","pm"],627:["am","pm"],628:["ev","nt"],701:["am","pm"],702:["am","pm"],703:["am","pm"],704:["am","pm"],705:["am","pm"],706:["am","pm"],708:["am","pm"],709:["am","pm"],710:["am","pm"],711:["am","pm"],712:["am","pm"],713:["am","pm"],714:["am","pm"],715:["am","pm"],717:["am","pm"],725:["am","pm"],726:["am","pm"],727:["am","pm"],728:["am","pm"],729:["am","pm"],730:["am","pm"],751:["ev","nt"],752:["ev","nt"],753:["am","pm"],755:["am"],757:["ev","nt"],759:["am","pm"],760:["ev","nt"],762:["am"],764:["am"],766:["ev"],768:["am","pm"],771:["am"],772:["ev","nt"],773:["ev","nt"],774:["ev","nt"],775:["am","pm"],777:["am","pm"],778:["ev","nt"],780:["am","pm"],781:["ev","nt"],782:["am","pm"],785:["ev","nt"],786:["ev","nt"],787:["ev","nt"],788:["ev","nt"],789:["ev","nt"],790:["am","pm"],791:["ev","nt"],792:["ev","nt"],794:["ev","nt"],796:["am"],797:["ev","nt"],799:["ev","nt"],800:["ev","nt"],802:["ev","nt"],803:["ev","nt"],804:["ev","nt"],805:["am","pm"],807:["am","pm"],808:["am","pm"],809:["am"],816:["am"],818:["am"],820:["am","pm"],823:["ev","nt"],826:["ev","nt"],827:["am","pm"],828:["am"],829:["ev","nt"],830:["ev","nt"],832:["am","pm"],833:["ev","nt"],834:["am","pm"],835:["am","pm"],837:["ev"],838:["am","pm"],840:["am"],842:["am"],843:["am","pm"],845:["am","pm"],847:["am"],848:["am","pm"],851:["am","pm"],854:["am","pm"],857:["am","pm"],859:["am"],861:["am","pm"],862:["am"],864:["am","pm"],866:["am","pm"],867:["am"],868:["am","pm"],869:["am","pm"],870:["am","pm"],873:["am","pm"],875:["am","pm"],876:["am","pm"],878:["am","pm"],880:["am","pm"],881:["am","pm"],883:["ev"],884:["am","pm"],886:["am","pm"],887:["am","pm"],889:["am","pm"],890:["am","pm"],891:["am","pm"],892:["am","pm"],893:["am"],895:["am","pm"],896:["ev","nt"],897:["am","pm"],898:["am","pm"],899:["ev","nt"],901:["ev","nt"],904:["am","pm"],908:["am","pm"],909:["am","pm"],910:["am"],911:["am","pm"],912:["am","pm"],914:["am","pm"],916:["am","pm"],918:["am","pm"],919:["am","pm"],920:["am","pm"],924:["ev","nt"],927:["am","pm"],928:["am","pm"],930:["am","pm"],933:["ev","nt"],935:["am","pm"],937:["am","pm"],938:["am"],939:["am","pm"],940:["am","pm"],941:["am","pm"],942:["ev","nt"],943:["am","pm"],945:["am","pm"],946:["am","pm"],950:["am","pm"],951:["ev","nt"],956:["ev","nt"],957:["am","pm"],958:["am","pm"],959:["ev","nt"],960:["am","pm"],962:["ev","nt"],964:["am","pm"],966:["am","pm"],968:["am","pm"],969:["am","pm"],970:["ev","nt"],971:["am"],973:["ev","nt"],974:["ev","nt"],976:["pm"],977:["pm"],978:["pm"],979:["nt"],980:["nt"],981:["ev","nt"],982:["ev","nt"],983:["ev","nt"],984:["am","pm"],985:["ev","nt"],986:["ev","nt"],987:["ev","nt"],988:["am","pm"],989:["pm","ev"],990:["pm","ev"],992:["ev"],993:["ev","nt"],994:["nt"],995:["nt"],996:["nt"],997:["ev","nt"],998:["am"],999:["am","pm"],1000:["ev","nt"],1002:["ev","nt"]};
+function getTimeSlot(){const h=new Date().getHours();if(h>=6&&h<11)return"am";if(h>=11&&h<16)return"pm";if(h>=16&&h<20)return"ev";return"nt";}
+
 const TIPS={
 1:"🅿️ Free parking: Casino Royale or Treasure Island (both 5 min walk). 🏠 Locals: NV ID gets 3 hrs free at Bellagio garage.",
 2:"🅿️ Free parking: NV ID = 3 hrs free Bellagio garage. Caesars Rewards Platinum+ parks free everywhere. 🏠 Locals: Caesars Rewards members get 25% off F&B at 100+ restaurants.",
@@ -1333,6 +1369,7 @@ let map=null,markers=[],mapReady=false,currentView="list";
 let userLat=null,userLng=null,userMarker=null,locRequested=false;
 let selCats=new Set();
 let selTags=new Set();
+let selTime="";
 
 // ═══════════════════════════════════════════════════
 // BUILD FILTER CHIPS
@@ -1341,6 +1378,24 @@ function buildChips(){
   buildDrop("areaDrop","areaTrig","Area",Object.keys(AN).map(k=>({val:k,label:AN[k]})),selAreas);
   buildDrop("catDrop","catTrig","Type",CATS.map(c=>({val:c,label:c})),selCats);
   buildDrop("tagDrop","tagTrig","Vibe",TAGS.map(t=>({val:t,label:t})),selTags);
+  buildTimePills();
+}
+function buildTimePills(){
+  const wrap=$("timePills");if(!wrap)return;
+  const slots=[{val:"am",label:"Morning"},{val:"pm",label:"Afternoon"},{val:"ev",label:"Evening"},{val:"nt",label:"Night"}];
+  const cur=getTimeSlot();
+  slots.forEach(s=>{
+    const btn=document.createElement("button");
+    btn.className="time-pill"+(s.val===cur?" active":"");
+    btn.textContent=s.label;
+    btn.addEventListener("click",()=>{
+      if(selTime===s.val){selTime="";btn.classList.remove("active");}
+      else{selTime=s.val;wrap.querySelectorAll(".time-pill").forEach(b=>b.classList.remove("active"));btn.classList.add("active");}
+      render();
+    });
+    wrap.appendChild(btn);
+  });
+  selTime=cur;
 }
 
 const filterBack=$("filterBack");
@@ -1402,13 +1457,14 @@ function updateTrig(trigId,label,selSet){
 }
 
 function updateClear(){
-  const total=selAreas.size+selCats.size+selTags.size;
+  const total=selAreas.size+selCats.size+selTags.size+(selTime?1:0);
   $("clearAll").classList.toggle("show",total>0);
 }
 
 $("clearAll").addEventListener("click",()=>{
-  selAreas.clear();selCats.clear();selTags.clear();
+  selAreas.clear();selCats.clear();selTags.clear();selTime="";
   document.querySelectorAll(".fdrop-opt").forEach(o=>o.classList.remove("sel"));
+  document.querySelectorAll(".time-pill").forEach(b=>b.classList.remove("active"));
   updateTrig("areaTrig","Area",selAreas);
   updateTrig("catTrig","Type",selCats);
   updateTrig("tagTrig","Vibe",selTags);
@@ -1430,6 +1486,10 @@ function getFiltered(){
     if(selCats.size>0&&!selCats.has(act.c))return false;
     if(selTags.size>0){
       if(!act.tg||!act.tg.some(t=>selTags.has(t)))return false;
+    }
+    if(selTime){
+      const tw=TIMES[act.id];
+      if(tw&&!tw.includes(selTime))return false;
     }
     return true;
   });
