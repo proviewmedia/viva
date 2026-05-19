@@ -1,4 +1,4 @@
-const CACHE_NAME = 'sevn-v3';
+const CACHE_NAME = 'sevn-v4';
 const ASSETS = [
   './',
   './index.html',
