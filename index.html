@@ -385,40 +385,39 @@
   </div>
 
 <script>
-const EVENTS_UPDATED="May 7, 2026";
+const EVENTS_UPDATED="May 19, 2026";
 const EVENTS=[
 {t:"Wizard of Oz at Sphere",when:"Daily",where:"Sphere",cat:"Experience",link:"https://vegas.vdvm.net/c/5096957/267843/4221?u=https://www.vegas.com/shows/sphere-las-vegas/"},
 {t:"Phish at Sphere",when:"Thru Jun 13",where:"Sphere",cat:"Concert",link:"https://vegas.vdvm.net/c/5096957/267843/4221?u=https://www.vegas.com/shows/sphere-las-vegas/"},
 {t:"No Doubt: Tragic Kingdom 30th",when:"Thru Jun 13",where:"Sphere",cat:"Concert",link:"https://vegas.vdvm.net/c/5096957/267843/4221?u=https://www.vegas.com/shows/sphere-las-vegas/"},
 {t:"Springs Preserve Butterfly Habitat",when:"Thru May 25",where:"Springs Preserve",cat:"Experience",link:""},
-{t:"Aviators vs St. Paul Saints",when:"May 7-10",where:"Las Vegas Ballpark",cat:"Sports",link:""},
-{t:"Jazz Under the Stars",when:"May 8",where:"Centennial Hills Amphitheater",cat:"Free Event",link:""},
-{t:"Helldorado Days Parade",when:"May 9",where:"Downtown / 4th Street",cat:"Free Event",link:""},
-{t:"Mike Phillips (Free Concert)",when:"May 9",where:"Clark County Govt Center Amphitheater",cat:"Free Event",link:""},
-{t:"Golden Knights Playoffs vs Anaheim",when:"Rd 2 thru May 16",where:"T-Mobile Arena",cat:"Sports",link:"https://vegas.vdvm.net/c/5096957/267843/4221?u=https://www.vegas.com/shows/t-mobile-arena/"},
-{t:"World Party Parade (EDC kickoff)",when:"May 14",where:"Las Vegas Strip",cat:"Free Event",link:""},
-{t:"EDC Las Vegas: 30th Anniversary",when:"May 15-17",where:"Las Vegas Motor Speedway",cat:"Concert",link:""},
-{t:"UFC Fight Night: Allen vs Costa",when:"May 16",where:"UFC Apex",cat:"Sports",link:""},
-{t:"Marcus Miller (Free Concert)",when:"May 16",where:"Clark County Govt Center Amphitheater",cat:"Free Event",link:""},
-{t:"Romeo Santos & Prince Royce",when:"May 17",where:"T-Mobile Arena",cat:"Concert",link:"https://vegas.vdvm.net/c/5096957/267843/4221?u=https://www.vegas.com/shows/t-mobile-arena/"},
 {t:"Aviators vs Albuquerque Isotopes",when:"May 19-24",where:"Las Vegas Ballpark",cat:"Sports",link:""},
 {t:"Jazz Funk Soul (Free Concert)",when:"May 23",where:"Clark County Govt Center Amphitheater",cat:"Free Event",link:""},
 {t:"BTS at Allegiant",when:"May 23-28",where:"Allegiant Stadium",cat:"Concert",link:""},
 {t:"\"Saving Private Ryan\" Outdoor Movie",when:"May 24",where:"Police Memorial Park",cat:"Free Event",link:""},
 {t:"52nd American Music Awards",when:"May 25",where:"MGM Grand Garden Arena",cat:"Show",link:""},
 {t:"World Series of Poker 2026 Begins",when:"May 26 (thru Jul 15)",where:"Paris / Horseshoe",cat:"Experience",link:""},
+{t:"Disney's Newsies (Super Summer Theatre)",when:"May 29 - Jun 13",where:"Spring Mountain Ranch",cat:"Show",link:""},
 {t:"Henderson Library Summer Reading Kickoff",when:"May 30",where:"Henderson Libraries",cat:"Free Event",link:""},
 {t:"Kayla Waters (Free Concert)",when:"May 30",where:"Clark County Govt Center Amphitheater",cat:"Free Event",link:""},
 {t:"\"The Little Mermaid\" Outdoor Movie",when:"May 30",where:"Whitney Recreation Center",cat:"Free Event",link:""},
+{t:"Restaurant Week Las Vegas",when:"Jun 1-12",where:"Citywide",cat:"Experience",link:""},
+{t:"Aviators vs Reno Aces",when:"Jun 2-7",where:"Las Vegas Ballpark",cat:"Sports",link:""},
 {t:"Summerlin Sounds Returns",when:"Jun 4 (Weds thru Jul 23)",where:"Downtown Summerlin Lawn",cat:"Free Event",link:""},
 {t:"First Friday Art Walk",when:"Jun 5",where:"18b Arts District",cat:"Free Event",link:""},
 {t:"Al Di Meola (Free Concert)",when:"Jun 6",where:"Clark County Govt Center Amphitheater",cat:"Free Event",link:""},
 {t:"UFC Fight Night: Muhammad vs Bonfim",when:"Jun 6",where:"UFC Apex",cat:"Sports",link:""},
+{t:"Southern Nevada Pride Fest",when:"Jun 13",where:"Sunset Park",cat:"Free Event",link:""},
+{t:"Vistas: Beauty of the Desert - Opening Reception",when:"Jun 16, 5:30-7:30 PM",where:"West Charleston Library",cat:"Free Event",link:""},
+{t:"Vistas: Beauty of the Desert (Exhibit)",when:"Jun 16 - Sep 2",where:"West Charleston Library",cat:"Culture",link:""},
+{t:"Henderson Juneteenth Festival",when:"Jun 19",where:"Henderson",cat:"Free Event",link:""},
+{t:"Kenny Chesney at Sphere",when:"Jun 19-27",where:"Sphere",cat:"Concert",link:"https://vegas.vdvm.net/c/5096957/267843/4221?u=https://www.vegas.com/shows/sphere-las-vegas/"},
+{t:"Las Vegas Juneteenth Festival",when:"Jun 20",where:"Las Vegas",cat:"Free Event",link:""},
+{t:"Evel Knievel Experience Opens",when:"Jun 27",where:"1001 S First St (Arts District)",cat:"Experience",link:""},
 {t:"Downtown Summerlin Farmers Market",when:"Saturdays 9a-2p",where:"Festival Plaza",cat:"Experience",link:""},
 {t:"Pool Season",when:"All Summer",where:"Encore, Marquee, Tao, LIV Beach",cat:"Experience",link:""},
 {t:"Blue Man Group",when:"Ongoing",where:"Luxor",cat:"Show",link:"https://vegas.vdvm.net/c/5096957/267843/4221?u=https://www.vegas.com/shows/luxor/"},
-{t:"Cirque: O",when:"Ongoing",where:"Bellagio",cat:"Show",link:"https://vegas.vdvm.net/c/5096957/267843/4221?u=https://www.vegas.com/shows/bellagio/"},
-{t:"Vistas: Beauty of the Desert (Opens Jun 16)",when:"Jun 16 - Sep 1",where:"West Charleston Library",cat:"Culture",link:""}
+{t:"Cirque: O",when:"Ongoing",where:"Bellagio",cat:"Show",link:"https://vegas.vdvm.net/c/5096957/267843/4221?u=https://www.vegas.com/shows/bellagio/"}
 ];
 const D=[
 // THE STRIP (20)
@@ -485,6 +484,7 @@ const D=[
 {id:218,a:"summerlin",c:"Outdoors",t:"Sandstone Quarry Loop",e:"\uD83E\uDEA8",d:"A flat, easy 2-mile loop through old sandstone quarries with unique rock formations and desert flora. Great for kids and casual walkers.",g:"Sandstone Quarry Red Rock Canyon",tg:["Easy","Family"]},
 {id:219,a:"summerlin",c:"Nature",t:"Desert Tortoise Habitat",e:"\uD83D\uDC22",d:"Spring is the best time to spot desert tortoises along Red Rock trails. They emerge from burrows in April and May. Keep your distance.",g:"Red Rock Canyon desert tortoise",tg:["Wildlife","Seasonal"]},
 {id:220,a:"summerlin",c:"Views",t:"Calico Hills Scramble",e:"\uD83E\uDDD7",d:"Scramble up the red Calico Hills for close-up views of layered sandstone and panoramic city vistas. No official trail, just explore the rocks.",g:"Calico Hills Red Rock Canyon",tg:["Adventure","Views"]},
+{id:1122,a:"summerlin",c:"Culture",t:"Vistas: Beauty of the Desert Exhibit",e:"\uD83D\uDDBC\uFE0F",d:"Free photography exhibit by Melvin Morales at West Charleston Library. Landscape photographs of Nevada's deserts and overlooked details. Runs Jun 16 - Sep 2, 2026.",g:"West Charleston Library 6301 W Charleston Blvd Las Vegas",tg:["Art","Photography","Free","Local"]},
 
 // HENDERSON (20)
 {id:301,a:"henderson",c:"Outdoors",t:"Valley of Fire Day Trip",e:"\uD83D\uDD25",d:"Ancient red sandstone formations create an alien landscape one hour away. Fire Wave trail is the crown jewel. Petroglyphs, arches, and endless photo ops.",g:"Valley of Fire State Park Nevada",tg:["Road Trip","Photography"]},

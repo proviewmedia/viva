@@ -39,11 +39,6 @@
 
     /* VIEW TOGGLE */
     .view-toggle{display:none}
-    .vt-select{padding:6px 12px;border:1.5px solid var(--brd);border-radius:var(--rx);background:var(--surface);color:var(--t1);font-family:var(--fb);font-size:.72rem;font-weight:600;cursor:pointer;appearance:auto}
-    .vt-spacer{flex:1}
-    .vt-btn{padding:5px 12px;border:1.5px solid var(--brd);border-radius:99px;background:var(--surface);color:var(--t2);font-family:var(--fb);font-size:.68rem;font-weight:600;cursor:pointer;transition:all .15s;white-space:nowrap;flex-shrink:0;display:none}
-    @media(min-width:768px){.vt-select{display:none}.vt-btn{display:inline-block}}
-    .vt-btn.active{background:var(--t1);color:var(--surface);border-color:var(--t1)}
 
     /* MAP CARDS */
     .map-view{display:flex;flex-direction:column;gap:8px}
@@ -104,9 +99,6 @@
     .filter-bar{display:flex;align-items:center;gap:8px;padding:0 20px 8px;max-width:480px;margin:0 auto;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
     .filter-bar::-webkit-scrollbar{display:none}
     @media(min-width:768px){.filter-bar{max-width:680px}}
-    .time-pills{display:flex;gap:4px;flex-shrink:0;}
-    .time-pill{padding:6px 12px;background:var(--surface);border:1.5px solid var(--brd);border-radius:99px;font-family:var(--fb);font-size:.68rem;font-weight:600;color:var(--t2);cursor:pointer;white-space:nowrap;transition:all .15s ease}
-    .time-pill.active{background:var(--accent);color:#fff;border-color:var(--accent);}
     .filter-btn{display:flex;align-items:center;gap:5px;padding:8px 14px;background:var(--surface);border:1.5px solid var(--brd);border-radius:99px;font-family:var(--fb);font-size:.74rem;font-weight:600;color:var(--t2);cursor:pointer;white-space:nowrap;flex-shrink:0;transition:all .15s ease}
     .filter-btn:active{transform:scale(.97)}
     .filter-btn svg{width:12px;height:12px;color:var(--t3)}
@@ -266,22 +258,18 @@
     <button class="filter-btn" id="areaTrig" data-drop="areaDrop">Area <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button>
     <button class="filter-btn" id="catTrig" data-drop="catDrop">Type <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button>
     <button class="filter-btn" id="tagTrig" data-drop="tagDrop">Vibe <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button>
-    <div class="time-pills" id="timePills"></div>
+    <button class="filter-btn" id="timeTrig" data-drop="timeDrop">Time <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button>
     <button class="clear-btn" id="clearAll">&#10005; Clear</button>
-    <div class="vt-spacer"></div>
-    <select class="vt-select" id="viewSelect"><option value="list">List</option><option value="map">Map</option></select>
-    <button class="vt-btn active" id="listBtn">List</button>
-    <button class="vt-btn" id="mapBtn">Map</button>
   </div>
   <div class="filter-section"><div class="fdrop" id="areaDrop"></div></div>
   <div class="filter-section"><div class="fdrop" id="catDrop"></div></div>
   <div class="filter-section"><div class="fdrop" id="tagDrop"></div></div>
+  <div class="filter-section"><div class="fdrop" id="timeDrop"></div></div>
   <div class="filter-back" id="filterBack"></div>
 
   <div class="main">
     <div class="result-count" id="resultCount"></div>
-    <div class="grid" id="resultsGrid"></div>
-    <div class="map-view" id="mapWrap" style="display:none">
+    <div class="map-view" id="mapWrap">
       <div class="map-wrap" id="mapContainer" style="position:relative">
         <div id="mapEl"></div>
         <button class="map-locate" id="mapLocate"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v4m0 12v4M2 12h4m12 0h4"/></svg></button>
@@ -297,6 +285,7 @@
       </div>
       <div class="map-cards" id="mapCards"></div>
     </div>
+    <div class="grid" id="resultsGrid"></div>
     <div class="empty-state" id="emptyState" style="display:none">
       <div class="es-emoji">&#128064;</div>
       <p>No matches for those filters. Try loosening up your search.</p>
@@ -391,6 +380,7 @@ const D=[
 {id:218,a:"summerlin",c:"Outdoors",t:"Sandstone Quarry Loop",e:"\uD83E\uDEA8",d:"A flat, easy 2-mile loop through old sandstone quarries with unique rock formations and desert flora. Great for kids and casual walkers.",g:"Sandstone Quarry Red Rock Canyon",tg:["Easy","Family"]},
 {id:219,a:"summerlin",c:"Nature",t:"Desert Tortoise Habitat",e:"\uD83D\uDC22",d:"Spring is the best time to spot desert tortoises along Red Rock trails. They emerge from burrows in April and May. Keep your distance.",g:"Red Rock Canyon desert tortoise",tg:["Wildlife","Seasonal"]},
 {id:220,a:"summerlin",c:"Views",t:"Calico Hills Scramble",e:"\uD83E\uDDD7",d:"Scramble up the red Calico Hills for close-up views of layered sandstone and panoramic city vistas. No official trail, just explore the rocks.",g:"Calico Hills Red Rock Canyon",tg:["Adventure","Views"]},
+{id:1122,a:"summerlin",c:"Culture",t:"Vistas: Beauty of the Desert Exhibit",e:"\uD83D\uDDBC\uFE0F",d:"Free photography exhibit by Melvin Morales at West Charleston Library. Landscape photographs of Nevada's deserts and overlooked details. Runs Jun 16 - Sep 2, 2026.",g:"West Charleston Library 6301 W Charleston Blvd Las Vegas",tg:["Art","Photography","Free","Local"]},
 
 // HENDERSON (20)
 {id:301,a:"henderson",c:"Outdoors",t:"Valley of Fire Day Trip",e:"\uD83D\uDD25",d:"Ancient red sandstone formations create an alien landscape one hour away. Fire Wave trail is the crown jewel. Petroglyphs, arches, and endless photo ops.",g:"Valley of Fire State Park Nevada",tg:["Road Trip","Photography"]},
@@ -1387,7 +1377,7 @@ let favs=[];try{favs=JSON.parse(localStorage.getItem("sevn_f")||"[]");}catch(e){
 let selAreas=new Set();
 let searchTerm="";
 let lastResults=[];
-let map=null,markers=[],mapReady=false,currentView="list";
+let map=null,markers=[],mapReady=false;
 let userLat=null,userLng=null,userMarker=null,locRequested=false;
 let selCats=new Set();
 let selTags=new Set();
@@ -1400,24 +1390,52 @@ function buildChips(){
   buildDrop("areaDrop","areaTrig","Area",Object.keys(AN).map(k=>({val:k,label:AN[k]})),selAreas);
   buildDrop("catDrop","catTrig","Type",CATS.map(c=>({val:c,label:c})),selCats);
   buildDrop("tagDrop","tagTrig","Vibe",TAGS.map(t=>({val:t,label:t})),selTags);
-  buildTimePills();
+  buildTimeDrop();
 }
-function buildTimePills(){
-  const wrap=$("timePills");if(!wrap)return;
+function buildTimeDrop(){
+  const drop=$("timeDrop");
+  const trig=$("timeTrig");
+  if(!drop||!trig)return;
   const slots=[{val:"am",label:"Morning"},{val:"pm",label:"Afternoon"},{val:"ev",label:"Evening"},{val:"nt",label:"Night"}];
-  const cur=getTimeSlot();
+  drop.innerHTML="";
   slots.forEach(s=>{
-    const btn=document.createElement("button");
-    btn.className="time-pill"+(s.val===cur?" active":"");
-    btn.textContent=s.label;
-    btn.addEventListener("click",()=>{
-      if(selTime===s.val){selTime="";btn.classList.remove("active");}
-      else{selTime=s.val;wrap.querySelectorAll(".time-pill").forEach(b=>b.classList.remove("active"));btn.classList.add("active");}
+    const opt=document.createElement("div");
+    opt.className="fdrop-opt"+(selTime===s.val?" sel":"");
+    opt.dataset.val=s.val;
+    opt.innerHTML=s.label+'<span class="fo-ck">✓</span>';
+    opt.addEventListener("click",()=>{
+      if(selTime===s.val){selTime="";}
+      else{selTime=s.val;}
+      drop.querySelectorAll(".fdrop-opt").forEach(o=>o.classList.toggle("sel",o.dataset.val===selTime));
+      updateTimeTrig();
+      updateClear();
       render();
     });
-    wrap.appendChild(btn);
+    drop.appendChild(opt);
   });
-  selTime=cur;
+  trig.addEventListener("click",()=>{
+    if(openDrop==="timeDrop"){closeAllDrops();return;}
+    closeAllDrops();
+    const bar=$("filterBar");
+    const rect=bar.getBoundingClientRect();
+    drop.style.top=(rect.bottom+6)+"px";
+    drop.classList.add("open");
+    trig.classList.add("open");
+    filterBack.classList.add("open");
+    openDrop="timeDrop";
+  });
+  updateTimeTrig();
+}
+function updateTimeTrig(){
+  const trig=$("timeTrig");
+  const labels={am:"Morning",pm:"Afternoon",ev:"Evening",nt:"Night"};
+  const svg='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>';
+  trig.classList.toggle("has-sel",!!selTime);
+  if(selTime){
+    trig.innerHTML='Time <span class="filter-cnt">'+labels[selTime]+'</span> '+svg;
+  } else {
+    trig.innerHTML='Time '+svg;
+  }
 }
 
 const filterBack=$("filterBack");
@@ -1486,10 +1504,10 @@ function updateClear(){
 $("clearAll").addEventListener("click",()=>{
   selAreas.clear();selCats.clear();selTags.clear();selTime="";
   document.querySelectorAll(".fdrop-opt").forEach(o=>o.classList.remove("sel"));
-  document.querySelectorAll(".time-pill").forEach(b=>b.classList.remove("active"));
   updateTrig("areaTrig","Area",selAreas);
   updateTrig("catTrig","Type",selCats);
   updateTrig("tagTrig","Vibe",selTags);
+  updateTimeTrig();
   updateClear();
   render();
 });
@@ -1559,8 +1577,8 @@ function render(){
     });
     grid.appendChild(card);
   });
-  // Update map if visible
-  if(currentView==="map"){if(mapReady)updateMapPins(results);renderMapCards(results);}
+  // Update map (always visible)
+  if(mapReady){updateMapPins(results);renderMapCards(results);}
 }
 
 // ═══════════════════════════════════════════════════
@@ -1635,6 +1653,8 @@ if(params.get("tag")){selTags.add(params.get("tag"));}
 buildChips();
 updateClear();
 render();
+if(!lastResults.length)lastResults=getFiltered();
+initMap();
 
 
 // ═══════════════════════════════════════════════════
@@ -1697,34 +1717,6 @@ function updateMapPins(results){
 function closeMapPopup(){map.closePopup();}
 
 const AREA_NAMES={"the-strip":"The Strip","downtown":"Downtown","summerlin":"Summerlin","henderson":"Henderson","north-lv":"N. Las Vegas","centennial":"Centennial","enterprise":"Enterprise","mt-charleston":"Mt. Charleston"};
-
-$("listBtn").addEventListener("click",function(){
-  if(currentView==="list")return;
-  currentView="list";
-  this.classList.add("active");$("mapBtn").classList.remove("active");
-  $("resultsGrid").style.display="";$("mapWrap").style.display="none";
-});
-$("mapBtn").addEventListener("click",function(){
-  if(currentView==="map")return;
-  currentView="map";
-  this.classList.add("active");$("listBtn").classList.remove("active");
-  $("resultsGrid").style.display="none";$("mapWrap").style.display="block";
-  if(!mapReady)initMap();
-  if(!lastResults.length)lastResults=getFiltered();
-  if(!mapReady){
-    // initMap will handle everything once Leaflet loads
-    renderMapCards(lastResults);
-    return;
-  }
-  setTimeout(()=>{
-    map.invalidateSize();
-    updateMapPins(lastResults);
-    requestLocation();
-    renderMapCards(lastResults);
-  },150);
-});
-
-
 
 // ═══ LOCATION & DISTANCE ═══
 
@@ -1846,15 +1838,6 @@ $("mapLocate").addEventListener("click",function(){
     function(){btn.classList.remove("loading");},
     {enableHighAccuracy:true,timeout:10000}
   );
-});
-
-// ═══ VIEW SELECT (MOBILE) ═══
-$("viewSelect").addEventListener("change",function(){
-  if(this.value==="map"){
-    $("mapBtn").click();
-  } else {
-    $("listBtn").click();
-  }
 });
 
 // ═══ SEARCH ═══
