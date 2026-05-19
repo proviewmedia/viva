@@ -1705,11 +1705,42 @@ function parseEventStart(when){
   if(d<today)d.setFullYear(year+1);
   return d;
 }
+const EVENT_EMOJI={Concert:"\u{1F3A4}",Sports:"\u{1F3DF}️",Show:"\u{1F3AD}",Experience:"✨","Free Event":"\u{1F39F}️",Culture:"\u{1F3A8}"};
 function makeEventCard(ev){
-  const el=document.createElement(ev.link?"a":"div");
-  el.className="ecard";if(ev.link){el.href=ev.link;el.target="_blank";el.rel="noopener";}
+  const el=document.createElement("div");
+  el.className="ecard";el.style.cursor="pointer";
   el.innerHTML=`<span class="ec-cat">${ev.cat}</span><h4>${ev.t}</h4><span class="ec-when">${ev.when}</span><span class="ec-where">${ev.where}</span>`;
+  el.addEventListener("click",()=>openEventDetail(ev));
   return el;
+}
+function openEventDetail(ev){
+  try{
+    $("dEmoji").textContent=EVENT_EMOJI[ev.cat]||"\u{1F4C5}";
+    $("dCat").textContent=ev.cat;
+    $("dTitle").textContent=ev.t;
+    $("dDesc").innerHTML='<div style="margin-bottom:6px"><strong>When:</strong> '+ev.when+'</div><div><strong>Where:</strong> '+ev.where+'</div>';
+    $("dTip").style.display="none";
+    $("dSeason").style.display="none";
+    $("dSaveBtn").style.display="none";
+    const bookBtn=$("dBookBtn");
+    if(ev.link){
+      bookBtn.href=ev.link;
+      bookBtn.textContent="Get Tickets";
+      bookBtn.classList.add("show");
+    }else{
+      bookBtn.classList.remove("show");
+    }
+    const dirBtn=$("dDirBtn");
+    const vague=/^(citywide|las vegas|tbd|various)$/i.test((ev.where||"").trim());
+    if(ev.where&&!vague){
+      dirBtn.href="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(ev.where+" Las Vegas");
+      dirBtn.classList.add("show");
+    }else{
+      dirBtn.classList.remove("show");
+    }
+    detailAct=null;
+    $("dMod").classList.add("open");
+  }catch(e){}
 }
 function buildEvents(){
   const sNow=$("evScroll");sNow.innerHTML="";
@@ -1749,6 +1780,8 @@ function openDetail(act){
   try{
   if(!act||!act.id)return;
   detailAct=act;
+  $("dSaveBtn").style.display="";
+  $("dBookBtn").textContent="Book on Vegas.com";
   $("dEmoji").textContent=act.e;
   $("dCat").textContent=act.c;
   $("dTitle").textContent=act.t;
