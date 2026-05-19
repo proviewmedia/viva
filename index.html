@@ -317,6 +317,11 @@
       <div class="feed-scroll" id="evScroll"></div>
     </div>
 
+    <div class="feed an" id="upcomingFeed">
+      <div class="feed-title" id="upcomingTitle">Upcoming</div>
+      <div class="feed-scroll" id="upcomingScroll"></div>
+    </div>
+
     <div class="feed an" id="nowFeed">
       <div class="feed-title" id="nowTitle">Open Right Now</div>
       <div class="feed-scroll" id="nowScroll"></div>
@@ -1685,14 +1690,39 @@ function makeFeedCard(act){
   card.querySelector(".fc-heart").addEventListener("click",function(e){try{e.stopPropagation();toggleFav(act);var b=e.currentTarget;var s=favs.some(function(f){return f.id===act.id;});b.classList.toggle("saved",s);b.querySelector("svg").setAttribute("fill",s?"currentColor":"none");}catch(ex){}});
   return card;
 }
+function parseEventStart(when){
+  if(!when)return null;
+  const w=when.trim();
+  if(/^(daily|ongoing|all summer|saturdays|sundays|mondays|tuesdays|wednesdays|thursdays|fridays|weekends)/i.test(w))return null;
+  if(/^thru\b/i.test(w))return null;
+  const m=w.match(/\b(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+(\d{1,2})/i);
+  if(!m)return null;
+  const months={jan:0,feb:1,mar:2,apr:3,may:4,jun:5,jul:6,aug:7,sep:8,oct:9,nov:10,dec:11};
+  const year=new Date().getFullYear();
+  const d=new Date(year,months[m[1].toLowerCase()],parseInt(m[2],10));
+  d.setHours(0,0,0,0);
+  const today=new Date();today.setHours(0,0,0,0);
+  if(d<today)d.setFullYear(year+1);
+  return d;
+}
+function makeEventCard(ev){
+  const el=document.createElement(ev.link?"a":"div");
+  el.className="ecard";if(ev.link){el.href=ev.link;el.target="_blank";el.rel="noopener";}
+  el.innerHTML=`<span class="ec-cat">${ev.cat}</span><h4>${ev.t}</h4><span class="ec-when">${ev.when}</span><span class="ec-where">${ev.where}</span>`;
+  return el;
+}
 function buildEvents(){
-  const s=$("evScroll");s.innerHTML="";
+  const sNow=$("evScroll");sNow.innerHTML="";
+  const sUp=$("upcomingScroll");if(sUp)sUp.innerHTML="";
+  const today=new Date();today.setHours(0,0,0,0);
   EVENTS.forEach(ev=>{
-    const el=document.createElement(ev.link?"a":"div");
-    el.className="ecard";if(ev.link){el.href=ev.link;el.target="_blank";el.rel="noopener";}
-    el.innerHTML=`<span class="ec-cat">${ev.cat}</span><h4>${ev.t}</h4><span class="ec-when">${ev.when}</span><span class="ec-where">${ev.where}</span>`;
-    s.appendChild(el);
+    const d=parseEventStart(ev.when);
+    const daysOut=d?(d.getTime()-today.getTime())/864e5:0;
+    const target=(d&&daysOut>7&&sUp)?sUp:sNow;
+    target.appendChild(makeEventCard(ev));
   });
+  const upFeed=$("upcomingFeed");
+  if(upFeed&&sUp)upFeed.style.display=sUp.children.length?"":"none";
 }
 function buildFree(){
   const s=$("freeScroll");s.innerHTML="";
