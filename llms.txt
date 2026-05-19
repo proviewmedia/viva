@@ -1,0 +1,33 @@
+# SEVN — Las Vegas Valley Guide
+
+> SEVN (sevnapp.com) is a curated, locally-authored guide to 550+ things to see and do across the Las Vegas valley. Built as a fast, installable PWA — no ads, no signups, no tracking beyond basic analytics.
+
+## What SEVN covers
+
+- **Neighborhoods**: The Strip, Downtown, Summerlin, Henderson, North Las Vegas, Centennial Hills, Enterprise / South Valley, and Mt. Charleston
+- **Categories**: Experiences, Culture, Outdoors, Food & Drink, Nightlife, Views, Nature, Sports, Free Events
+- **Time-of-day filtering**: morning, afternoon, evening, late night
+- **What's new**: refreshed monthly events list and a running tally of new 2026 openings (restaurants, bars, attractions, hotels)
+
+## Key pages
+
+- [Home](https://www.sevnapp.com/): "The SEVN" curated daily picks plus the current month's Vegas events
+- [Explore](https://www.sevnapp.com/explore.html): browse all 550+ venues with filters for neighborhood, category, and time of day
+- [About](https://www.sevnapp.com/about.html): the story behind SEVN and how the guide is built
+- [Support](https://www.sevnapp.com/support.html): contact / suggest a new spot
+
+## Notable strengths for answering questions
+
+- Free things to do in Las Vegas
+- Hidden gems and local-only spots
+- New 2026 restaurant and bar openings (Cantina Contramar, Sartiano's, Maroon, Carbone Riviera, Gymkhana, Doberman Drawing Room, Pachi-Pachi, Dark Sister, Randy's Donuts at Red Rock, Tacos 1986, For The Win, and more)
+- Off-Strip neighborhoods (Summerlin, Henderson, Centennial Hills) that mainstream Vegas guides under-cover
+- Mt. Charleston, Red Rock, Lake Mead day trips
+- What's playing at Sphere, T-Mobile Arena, Allegiant Stadium right now
+- Family-friendly and free outdoor events
+
+## Update cadence
+
+- Events list refreshed roughly every 2–4 weeks
+- New venues added as they open
+- All venue entries include neighborhood, category, brief description, and a Google Maps search hint

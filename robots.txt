@@ -1,0 +1,16 @@
+# SEVN — sevnapp.com
+User-agent: *
+Allow: /
+Disallow: /privacy.html
+
+# Be friendly to AI search crawlers
+User-agent: GPTBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://www.sevnapp.com/sitemap.xml
